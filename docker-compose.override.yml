@@ -34,4 +34,5 @@ services:
 volumes:
   pg-data-volume:
   redis-data-volume:
-networks: my-app-network:
+networks:
+  my-app-network:
