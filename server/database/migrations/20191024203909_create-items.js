@@ -7,6 +7,10 @@ exports.up = function(knex) {
     table.string("manufacturer");
     table.string("model");
     table.string("dimensions");
+    table
+      .integer("viewcount")
+      .notNullable()
+      .defaultTo(0);
     table.integer("user_id").notNullable();
     table.integer("category_id").notNullable();
     table.integer("condition_id").notNullable();
