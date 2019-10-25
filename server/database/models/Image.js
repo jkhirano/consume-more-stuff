@@ -8,7 +8,7 @@ class Image extends bookshelf.Model {
     return true;
   }
   items() {
-    return this.belongsTo("Item");
+    return this.hasOne("Item");
   }
 }
 

@@ -11,7 +11,17 @@ class Item extends bookshelf.Model {
     return this.belongsTo("User");
   }
   images() {
-    return this.hasMany("Image");
+    return this.belongsToMany("Image");
+  }
+  category() {
+    return this.hasOne("category");
+  }
+  condition() {
+    return this.hasOne("condition");
+  }
+
+  status() {
+    return this.hasOne("status");
   }
 }
 
