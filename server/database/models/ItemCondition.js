@@ -1,6 +1,6 @@
 const bookshelf = require("../bookshelf");
 
-class Condition extends bookshelf.Model {
+class ItemCondition extends bookshelf.Model {
   get tableName() {
     return "conditions";
   }
@@ -12,4 +12,4 @@ class Condition extends bookshelf.Model {
   }
 }
 
-module.exports = bookshelf.model("Condition", Condition);
+module.exports = bookshelf.model("ItemCondition", ItemCondition);
