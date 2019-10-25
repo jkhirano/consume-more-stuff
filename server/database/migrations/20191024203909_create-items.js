@@ -3,7 +3,7 @@ exports.up = function(knex) {
     table.increments();
     table.string("name");
     table.string("description").notNullable();
-    table.integer("price");
+    table.decimal("price");
     table.string("manufacturer");
     table.string("model");
     table.string("dimensions");
