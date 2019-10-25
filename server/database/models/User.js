@@ -8,7 +8,11 @@ class User extends bookshelf.Model {
     return true;
   }
   items() {
-    return this.hasMany("Item");
+    return this.belongsToMany("Item");
+  }
+
+  userStatus() {
+    return this.hasOne("userStatus");
   }
 }
 

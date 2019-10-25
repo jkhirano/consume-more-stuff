@@ -8,7 +8,7 @@ class Item extends bookshelf.Model {
     return true;
   }
   user() {
-    return this.belongsTo("User");
+    return this.hasOne("User");
   }
   images() {
     return this.belongsToMany("Image");
