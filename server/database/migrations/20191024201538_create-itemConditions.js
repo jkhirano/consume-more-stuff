@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable("itemConditions", table => {
     table.increments();
-    table.string("condition").notNullable();
+    table.string("itemCondition").notNullable();
   });
 };
 
