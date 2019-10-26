@@ -14,7 +14,10 @@ exports.up = function(knex) {
     table.integer("user_id").notNullable();
     table.integer("category_id").notNullable();
     table.integer("condition_id").notNullable();
-    table.integer("item_status_id").notNullable();
+    table
+      .integer("item_status_id")
+      .notNullable()
+      .defaultTo(1);
     table
       .foreign("user_id")
       .references("id")
