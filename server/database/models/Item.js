@@ -14,14 +14,14 @@ class Item extends bookshelf.Model {
     return this.belongsToMany("Image");
   }
   category() {
-    return this.hasOne("category");
+    return this.hasOne("ItemCategory");
   }
   condition() {
-    return this.hasOne("condition");
+    return this.hasOne("ItemCondition");
   }
 
   status() {
-    return this.hasOne("status");
+    return this.hasOne("ItemStatus");
   }
 }
 

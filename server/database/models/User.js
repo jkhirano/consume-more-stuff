@@ -12,7 +12,7 @@ class User extends bookshelf.Model {
   }
 
   userStatus() {
-    return this.hasOne("userStatus");
+    return this.hasOne("UserStatus");
   }
 }
 
