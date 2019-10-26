@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.module.css';
-import HabitList from '../containers/HabitList/HabitList'
+import React from "react";
+import "./App.module.css";
+import HabitList from "../containers/HabitList/HabitList";
 
 function App() {
   return (
