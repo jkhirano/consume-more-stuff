@@ -13,11 +13,11 @@ exports.seed = function(knex) {
           manufacturer: "Acme Digging Co.",
           model: "Personal nose extension",
           dimensions: "j43kl432jkl61",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 2,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 2,
@@ -27,11 +27,11 @@ exports.seed = function(knex) {
           manufacturer: "That's the joke.",
           model: "She's running late",
           dimensions: "4j3kln34l",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 1,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 3,
@@ -41,11 +41,11 @@ exports.seed = function(knex) {
           manufacturer: "",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 2,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 4,
@@ -55,11 +55,11 @@ exports.seed = function(knex) {
           manufacturer: "",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 3,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 5,
@@ -69,11 +69,11 @@ exports.seed = function(knex) {
           manufacturer: "",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 2,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 6,
@@ -83,11 +83,11 @@ exports.seed = function(knex) {
           manufacturer: "",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 2,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 7,
@@ -97,11 +97,11 @@ exports.seed = function(knex) {
           manufacturer: "",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 2,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 8,
@@ -111,11 +111,11 @@ exports.seed = function(knex) {
           manufacturer: "",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 3,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 9,
@@ -125,11 +125,11 @@ exports.seed = function(knex) {
           manufacturer: "All of them",
           model: "All of them",
           dimensions: "All of them",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 4,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         },
         {
           id: 10,
@@ -139,11 +139,11 @@ exports.seed = function(knex) {
           manufacturer: "Oh you know who",
           model: "",
           dimensions: "",
-          viewcount: 0,
+          view_count: 0,
           user_id: 1,
           category_id: 4,
           condition_id: 1,
-          status_id: 1
+          item_status_id: 1
         }
       ]);
     });

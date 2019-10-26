@@ -8,13 +8,13 @@ exports.up = function(knex) {
     table.string("model");
     table.string("dimensions");
     table
-      .integer("viewcount")
+      .integer("view_count")
       .notNullable()
       .defaultTo(0);
     table.integer("user_id").notNullable();
     table.integer("category_id").notNullable();
     table.integer("condition_id").notNullable();
-    table.integer("status_id").notNullable();
+    table.integer("item_status_id").notNullable();
     table
       .foreign("user_id")
       .references("id")
@@ -28,7 +28,7 @@ exports.up = function(knex) {
       .references("id")
       .inTable("itemConditions");
     table
-      .foreign("status_id")
+      .foreign("item_status_id")
       .references("id")
       .inTable("itemStatuses");
     table.timestamps(true, true);

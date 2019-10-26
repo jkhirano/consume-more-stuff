@@ -10,21 +10,21 @@ exports.seed = function(knex) {
           username: "dummyUser",
           email: "dummyuser@nowhere.com",
           password: "12345",
-          status_id: 1
+          user_status_id: 1
         },
         {
           id: 2,
           username: "anotherUser",
           email: "anotherUser@nowhere.com",
           password: "12345",
-          status_id: 1
+          user_status_id: 1
         },
         {
           id: 3,
           username: "inactiveUser",
           email: "inactiveuser@nowhere.com",
           password: "12345",
-          status_id: 2
+          user_status_id: 2
         }
       ]);
     });

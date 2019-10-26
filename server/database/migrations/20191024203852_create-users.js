@@ -10,9 +10,9 @@ exports.up = function(knex) {
       .unique()
       .notNullable();
     table.string("password").notNullable();
-    table.integer("status_id").notNullable;
+    table.integer("user_status_id").notNullable;
     table
-      .foreign("status_id")
+      .foreign("user_status_id")
       .references("id")
       .inTable("userStatuses");
     table.timestamps(true, true);
