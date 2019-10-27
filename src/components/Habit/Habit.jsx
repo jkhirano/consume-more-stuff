@@ -16,13 +16,14 @@ let Habit = function(props) {
         activate getHiyee
       </button>
       <div>{props.message}</div>
+      {/* this attribute is added to the props via mapStateToProps */}
     </div>
   );
 };
 
 function mapStateToProps(store) {
   return {
-    message: store.message.message
+    message: store.message.message //this gets added as an attribute to props(i.e. props.message);
   };
 }
 
