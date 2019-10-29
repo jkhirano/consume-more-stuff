@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 app.use(decorator);
-app.get("/message", (req, res) => {
-  return res.json({ message: "hiyee" }); //this is returnd to our actionsGetHiyee in actions/index.js, after fetch ("/message")
+app.get("/home", (req, res) => {
+  return res.json({ message: test }); //this is returnd to our getThumbnail in actions/index.js, after fetch ("/home")
 });
 
 app.listen(PORT, () => {

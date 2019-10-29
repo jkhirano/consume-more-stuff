@@ -1,46 +1,15 @@
 import React from "react";
 // import styles from './Habit.module.css'
-import { connect } from "react-redux";
-// import { statement } from "@babel/template";
-import { actionsGetHiyee } from "../../actions";
+// import { connect } from "react-redux";
 
-let Habit = function(props) {
+const Habit = function(props) {
   return (
     <div>
       <span className="name">{props.name}</span>:
       <span className="category">{props.category}</span>
-      <button
-        onClick={function() {
-          props.getHiyee(); // calls method in mapDispatchToProps
-        }}
-      >
-        activate getHiyee
-      </button>
-      <div>{props.message}</div>
-      {/* this attribute is added to the props via mapStateToProps */}
     </div>
   );
 };
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getHiyee: function() {
-      return dispatch(actionsGetHiyee()); // dispatches actionsGetHiyee in actions/index.js
-    }
-  };
-};
-
-function mapStateToProps(store) {
-  return {
-    message: store.message.message // this gets added as an attribute to props (i.e. props.message);
-  };
-}
-
-// wraps component, exported out as "Habit"
-Habit = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Habit);
 
 export default Habit;
 // testing Github... there is a empty new line below this...

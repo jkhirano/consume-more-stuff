@@ -1,4 +1,5 @@
-import { GET_HIYEE } from "../actions";
+// import { GET_HIYEE } from "../actions";
+import { GET_THUMBNAIL } from "../actions";
 
 // reducers holds global state
 
@@ -8,7 +9,7 @@ let globalState = {
 
 const reducer = (state = globalState, action) => {
   switch (action.type) {
-    case GET_HIYEE:
+    case GET_THUMBNAIL:
       return Object.assign({}, state, { message: action.payload }); // this becomes the store
 
     //   state = {
