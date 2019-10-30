@@ -1,12 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 // import { actionsGetHiyee } from "../../actions";
-import { getThumbnail } from "../../actions";
+import { actionsGetThumbnail } from "../../actions";
+// import { actionsToggle } from '../../actions';
 
 let Thumbnail = function(props) {
   return (
     // need to figure out how to link this to modal
     // <a href="">
+
+    // 2nd way:
+    // handleThumbnailClick = () => {
+    //   props.getThumbnail('detailedItem');
+    // }
     <div>
       <span className="image">{props.image}</span> |
       <span className="name">{props.name}</span> |
@@ -20,13 +26,24 @@ let Thumbnail = function(props) {
 const mapDispatchToProps = dispatch => {
   return {
     getThumbnail: function() {
-      return dispatch(getThumbnail()); // dispatches getThumbnail in actions/index.js
+      return dispatch(actionsGetThumbnail()); // dispatches getThumbnail in actions/index.js
     }
   };
 };
 
+// 2nd way:
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getThumbnail: link => {
+//       console.log("send click to actions");
+//       return dispatch(actionsGetThumbnail(link));
+//     }
+//   };
+// };
+
 const mapStateToProps = store => {
-  return {};
+  console.log(store.message);
+  return { message: store.message };
 };
 
 Thumbnail = connect(

@@ -2,7 +2,7 @@
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 
 // action creator
-export const getThumbnail = () => async dispatch => {
+export const actionsGetThumbnail = () => async dispatch => {
   await fetch("/home") // sends request to server/server.js
     .then(responseFromServer => {
       // console.log(responseFromServer)
@@ -15,7 +15,12 @@ export const getThumbnail = () => async dispatch => {
         payload: results
       }); // dispatches payload and type to reducer
     });
-  // .catch(err => {
-  //   console.log(err);
-  // });
 };
+
+// export const actionsGetThumbnail = link => dispatch => {
+//   console.log("click sent to reducer");
+//   return dispatch({
+//     type: GET_THUMBNAIL,
+//     payload: link
+//   });
+// };
