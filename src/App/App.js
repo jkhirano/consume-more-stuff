@@ -5,7 +5,7 @@ import "./App.module.css";
 
 import Header from '../components/Header'
 import HabitList from "../containers/HabitList";
-import NavigationComponent from "../containers/NavigationComponent.jsx/NavigationComponent";
+import NavigationComponent from "../containers/NavigationComponent";
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-      <NavigationComponent />
+        <NavigationComponent />
         <HabitList habits={this.props.habits} />
       </div>
     )
