@@ -3,11 +3,10 @@ import React from "react";
 let Thumbnail = function(props) {
   return (
     <div>
-      Hiyee
-      {/* <span className="image">{props.image}</span> |
+      <span className="image">{props.image}</span> |
       <span className="name">{props.name}</span> |
       <span className="price">{props.price}</span> |
-      <span className="condition">{props.condition}</span> | */}
+      <span className="condition">{props.condition}</span> |
     </div>
   );
 };

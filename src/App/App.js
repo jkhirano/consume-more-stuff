@@ -6,7 +6,6 @@ import "./App.module.css";
 import Header from "../components/Header";
 import HabitList from "../containers/HabitList/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
-import ThumbnailHabit from "../components/ThumbnailHabit";
 
 class App extends Component {
   constructor(props) {
