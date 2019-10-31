@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { actionsAddProduct } from "../../actions";
 
 class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mappedFields: {
-        name: "Hello",
+        name: "",
         description: "",
         manufacturer: "",
         model: "",
@@ -13,8 +15,8 @@ class AddProduct extends Component {
         dimensions: ""
       },
       unmappedFields: {
-        condition_id: undefined,
-        category_id: undefined
+        condition_id: 1,
+        category_id: 1
       }
     };
   }
@@ -26,14 +28,19 @@ class AddProduct extends Component {
     this.setState({ state });
   };
 
+  handleSubmit = () => {
+    return this.props.addProductSubmit(this.state);
+  };
+
   render() {
     return (
       <div>
+        <div>{this.props.addedProductMessage}</div>
         <form>
           <ul>
             {Object.keys(this.state.mappedFields).map(key => {
               return (
-                <li>
+                <li key={key}>
                   <label htmlFor={key}>
                     {key[0].toUpperCase() + key.slice(1) + ": "}
                   </label>
@@ -68,11 +75,40 @@ class AddProduct extends Component {
               <input type="file " name="url" />
             </li>
           </ul>
-          <button onClick={this.testInput}>Submit</button>
+          <button onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = store => {
+  console.log(store.addedProduct);
+  let addedProductMessage = "";
+  if (store.addedProduct) {
+    addedProductMessage = "Product successfully added!";
+  }
+
+  return {
+    addedProductMessage: addedProductMessage
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addProductSubmit: state => {
+      let data = Object.assign({}, state.mappedFields, state.unmappedFields, {
+        user_id: 1
+      });
+      console.log(data);
+      return dispatch(actionsAddProduct(data));
+    }
+  };
+};
+
+AddProduct = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddProduct);
 
 export default AddProduct;

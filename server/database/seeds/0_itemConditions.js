@@ -5,9 +5,9 @@ exports.seed = function(knex) {
     .then(function() {
       // Inserts seed entries
       return knex("itemConditions").insert([
-        { id: 1, condition: "Chronic" },
-        { id: 2, condition: "Learned" },
-        { id: 3, condition: "Obsessive" }
+        { condition: "Chronic" },
+        { condition: "Learned" },
+        { condition: "Obsessive" }
       ]);
     });
 };

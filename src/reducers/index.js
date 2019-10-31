@@ -1,4 +1,4 @@
-import { TOGGLE } from "../actions";
+import { TOGGLE, ADD_PRODUCT } from "../actions";
 
 let globalState = {
   display: {
@@ -9,7 +9,8 @@ let globalState = {
     home: false,
     social: false,
     viewAll: false
-  }
+  },
+  addedProduct: false
 };
 
 const reducer = (state = globalState, action) => {
@@ -26,6 +27,9 @@ const reducer = (state = globalState, action) => {
         }
       }
       return Object.assign({}, state, { display: toggleDisplay });
+
+    case ADD_PRODUCT:
+      return Object.assign({}, state, { addedProduct: true });
 
     default:
       return state;
