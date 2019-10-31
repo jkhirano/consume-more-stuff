@@ -5,6 +5,7 @@ import "./App.module.css";
 
 import Header from '../components/Header'
 import HabitList from "../containers/HabitList";
+import NavigationComponent from "../containers/NavigationComponent.jsx/NavigationComponent";
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div>
         <Header />
+      <NavigationComponent />
         <HabitList habits={this.props.habits} />
       </div>
     )
