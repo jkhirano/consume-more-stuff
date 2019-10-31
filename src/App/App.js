@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.module.css";
 import HabitList from "../containers/HabitList/HabitList";
-import HabitThumbnail from "../components/HabitThumbnail";
+import ThumbnailHabit from "../components/ThumbnailHabit";
 
 function App() {
   return (
     <div>
       <HabitList />
-      <HabitThumbnail />
+      <ThumbnailHabit />
     </div>
   );
 }
