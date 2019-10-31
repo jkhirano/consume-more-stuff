@@ -1,6 +1,21 @@
 import { TOGGLE } from "../actions";
+import { LOAD_HABITS } from '../actions';
 
-let globalState = {
+const defaultState = {
+  habits: [
+    {
+      name: 'Bitting nail',
+      category: 'Hygiene'
+    },
+    {
+      name: 'Not washing your hand',
+      category: 'Hygiene'
+    },
+    {
+      name: 'Not taking shower',
+      category: 'Hygiene'
+    }
+  ],
   display: {
     //the components that correspond to the values below can tap into this object to self-determine if they should be displayed or hidden, which I believe should be done on componentDidMount?
     homepage: false,
@@ -10,10 +25,12 @@ let globalState = {
     social: false,
     viewAll: false
   }
-};
+}
 
-const reducer = (state = globalState, action) => {
+let reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case LOAD_HABITS:
+      return state.habits;
     case TOGGLE:
       console.log("reducer is handling click");
       let toggleDisplay = state.display;
@@ -26,10 +43,9 @@ const reducer = (state = globalState, action) => {
         }
       }
       return Object.assign({}, state, { display: toggleDisplay });
-
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default reducer;
