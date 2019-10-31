@@ -1,4 +1,4 @@
-import { LOAD_HABIT } from '../actions';
+import { LOAD_HABITS } from '../actions';
 
 const defaultState = {
   habits: [
@@ -19,8 +19,8 @@ const defaultState = {
 
 let reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case LOAD_HABIT:
-      return state.books;
+    case LOAD_HABITS:
+      return state.habits;
     default:
       return state
   }

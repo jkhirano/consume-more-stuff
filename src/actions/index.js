@@ -1,10 +1,9 @@
 //action types
-export const LOAD_HABIT = 'LOAD_HABIT';
+export const LOAD_HABITS = 'LOAD_HABITS';
 
 //action create
-export function loadHabits(payload) {
+export function loadHabits() {
   return {
-    type: LOAD_HABIT,
-    payload
+    type: LOAD_HABITS
   }
 }
