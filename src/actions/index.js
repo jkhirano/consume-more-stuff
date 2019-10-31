@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // export const GET_HIYEE = "GET_HIYEE";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 
@@ -24,3 +25,14 @@ export const actionsGetThumbnail = () => async dispatch => {
 //     payload: link
 //   });
 // };
+=======
+export const TOGGLE = "TOGGLE";
+
+export const actionsToggle = link => dispatch => {
+  console.log("click being sent to reducer");
+  return dispatch({
+    type: TOGGLE,
+    payload: link
+  });
+};
+>>>>>>> 03156b9762b38656b4c75a66a399f506a5823125
