@@ -1,8 +1,23 @@
-<<<<<<< HEAD
-// export const GET_HIYEE = "GET_HIYEE";
+//action types
+export const LOAD_HABITS = "LOAD_HABITS";
+export const TOGGLE = "TOGGLE";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 
-// action creator
+//action create
+export function loadHabits() {
+  return {
+    type: LOAD_HABITS
+  };
+}
+
+export const actionsToggle = link => dispatch => {
+  console.log("click being sent to reducer");
+  return dispatch({
+    type: TOGGLE,
+    payload: link
+  });
+};
+
 export const actionsGetThumbnail = () => async dispatch => {
   await fetch("/home") // sends request to server/server.js
     .then(responseFromServer => {
@@ -25,14 +40,3 @@ export const actionsGetThumbnail = () => async dispatch => {
 //     payload: link
 //   });
 // };
-=======
-export const TOGGLE = "TOGGLE";
-
-export const actionsToggle = link => dispatch => {
-  console.log("click being sent to reducer");
-  return dispatch({
-    type: TOGGLE,
-    payload: link
-  });
-};
->>>>>>> 03156b9762b38656b4c75a66a399f506a5823125

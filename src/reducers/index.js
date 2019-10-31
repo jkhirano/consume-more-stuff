@@ -1,18 +1,24 @@
-<<<<<<< HEAD
-// import { GET_HIYEE } from "../actions";
+import { TOGGLE } from "../actions";
+import { LOAD_HABITS } from "../actions";
 import { GET_THUMBNAIL } from "../actions";
 
-// reducers holds global state
+// reducers holds default state
 
-let globalState = {
-  // display: {
-  //   thumbnail: false
-  // }
-  message: {}
-=======
-import { TOGGLE } from "../actions";
-
-let globalState = {
+const defaultState = {
+  habits: [
+    {
+      name: "Bitting nail",
+      category: "Hygiene"
+    },
+    {
+      name: "Not washing your hand",
+      category: "Hygiene"
+    },
+    {
+      name: "Not taking shower",
+      category: "Hygiene"
+    }
+  ],
   display: {
     //the components that correspond to the values below can tap into this object to self-determine if they should be displayed or hidden, which I believe should be done on componentDidMount?
     homepage: false,
@@ -21,13 +27,28 @@ let globalState = {
     home: false,
     social: false,
     viewAll: false
-  }
->>>>>>> 03156b9762b38656b4c75a66a399f506a5823125
+  },
+  message: {}
 };
 
-const reducer = (state = globalState, action) => {
+let reducer = (state = defaultState, action) => {
   switch (action.type) {
-<<<<<<< HEAD
+    case LOAD_HABITS:
+      return state.habits;
+
+    case TOGGLE:
+      console.log("reducer is handling click");
+      let toggleDisplay = state.display;
+
+      for (let key in toggleDisplay) {
+        if (key !== action.payload) {
+          toggleDisplay[key] = false;
+        } else {
+          toggleDisplay[key] = true;
+        }
+      }
+      return Object.assign({}, state, { display: toggleDisplay });
+
     case GET_THUMBNAIL:
       // let getThumbnailDisplay = state.display;
 
@@ -42,24 +63,7 @@ const reducer = (state = globalState, action) => {
       return Object.assign({}, state, { message: action.payload }); // this becomes the store
 
     default:
-      return state; // this becomes the store too
-=======
-    case TOGGLE:
-      console.log("reducer is handling click");
-      let toggleDisplay = state.display;
-
-      for (let key in toggleDisplay) {
-        if (key !== action.payload) {
-          toggleDisplay[key] = false;
-        } else {
-          toggleDisplay[key] = true;
-        }
-      }
-      return Object.assign({}, state, { display: toggleDisplay });
-
-    default:
       return state;
->>>>>>> 03156b9762b38656b4c75a66a399f506a5823125
   }
 };
 
