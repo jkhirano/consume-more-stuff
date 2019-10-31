@@ -1,39 +1,33 @@
 import React from "react";
 // import styles from './DetailedHabit.module.css';
-// import { connect } from "react-redux";
 
 let DetailedHabit = function(props) {
   return (
     <div>
       <img src="" alt="" />
-      <div className="name">Name</div>
-      <div className="price">Price</div>
-      <div className="desc">Description</div>
+      <div className="name">{props.name}</div>
+      <div className="price">{props.price}</div>
+      <div className="desc">{props.description}</div>
       <div className="postInfo">
-        Category
+        {props.category}
         <br />
-        User Information
+        {props.username}
         <br />
-        View Count
+        {props.view_count}
         <br />
-        Timestamps
+        {props.created_at}
       </div>
       <ul className="details">
-        <li>Condition</li>
-        <li>Status</li>
-        <li>Manufacturer</li>
-        <li>Model</li>
-        <li>Dimensions</li>
+        <li>{props.condition_id}</li>
+        <li>{props.item_status_id}</li>
+        <li>{props.manufacturer}</li>
+        <li>{props.model}</li>
+        <li>{props.dimensions}</li>
       </ul>
       <button>Add to cart</button>
       <button>X</button>
     </div>
   );
 };
-
-// DetailedComponent = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(DetailedComponent);
 
 export default DetailedHabit;
