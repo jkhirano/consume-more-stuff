@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Habit from "../../components/Habit";
+import ThumbnailHabit from "../../components/ThumbnailHabit";
+import { actionsGetThumbnail } from "../../actions";
+import { connect } from "react-redux";
 
 class HabitList extends Component {
   constructor(props) {
@@ -13,20 +15,34 @@ class HabitList extends Component {
   componentDidMount() {
     // App gets re-rendered;
     console.log("HabitList is born! Yay!");
-    this.state = {};
+    // this.setState = {};
   }
 
   render() {
     return (
       <div>
-        <ul>
-          {this.props.habits.map(habits => {
-            return <Habit name={habits.name} category={habits.category} />;
-          })}
-        </ul>
+        <ThumbnailHabit />
       </div>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getThumbnail: function() {
+      return dispatch(actionsGetThumbnail()); // dispatches getThumbnail in actions/index.js
+    }
+  };
+};
+
+const mapStateToProps = store => {
+  console.log(store.message);
+  return { message: store.message };
+};
+
+HabitList = connect(
+  mapDispatchToProps,
+  mapStateToProps
+)(HabitList);
 
 export default HabitList;

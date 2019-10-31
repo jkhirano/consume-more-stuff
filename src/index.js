@@ -20,17 +20,12 @@ const enhancer = composeEnhancers(applyMiddleware(ReduxThunk)); //applyMiddlewar
 const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
-<<<<<<< HEAD
-  // Provider = wraps around the App and gives it acess to the store
-=======
   //Provider v wraps around the App and gives it access to the store;
->>>>>>> 03156b9762b38656b4c75a66a399f506a5823125
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById("root")
 );
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
