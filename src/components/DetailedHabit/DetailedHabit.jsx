@@ -4,6 +4,7 @@ import React from "react";
 let DetailedHabit = function(props) {
   return (
     <div>
+      DetailedHabit Component
       <img src="" alt="" />
       <div className="name">{props.name}</div>
       <div className="price">{props.price}</div>
@@ -26,6 +27,8 @@ let DetailedHabit = function(props) {
       </ul>
       <button>Add to cart</button>
       <button>X</button>
+      <div>{props.message}</div>
+      End of Detailed Habit Component
     </div>
   );
 };

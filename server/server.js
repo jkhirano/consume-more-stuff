@@ -11,6 +11,11 @@ app.get("/", (req, res) => {
   return res.json({ message: "hiyee" });
 });
 
+app.get("/habit", (req, res) => {
+  console.log("loading habit");
+  return res.json({ message: "testing habit route" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on PORT: ${PORT}`);
 });
