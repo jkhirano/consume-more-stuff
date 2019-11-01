@@ -12,8 +12,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/habit", (req, res) => {
-  console.log("loading habit");
-  return res.json({ message: "testing habit route" });
+  return req.database.Item.fetchAll().then(results => {
+    if (results.toJSON().length === 0) {
+      throw new Error("Page not found!");
+    } else {
+      res.send(results.toJSON()[0]);
+    }
+  });
+  // console.log("loading habit");
+  // return res.json({ message: "testing habit route" });
 });
 
 app.listen(PORT, () => {

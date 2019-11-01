@@ -34,7 +34,7 @@ class HabitList extends Component {
     return (
       <div>
         HabitList Component
-        <DetailedHabit message={this.props.message} />
+        <DetailedHabit name={this.props.name} />
         End of HabitList Component
       </div>
     );
@@ -43,7 +43,7 @@ class HabitList extends Component {
 
 const mapStateToProps = state => {
   return {
-    message: state.message
+    name: state.name
   };
 };
 
