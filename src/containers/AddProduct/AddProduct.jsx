@@ -28,14 +28,15 @@ class AddProduct extends Component {
     this.setState({ state });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     return this.props.addProductSubmit(this.state);
   };
 
   render() {
     return (
       <div>
-        <div>{this.props.addedProductMessage}</div>
+        {this.props.addedProduct ? <div>Item successfully added.</div> : null}
         <form>
           <ul>
             {Object.keys(this.state.mappedFields).map(key => {
@@ -49,6 +50,7 @@ class AddProduct extends Component {
                     name={key}
                     value={this.state.mappedFields[key]}
                     onChange={this.handleInput}
+                    defaultValue={this.state.mappedFields[key]}
                   />
                 </li>
               );
@@ -56,18 +58,18 @@ class AddProduct extends Component {
             <li>
               <label htmlFor="condition">Condition: </label>
               <select name="condition_id">
-                <option value="1">Chronic</option>
-                <option value="2">Learned</option>
-                <option value="3">Obsessive</option>
+                <option value={1}>Chronic</option>
+                <option value={2}>Learned</option>
+                <option value={3}>Obsessive</option>
               </select>
             </li>
             <li>
               <label htmlFor="category">Category: </label>
               <select name="category_id">
-                <option value="1">Work</option>
-                <option value="2">Hygiene</option>
-                <option value="3">Social</option>
-                <option value="4">Home</option>
+                <option value={1}>Work</option>
+                <option value={2}>Hygiene</option>
+                <option value={3}>Social</option>
+                <option value={4}>Home</option>
               </select>
             </li>
             <li>
@@ -83,14 +85,8 @@ class AddProduct extends Component {
 }
 
 const mapStateToProps = store => {
-  console.log(store.addedProduct);
-  let addedProductMessage = "";
-  if (store.addedProduct) {
-    addedProductMessage = "Product successfully added!";
-  }
-
   return {
-    addedProductMessage: addedProductMessage
+    addedProduct: store.addedProduct
   };
 };
 
@@ -100,6 +96,7 @@ const mapDispatchToProps = dispatch => {
       let data = Object.assign({}, state.mappedFields, state.unmappedFields, {
         user_id: 1
       });
+
       console.log(data);
       return dispatch(actionsAddProduct(data));
     }

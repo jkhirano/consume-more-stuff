@@ -13,10 +13,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/products", (req, res) => {
-  req.database.Item.forge(req.body)
+  return req.database.Item.forge(req.body)
     .save()
     .then(results => {
-      console.log("req received, item added, sending back res");
+      console.log("req received, item added, sending back");
+      console.log(results);
       return res.json(results);
     })
     .catch(err => {

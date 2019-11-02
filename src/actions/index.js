@@ -22,6 +22,7 @@ export const actionsAddProduct = data => async dispatch => {
       return response.json();
     })
     .then(results => {
+      console.log("results in actionsAddProduct", results);
       return dispatch({
         type: ADD_PRODUCT,
         payload: results
