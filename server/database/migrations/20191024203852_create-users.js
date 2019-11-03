@@ -2,10 +2,6 @@ exports.up = function(knex) {
   return knex.schema.createTable("users", table => {
     table.increments();
     table
-      .string("username")
-      .unique()
-      .notNullable();
-    table
       .string("email")
       .unique()
       .notNullable();
@@ -14,7 +10,7 @@ exports.up = function(knex) {
     table
       .foreign("user_status_id")
       .references("id")
-      .inTable("userStatuses");
+      .inTable("user_statuses");
     table.timestamps(true, true);
   });
 };
