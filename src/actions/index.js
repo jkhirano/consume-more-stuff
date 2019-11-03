@@ -19,6 +19,7 @@ export const actionsToggle = link => dispatch => {
 };
 
 export const actionsGetThumbnail = () => async dispatch => {
+  console.log("actionsGetThumbnailHit");
   await fetch("/home") // sends request to server/server.js
     .then(responseFromServer => {
       // console.log(responseFromServer)
@@ -26,7 +27,7 @@ export const actionsGetThumbnail = () => async dispatch => {
     })
     .then(results => {
       // console.log("after text", results)
-      dispatch({
+      return dispatch({
         type: GET_THUMBNAIL,
         payload: results
       }); // dispatches payload and type to reducer

@@ -1,24 +1,11 @@
-import { TOGGLE } from "../actions";
-import { LOAD_HABITS } from "../actions";
-import { GET_THUMBNAIL } from "../actions";
+import { TOGGLE, LOAD_HABITS, GET_THUMBNAIL } from "../actions";
+// import { LOAD_HABITS } from "../actions";
+// import { GET_THUMBNAIL } from "../actions";
 
 // reducers holds default state
 
 const defaultState = {
-  habits: [
-    {
-      name: "Bitting nail",
-      category: "Hygiene"
-    },
-    {
-      name: "Not washing your hand",
-      category: "Hygiene"
-    },
-    {
-      name: "Not taking shower",
-      category: "Hygiene"
-    }
-  ],
+  habits: [],
   display: {
     //the components that correspond to the values below can tap into this object to self-determine if they should be displayed or hidden, which I believe should be done on componentDidMount?
     homepage: false,
@@ -27,8 +14,7 @@ const defaultState = {
     home: false,
     social: false,
     viewAll: false
-  },
-  message: {}
+  }
 };
 
 let reducer = (state = defaultState, action) => {
@@ -60,7 +46,10 @@ let reducer = (state = defaultState, action) => {
       //   }
       // }
       // return Object.assign({}, state, { display: getThumbnailDisplay }); // this becomes the store
-      return Object.assign({}, state, { message: action.payload }); // this becomes the store
+      console.log("thumbnail is working");
+      console.log(action.payload);
+      return Object.assign({}, state, { habits: action.payload });
+    // return action.payload; // this becomes the store
 
     default:
       return state;

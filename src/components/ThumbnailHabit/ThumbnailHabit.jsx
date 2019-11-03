@@ -1,14 +1,18 @@
 import React from "react";
 
-let Thumbnail = function(props) {
+const ThumbnailHabit = function(props) {
+  console.log(props);
+  console.log(props.name);
+  console.log("hiyee");
   return (
-    <div>
-      <span className="image">{props.image}</span> |
-      <span className="name">{props.name}</span> |
-      <span className="price">{props.price}</span> |
-      <span className="condition">{props.condition}</span> |
-    </div>
+    <li>
+      {/* <span className="image">{props.habit.url}</span> | */}
+      <span className="name">{props.habit.name}</span> |
+      <span className="price">{props.habit.price}</span> |
+      <span className="condition">{props.habit.condition_id}</span> |
+      {props.message}
+    </li>
   );
 };
 
-export default Thumbnail;
+export default ThumbnailHabit;
