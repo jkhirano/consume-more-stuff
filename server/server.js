@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
 
 app.get("/habit", (req, res) => {
   return req.database.Item.fetchAll().then(results => {
+    console.log(results.toJSON());
     if (results.toJSON().length === 0) {
       throw new Error("Page not found!");
     } else {

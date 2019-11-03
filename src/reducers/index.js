@@ -1,20 +1,7 @@
 import { LOAD_HABITS, TOGGLE, LOAD_DETAIL } from "../actions";
 
 const defaultState = {
-  habits: [
-    {
-      name: "Bitting nail",
-      category: "Hygiene"
-    },
-    {
-      name: "Not washing your hand",
-      category: "Hygiene"
-    },
-    {
-      name: "Not taking shower",
-      category: "Hygiene"
-    }
-  ],
+  habits: [],
   display: {
     //the components that correspond to the values below can tap into this object to self-determine if they should be displayed or hidden, which I believe should be done on componentDidMount?
     homepage: false,

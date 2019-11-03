@@ -6,24 +6,24 @@ let DetailedHabit = function(props) {
     <div>
       DetailedHabit Component
       <img src="" alt="" />
-      <div className="name">{props.name}</div>
-      <div className="price">{props.price}</div>
-      <div className="desc">{props.description}</div>
+      <div className="name">Name: {props.name}</div>
+      <div className="price">Price: {props.price}</div>
+      <div className="desc">Description: {props.description}</div>
       <div className="postInfo">
-        {props.category}
+        Category: {props.category}
         <br />
-        {props.username}
+        User: {props.username}
         <br />
-        {props.view_count}
+        Views: {props.view_count}
         <br />
-        {props.created_at}
+        Posted on: {props.created_at}
       </div>
       <ul className="details">
-        <li>{props.condition_id}</li>
-        <li>{props.item_status_id}</li>
-        <li>{props.manufacturer}</li>
-        <li>{props.model}</li>
-        <li>{props.dimensions}</li>
+        <li>Condition: {props.condition_id}</li>
+        <li>Status: {props.item_status_id}</li>
+        <li>Manufacturer: {props.manufacturer}</li>
+        <li>Model: {props.model}</li>
+        <li>Dimensions: {props.dimensions}</li>
       </ul>
       <button>Add to cart</button>
       <button>X</button>
