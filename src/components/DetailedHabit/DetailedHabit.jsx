@@ -10,7 +10,9 @@ let DetailedHabit = function(props) {
       <div className="price">Price: {props.price}</div>
       <div className="desc">Description: {props.description}</div>
       <div className="postInfo">
-        Category: {props.category}
+        Category id: {props.category_id}
+        <br />
+        Category: {JSON.stringify(props.category)}
         <br />
         User: {props.username}
         <br />

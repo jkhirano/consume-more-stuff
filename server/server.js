@@ -11,15 +11,19 @@ app.get("/", (req, res) => {
   return res.json({ message: "hiyee" });
 });
 
-app.get("/habit", (req, res) => {
-  return req.database.Item.fetchAll().then(results => {
-    console.log(results.toJSON());
-    if (results.toJSON().length === 0) {
-      throw new Error("Page not found!");
-    } else {
-      res.send(results.toJSON()[0]);
-    }
-  });
+app.get("/habit/:id", (req, res) => {
+  const item = req.params.id;
+  return req.database.Item.where({ id: item })
+    .fetch({
+      withRelated: ["user", "images", "category", "condition", "status"]
+    })
+    .then(results => {
+      if (results.toJSON().length === 0) {
+        throw new Error("Page not found!");
+      } else {
+        res.json(results);
+      }
+    });
   // console.log("loading habit");
   // return res.json({ message: "testing habit route" });
 });

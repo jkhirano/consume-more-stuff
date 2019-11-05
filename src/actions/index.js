@@ -23,8 +23,8 @@ export const actionsToggle = link => dispatch => {
   });
 };
 
-export const loadDetailAsync = () => async dispatch => {
-  await fetch("/habit")
+export const loadDetailAsync = id => async dispatch => {
+  await fetch(`/habit/${id}`)
     .then(response => {
       return response.json();
     })

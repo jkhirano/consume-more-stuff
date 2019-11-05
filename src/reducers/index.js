@@ -31,6 +31,7 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, { display: toggleDisplay });
 
     case LOAD_DETAIL:
+      console.log(action.payload);
       return action.payload;
 
     default:

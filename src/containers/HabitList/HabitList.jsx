@@ -3,13 +3,6 @@ import DetailedHabit from "../../components/DetailedHabit";
 import { connect } from "react-redux";
 import { loadDetailAsync } from "../../actions";
 // import styles from './HabitList.module.css';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link,
-//   useParams
-// } from "react-router-dom";
 
 class HabitList extends Component {
   constructor(props) {
@@ -21,7 +14,7 @@ class HabitList extends Component {
   }
 
   componentDidMount() {
-    this.props.loadDetailAsync();
+    this.props.loadDetailAsync(1);
   }
 
   render() {
@@ -38,7 +31,8 @@ class HabitList extends Component {
           view_count={this.props.view_count}
           user_id={this.props.user_id}
           category_id={this.props.category_id}
-          condition_id={this.props.condition_id}
+          category={this.props.category}
+          condition_id={this.props.condition}
           item_status_id={this.props.item_status_id}
           created_at={this.props.created_at}
           updated_at={this.props.updated_at}
@@ -60,6 +54,7 @@ const mapStateToProps = state => {
     view_count: state.view_count,
     user_id: state.user_id,
     category_id: state.category_id,
+    category: state.category,
     condition_id: state.condition_id,
     item_status_id: state.item_status_id,
     created_at: state.created_at,
@@ -69,8 +64,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadDetailAsync: () => {
-      return dispatch(loadDetailAsync());
+    loadDetailAsync: id => {
+      return dispatch(loadDetailAsync(id));
     }
   };
 };
