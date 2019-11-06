@@ -1,0 +1,24 @@
+.navigation {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  background: #ebebeb;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.navButton {
+  height: 25px;
+  align-self: center;
+  margin-bottom: 20px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: bolder;
+}
+
+.navButton:hover {
+  cursor: pointer;
+}
