@@ -1,0 +1,9 @@
+.app-container {
+  display: grid;
+  grid-template-rows: (100px 1fr 100px);
+  /* background-color: red; */
+}
+
+.Header {
+  background-color: red;
+}
