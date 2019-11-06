@@ -44,6 +44,46 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+// passport.use(
+//   new LocalStrategy(
+//     {
+//       usernameField: "email",
+//       passwordField: "password"
+//     },
+//     function(email, password, done) {
+//       return new User({ email })
+//         .fetch()
+//         .then(user => {
+//           console.log("FOO");
+//           console.log(user);
+//           if (user === null) {
+//             console.log("null user");
+//             return done(null, false, { message: "bad username or password" });
+//           } else {
+//             user = user.toJSON();
+//             bcrypt.compare(password, user.password).then(res => {
+//               // Happy route: email exists, password matches
+//               if (res) {
+//                 return done(null, user); // this is the user that goes to serializeUser()
+//               }
+//               // Error Route: email exists, password does not match
+//               else {
+//                 console.log("bad username or password");
+//                 return done(null, false, {
+//                   message: "bad username or password"
+//                 });
+//               }
+//             });
+//           }
+//         })
+//         .catch(err => {
+//           console.log("error: ", err);
+//           return done(err);
+//         });
+//     }
+//   )
+// );
+
 passport.use(
   new LocalStrategy(
     {
@@ -51,32 +91,18 @@ passport.use(
       passwordField: "password"
     },
     function(email, password, done) {
-      return new User({ email })
-        .fetch()
-        .then(user => {
-          console.log(user);
-          if (user === null) {
-            return done(null, false, { message: "bad username or password" });
-          } else {
-            user = user.toJSON();
-            bcrypt.compare(password, user.password).then(res => {
-              // Happy route: email exists, password matches
-              if (res) {
-                return done(null, user); // this is the user that goes to serializeUser()
-              }
-              // Error Route: email exists, password does not match
-              else {
-                return done(null, false, {
-                  message: "bad username or password"
-                });
-              }
-            });
-          }
-        })
-        .catch(err => {
-          console.log("error: ", err);
+      User.findOne({ email }, function(err, user) {
+        if (err) {
           return done(err);
-        });
+        }
+        if (!user) {
+          return done(null, false, { message: "Incorrect username." });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: "Incorrect password." });
+        }
+        return done(null, user);
+      });
     }
   )
 );
@@ -97,20 +123,8 @@ app.use(
   passport.authenticate("local", {
     successRedirect: "/secret",
     failureRedirect: "/loginfailed.html"
-  }),
-  (req, res) => {
-    console.log("FOO");
-    console.log(req.body);
-  }
+  })
 );
-
-// app.post("/login", (req, res) => {
-//   console.log(req.body);
-//   passport.authenticate("local", {
-//     successRedirect: "/secret",
-//     failureRedirect: "/loginfailed.html"
-//   });
-// });
 
 app.post("/register", (req, res) => {
   bcrypt.genSalt(saltRounds, (err, salt) => {
