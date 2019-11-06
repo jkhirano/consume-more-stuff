@@ -19,13 +19,15 @@ class App extends Component {
         <div className="Header">
           <Header />
         </div>
-        <div className="Navigation">
-          <NavigationComponent />
+        <div className="content-container">
+          <div className="Navigation">
+            <NavigationComponent />
+          </div>
+          <div className="HabitList">
+            <HabitList habits={this.props.habits} />
+          </div>
         </div>
-        <div className="HabitList">
-          <HabitList habits={this.props.habits} />
-        </div>
-        <div className="footer">Footer</div>
+        <div className="Footer">Footer</div>
       </div>
     );
   }
