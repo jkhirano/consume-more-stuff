@@ -45,25 +45,25 @@ class NavigationComponent extends Component {
           className="navButton"
           src="https://image.flaticon.com/icons/svg/60/60983.svg"
           alt="work button"
-          onCLick={this.handleWorkClick}
+          onClick={this.handleWorkClick}
         />
         <img
           className="navButton"
           src="https://image.flaticon.com/icons/svg/33/33308.svg"
           alt="social button"
-          onCLick={this.handleSocialClick}
+          onClick={this.handleSocialClick}
         />
         <img
           className="navButton"
           src="https://image.flaticon.com/icons/svg/2179/2179763.svg"
           alt="hygiene button"
-          onCLick={this.handleHygieneClick}
+          onClick={this.handleHygieneClick}
         />
         <img
           className="navButton"
           src="https://image.flaticon.com/icons/svg/25/25694.svg"
           alt="home button"
-          onCLick={this.handleHomeClick}
+          onClick={this.handleHomeClick}
         />
         <div className="navButton" onClick={this.handleViewAllClick}>
           All
