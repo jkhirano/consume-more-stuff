@@ -1,50 +1,77 @@
 import React, { Component } from "react";
-import DetailedHabit from "../../components/DetailedHabit";
-import { connect } from "react-redux";
-import { loadDetailAsync } from "../../actions";
 // import styles from './HabitList.module.css';
+import { connect } from "react-redux";
+import DetailedHabit from "../../components/DetailedHabit";
+import ThumbnailHabit from "../../components/ThumbnailHabit";
+import { loadDetailAsync } from "../../actions";
+import { actionsGetThumbnail } from "../../actions";
 
 class HabitList extends Component {
   constructor(props) {
     super(props);
 
+    // extra storage
     this.state = {
-      habits: []
+      id: 0
     };
   }
 
   componentDidMount() {
-    this.props.loadDetailAsync(1);
+    this.props.getThumbnail();
   }
+
+  changeDetailedId = id => {
+    console.log(id);
+    this.setState({ id: id });
+    this.props.loadDetailAsync(this.state.id);
+  };
 
   render() {
     return (
       <div>
-        HabitList Component
-        <DetailedHabit
-          name={this.props.name}
-          description={this.props.description}
-          price={this.props.price}
-          manufacturer={this.props.manufacturer}
-          model={this.props.model}
-          dimensions={this.props.dimensions}
-          view_count={this.props.view_count}
-          user_id={this.props.user_id}
-          category_id={this.props.category_id}
-          category={this.props.category}
-          condition_id={this.props.condition_id}
-          item_status_id={this.props.item_status_id}
-          created_at={this.props.created_at}
-          updated_at={this.props.updated_at}
-        />
-        End of HabitList Component
+        <ul>
+          Thumbnail Component
+          {this.props.localHabits.map(element => {
+            // console.log("thumbnail habit is being created...");
+            return (
+              <ThumbnailHabit
+                habit={element}
+                changeDetailedId={this.changeDetailedId}
+              />
+            );
+          })}
+          End of Thumbnail Component
+        </ul>
+
+        <div>
+          HabitList Component
+          <DetailedHabit
+            name={this.props.name}
+            description={this.props.description}
+            price={this.props.price}
+            manufacturer={this.props.manufacturer}
+            model={this.props.model}
+            dimensions={this.props.dimensions}
+            view_count={this.props.view_count}
+            user_id={this.props.user_id}
+            category_id={this.props.category_id}
+            category={this.props.category}
+            condition_id={this.props.condition_id}
+            item_status_id={this.props.item_status_id}
+            created_at={this.props.created_at}
+            updated_at={this.props.updated_at}
+          />
+          End of HabitList Component
+        </div>
       </div>
+      // localHabits: [{ name: "test" }]
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
+    localHabits: state.habits,
     name: state.name,
     description: state.description,
     price: state.price,
@@ -66,6 +93,10 @@ const mapDispatchToProps = dispatch => {
   return {
     loadDetailAsync: id => {
       return dispatch(loadDetailAsync(id));
+    },
+    getThumbnail: () => {
+      console.log("getThumbnail hit");
+      return dispatch(actionsGetThumbnail()); // dispatches getThumbnail in actions/index.js
     }
   };
 };

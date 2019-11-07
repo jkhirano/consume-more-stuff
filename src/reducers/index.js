@@ -1,4 +1,4 @@
-import { LOAD_HABITS, TOGGLE, LOAD_DETAIL } from "../actions";
+import { LOAD_HABITS, TOGGLE, LOAD_DETAIL, GET_THUMBNAIL } from "../actions";
 
 const defaultState = {
   habits: [],
@@ -27,10 +27,11 @@ const defaultState = {
   updated_at: ""
 };
 
-const reducer = (state = defaultState, action) => {
+let reducer = (state = defaultState, action) => {
   switch (action.type) {
     case LOAD_HABITS:
       return state.habits;
+
     case TOGGLE:
       console.log("reducer is handling click");
       let toggleDisplay = state.display;
@@ -46,7 +47,12 @@ const reducer = (state = defaultState, action) => {
 
     case LOAD_DETAIL:
       console.log("reducer...", action.payload);
-      return action.payload;
+      return Object.assign({}, state, action.payload);
+    case GET_THUMBNAIL:
+      console.log("thumbnail is working");
+      console.log(action.payload);
+      return Object.assign({}, state, { habits: action.payload });
+    // return action.payload; // this becomes the store
 
     default:
       return state;
