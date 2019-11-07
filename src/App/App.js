@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadHabits } from "../actions";
+import { loadHabits } from "../actions"
 import "./App.css";
 
 import Header from "../components/Header";
