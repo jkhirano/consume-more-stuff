@@ -44,6 +44,46 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+passport.use(
+  new LocalStrategy(
+    // {
+    //   usernameField: "email",
+    //   passwordField: "password"
+    // },
+    function(username, password, done) {
+      return new User({ username })
+        .fetch()
+        .then(user => {
+          console.log("FOO");
+          console.log(user);
+          if (user === null) {
+            console.log("null user");
+            return done(null, false, { message: "bad username or password" });
+          } else {
+            user = user.toJSON();
+            bcrypt.compare(password, user.password).then(res => {
+              // Happy route: email exists, password matches
+              if (res) {
+                return done(null, user); // this is the user that goes to serializeUser()
+              }
+              // Error Route: email exists, password does not match
+              else {
+                console.log("bad username or password");
+                return done(null, false, {
+                  message: "bad username or password"
+                });
+              }
+            });
+          }
+        })
+        .catch(err => {
+          console.log("error: ", err);
+          return done(err);
+        });
+    }
+  )
+);
+
 // passport.use(
 //   new LocalStrategy(
 //     {
@@ -51,65 +91,25 @@ function isAuthenticated(req, res, next) {
 //       passwordField: "password"
 //     },
 //     function(email, password, done) {
-//       return new User({ email })
-//         .fetch()
-//         .then(user => {
-//           console.log("FOO");
-//           console.log(user);
-//           if (user === null) {
-//             console.log("null user");
-//             return done(null, false, { message: "bad username or password" });
-//           } else {
-//             user = user.toJSON();
-//             bcrypt.compare(password, user.password).then(res => {
-//               // Happy route: email exists, password matches
-//               if (res) {
-//                 return done(null, user); // this is the user that goes to serializeUser()
-//               }
-//               // Error Route: email exists, password does not match
-//               else {
-//                 console.log("bad username or password");
-//                 return done(null, false, {
-//                   message: "bad username or password"
-//                 });
-//               }
-//             });
-//           }
-//         })
-//         .catch(err => {
-//           console.log("error: ", err);
+//       User.findOne({ email }, function(err, user) {
+//         if (err) {
 //           return done(err);
-//         });
+//         }
+//         if (!user) {
+//           return done(null, false, { message: "Incorrect username." });
+//         }
+//         if (!user.validPassword(password)) {
+//           return done(null, false, { message: "Incorrect password." });
+//         }
+//         return done(null, user);
+//       });
 //     }
 //   )
 // );
 
-passport.use(
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password"
-    },
-    function(email, password, done) {
-      User.findOne({ email }, function(err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, { message: "Incorrect username." });
-        }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: "Incorrect password." });
-        }
-        return done(null, user);
-      });
-    }
-  )
-);
-
 passport.serializeUser(function(user, done) {
   console.log("serializing");
-  return done(null, { id: user.id, email: user.email });
+  return done(null, { id: user.id, username: user.username });
 });
 
 passport.deserializeUser(function(user, done) {
@@ -136,7 +136,7 @@ app.post("/register", (req, res) => {
         console.log(err);
       } // return 500
       return new User({
-        email: req.body.email,
+        username: req.body.username,
         password: hash,
         user_status_id: 1
       })
