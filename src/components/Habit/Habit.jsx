@@ -1,5 +1,6 @@
 import React from "react";
 // import styles from './Habit.module.css'
+// import { connect } from "react-redux";
 
 const Habit = function (props) {
   return (

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { loadHabits } from '../actions';
+import { connect } from "react-redux";
+import { loadHabits } from "../actions";
 import "./App.module.css";
 
-import Header from '../components/Header'
-import HabitList from "../containers/HabitList";
+import Header from "../components/Header";
+import HabitList from "../containers/HabitList/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render() {
@@ -20,23 +20,22 @@ class App extends Component {
         <NavigationComponent />
         <HabitList habits={this.props.habits} />
       </div>
-    )
+    );
   }
-
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     habits: state.habits
   };
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     loadHabits: () => {
       return dispatch(loadHabits());
     }
-  }
-}
+  };
+};
 
 App = connect(
   mapStateToProps,
