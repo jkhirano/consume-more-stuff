@@ -13,11 +13,16 @@ app.get("/", (req, res) => {
 
 app.get("/habit/:id", (req, res) => {
   const item = req.params.id;
+  console.log("server id param.. ", item);
   return req.database.Item.where({ id: item })
     .fetch({
       withRelated: ["user", "images", "category", "condition", "status"]
     })
     .then(results => {
+      console.log(
+        "server file console log.. ",
+        results.relations.category.attributes.category
+      );
       if (results.toJSON().length === 0) {
         throw new Error("Page not found!");
       } else {

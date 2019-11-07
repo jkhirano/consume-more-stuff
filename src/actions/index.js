@@ -29,6 +29,7 @@ export const loadDetailAsync = id => async dispatch => {
       return response.json();
     })
     .then(habit => {
+      console.log("loadDetailAsync receiving payload..", habit);
       dispatch({
         type: LOAD_DETAIL,
         payload: habit

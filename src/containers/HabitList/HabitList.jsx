@@ -32,7 +32,7 @@ class HabitList extends Component {
           user_id={this.props.user_id}
           category_id={this.props.category_id}
           category={this.props.category}
-          condition_id={this.props.condition}
+          condition_id={this.props.condition_id}
           item_status_id={this.props.item_status_id}
           created_at={this.props.created_at}
           updated_at={this.props.updated_at}
