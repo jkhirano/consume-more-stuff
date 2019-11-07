@@ -21,9 +21,7 @@ class HabitList extends Component {
   }
 
   changeDetailedId = id => {
-    console.log(id);
-    this.setState({ id: id });
-    this.props.loadDetailAsync(this.state.id);
+    this.props.loadDetailAsync(id);
   };
 
   render() {
