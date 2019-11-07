@@ -11,9 +11,7 @@ class HabitList extends Component {
     super(props);
 
     // extra storage
-    this.state = {
-      id: 0
-    };
+    this.state = {};
   }
 
   componentDidMount() {
