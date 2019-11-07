@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap");
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  width: 100%;
+  height: 75px;
+  border: 1px red dotted;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 2;
+  height: 100vh;
+}
+
+.Navigation {
+  width: 50px;
+}
+
+.HabitList {
+  border: green 1px dotted;
+  flex-grow: 2;
+}
+
+.Footer {
+  width: 100%;
+  height: 75px;
+  border: purple 1px dotted;
+}
