@@ -46,18 +46,16 @@ function isAuthenticated(req, res, next) {
 
 passport.use(
   new LocalStrategy(
-    // {
-    //   usernameField: "email",
-    //   passwordField: "password"
-    // },
-    function(username, password, done) {
-      return new User({ username })
-        .fetch()
+    {
+      usernameField: "email",
+      passwordField: "password"
+    },
+    function(email, password, done) {
+      return new User({ email })
+        .fetch({ require: false })
         .then(user => {
-          console.log("FOO");
-          console.log(user);
           if (user === null) {
-            console.log("null user");
+            console.log("user not found");
             return done(null, false, { message: "bad username or password" });
           } else {
             user = user.toJSON();
@@ -68,7 +66,7 @@ passport.use(
               }
               // Error Route: email exists, password does not match
               else {
-                console.log("bad username or password");
+                console.log("bad password");
                 return done(null, false, {
                   message: "bad username or password"
                 });
@@ -84,36 +82,14 @@ passport.use(
   )
 );
 
-// passport.use(
-//   new LocalStrategy(
-//     {
-//       usernameField: "email",
-//       passwordField: "password"
-//     },
-//     function(email, password, done) {
-//       User.findOne({ email }, function(err, user) {
-//         if (err) {
-//           return done(err);
-//         }
-//         if (!user) {
-//           return done(null, false, { message: "Incorrect username." });
-//         }
-//         if (!user.validPassword(password)) {
-//           return done(null, false, { message: "Incorrect password." });
-//         }
-//         return done(null, user);
-//       });
-//     }
-//   )
-// );
-
 passport.serializeUser(function(user, done) {
-  console.log("serializing");
-  return done(null, { id: user.id, username: user.username });
+  console.log("serializing, user: ");
+  console.log(user);
+  return done(null, { id: user.id, email: user.email });
 });
 
 passport.deserializeUser(function(user, done) {
-  console.log("deserializing");
+  console.log("deserializing, user: ");
   console.log(user);
   return done(null, user);
 });
@@ -122,7 +98,7 @@ app.use(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/secret",
-    failureRedirect: "/loginfailed.html"
+    failureRedirect: "/login.html"
   })
 );
 
@@ -136,7 +112,7 @@ app.post("/register", (req, res) => {
         console.log(err);
       } // return 500
       return new User({
-        username: req.body.username,
+        email: req.body.email,
         password: hash,
         user_status_id: 1
       })

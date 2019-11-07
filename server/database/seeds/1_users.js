@@ -6,18 +6,18 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("users").insert([
         {
-          username: "dummyuser@nowhere.com",
-          password: "",
+          email: "dummyuser@nowhere.com",
+          password: "12345",
           user_status_id: 1
         },
         {
-          username: "anotherUser@nowhere.com",
-          password: "",
+          email: "anotherUser@nowhere.com",
+          password: "12345",
           user_status_id: 1
         },
         {
-          username: "inactiveuser@nowhere.com",
-          password: "",
+          email: "inactiveuser@nowhere.com",
+          password: "12345",
           user_status_id: 2
         }
       ]);
