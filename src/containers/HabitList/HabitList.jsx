@@ -54,7 +54,7 @@ const mapStateToProps = state => {
     view_count: state.view_count,
     user_id: state.user_id,
     category_id: state.category_id,
-    category: state.category,
+    category: state.category.category,
     condition_id: state.condition_id,
     item_status_id: state.item_status_id,
     created_at: state.created_at,

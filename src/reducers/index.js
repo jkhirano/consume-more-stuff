@@ -10,7 +10,21 @@ const defaultState = {
     home: false,
     social: false,
     viewAll: false
-  }
+  },
+  name: "",
+  description: "",
+  price: "",
+  manufacturer: "",
+  model: "",
+  dimensions: "",
+  view_count: "",
+  user_id: "",
+  category_id: "",
+  category: { category: "" },
+  condition_id: "",
+  item_status_id: "",
+  created_at: "",
+  updated_at: ""
 };
 
 const reducer = (state = defaultState, action) => {
@@ -31,7 +45,7 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, { display: toggleDisplay });
 
     case LOAD_DETAIL:
-      console.log(action.payload);
+      console.log("reducer...", action.payload);
       return action.payload;
 
     default:

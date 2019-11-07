@@ -12,7 +12,7 @@ let DetailedHabit = function(props) {
       <div className="postInfo">
         Category id: {props.category_id}
         <br />
-        Category: {JSON.stringify(props)}
+        Category: {props.category}
         <br />
         User: {props.username}
         <br />
