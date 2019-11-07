@@ -10,8 +10,14 @@ class HabitList extends Component {
     // extra storage
     this.state = {
       // localHabits: [{ name: "test" }]
+      id: 0
     };
   }
+
+  changeDetailedId = id => {
+    console.log(id);
+    this.setState({ id: id });
+  };
 
   // App mounts;
   // Runs the most up to date state
@@ -28,8 +34,13 @@ class HabitList extends Component {
     return (
       <ul>
         {this.props.localHabits.map(element => {
-          console.log("thumbnail habit is being created...");
-          return <ThumbnailHabit habit={element} />;
+          // console.log("thumbnail habit is being created...");
+          return (
+            <ThumbnailHabit
+              habit={element}
+              changeDetailedId={this.changeDetailedId}
+            />
+          );
         })}
       </ul>
     );
