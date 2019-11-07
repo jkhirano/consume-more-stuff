@@ -6,7 +6,6 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("items").insert([
         {
-          id: 1,
           name: "Nose picking",
           description: "Digging for gold",
           price: 1,
@@ -20,7 +19,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 2,
           name: "Procrastinating",
           description: "You have time to goof off",
           price: 1,
@@ -34,7 +32,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 3,
           name: "Nail biting",
           description: "But teeth are nature's nail clippers",
           price: 1,
@@ -48,7 +45,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 4,
           name: "Interrupting",
           description: "Excuse me",
           price: 1,
@@ -62,7 +58,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 5,
           name: "Grinding teeth",
           description: "For when your jaw is too far away from your other jaw",
           price: 1,
@@ -76,7 +71,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 6,
           name: "Sleeping in",
           description: "",
           price: 1,
@@ -90,7 +84,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 7,
           name: "Drinking straight from the carton",
           description: "",
           price: 1,
@@ -104,7 +97,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 8,
           name: "Knuckle cracking",
           description: "+1 bonus to productivity, -1 charisma",
           price: 1,
@@ -118,7 +110,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 9,
           name: "Hoarding",
           description: "You never know when you might need this stuff",
           price: 1,
@@ -132,7 +123,6 @@ exports.seed = function(knex) {
           item_status_id: 1
         },
         {
-          id: 10,
           name: "Gossiping",
           description: "Did you hear?",
           price: 1,
