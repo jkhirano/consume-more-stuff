@@ -49,7 +49,7 @@ class AddProduct extends Component {
                   <input
                     type="text"
                     name={key}
-                    // value={this.state.mappedFields[key]}
+                    value={this.state.mappedFields[key]}
                     onChange={this.handleInput}
                     defaultValue={this.state.mappedFields[key]}
                   />
