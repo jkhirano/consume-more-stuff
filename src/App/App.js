@@ -1,13 +1,28 @@
 import React from "react";
-import "./App.module.css";
-import HabitList from "../containers/HabitList/HabitList";
+import styles from "./App.module.css";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div>
-      <HabitList />
-    </div>
-  );
+import EditHabit from "../container/EditHabit";
+import HabitList from "../containers/HabitList";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  editHabit = ({ name, category }) => {
+    // const habits = this.props.habits.concat({ name, category });
+    this.setState({ habits });
+  };
+
+  render() {
+    return (
+      <div className={styles.App}>
+        <EditHabit editHabit={this.editHabit} />
+        <HabitList habits={this.props.habits} />
+      </div>
+    );
+  }
 }
 
 export default App;
