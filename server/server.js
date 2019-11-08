@@ -19,7 +19,7 @@ const client = redis.createClient({ url: process.env.REDIS_URL });
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static("./public"));
+app.use(express.static("./server/public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

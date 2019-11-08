@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   express-server:
     image: ${DOCKERHUB_NAME}/${IMAGE_NAME}:${IMAGE_VERSION}
@@ -8,7 +8,7 @@ services:
       ENVIRONMENT: production
       NODE_ENV: production
     ports:
-      - '${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}'
+      - "${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}"
     networks:
       - my-app-network
   postgres-primary-db:
@@ -17,7 +17,7 @@ services:
     volumes:
       - pg-data-volume:/var/lib/postgresql/data
     ports:
-      - '${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}'
+      - "${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}"
     networks:
       - my-app-network
   redis-server:
@@ -26,7 +26,11 @@ services:
     volumes:
       - redis-data-volume:/data
     ports:
-      - '${REDIS_HOST_PORT}:${REDIS_CONTAINER_PORT}'
+      - "${REDIS_HOST_PORT}:${REDIS_CONTAINER_PORT}"
     networks:
       - my-app-network
 volumes:
+  pg-data-volume:
+  redis-data-volume:
+networks:
+  my-app-network:
