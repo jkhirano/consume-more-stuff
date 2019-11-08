@@ -6,6 +6,7 @@ import "./App.css";
 import Header from "../components/Header";
 import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
+import AddProduct from "../containers/AddProduct";
 
 class App extends Component {
   constructor(props) {
@@ -83,6 +84,7 @@ class App extends Component {
             </a>
           </div>
         </div>
+        <AddProduct />
       </div>
     );
   }

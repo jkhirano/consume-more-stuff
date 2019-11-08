@@ -22,6 +22,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static("./public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(decorator);
 
 app.use(
@@ -184,6 +185,22 @@ app.get("/habit/:id", (req, res) => {
     });
   // console.log("loading habit");
   // return res.json({ message: "testing habit route" });
+});
+
+app.post("/products", (req, res) => {
+  console.log(req.body.manufacturer);
+  console.log(req.body.description);
+  return req.database.Item.forge(req.body)
+    .save()
+    .then(results => {
+      console.log("req received, item added, sending back");
+      console.log(results);
+      return res.json(results);
+    })
+    .catch(err => {
+      console.log(err);
+      return res.json({ message: "unsuccessful" });
+    });
 });
 
 app.listen(PORT, () => {

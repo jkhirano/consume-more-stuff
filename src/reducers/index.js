@@ -1,4 +1,10 @@
-import { LOAD_HABITS, TOGGLE, LOAD_DETAIL, GET_THUMBNAIL } from "../actions";
+import {
+  TOGGLE,
+  ADD_PRODUCT,
+  LOAD_HABITS,
+  GET_THUMBNAIL,
+  LOAD_DETAIL
+} from "../actions";
 
 const defaultState = {
   habits: [],
@@ -11,6 +17,7 @@ const defaultState = {
     social: false,
     viewAll: false
   },
+  addedProduct: false,
   name: "",
   description: "",
   price: "",
@@ -45,6 +52,8 @@ let reducer = (state = defaultState, action) => {
       }
       return Object.assign({}, state, { display: toggleDisplay });
 
+    case ADD_PRODUCT:
+      return Object.assign({}, state, { addedProduct: true });
     case LOAD_DETAIL:
       console.log("reducer...", action.payload);
       return Object.assign({}, state, action.payload);
