@@ -1,10 +1,10 @@
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex("itemStatuses")
+  return knex("item_statuses")
     .del()
     .then(function() {
       // Inserts seed entries
-      return knex("itemStatuses").insert([
+      return knex("item_statuses").insert([
         { status: "published" },
         { status: "archived" },
         { status: "sold" },
