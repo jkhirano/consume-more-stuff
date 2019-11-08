@@ -25,7 +25,7 @@ class AddProduct extends Component {
     const { value, name } = event.target;
     const state = { ...this.state };
     state.mappedFields[name] = value;
-    this.setState({ state });
+    this.setState(state);
   };
 
   handleSubmit = e => {
@@ -36,6 +36,7 @@ class AddProduct extends Component {
   render() {
     return (
       <div>
+        Add Product Component
         {this.props.addedProduct ? <div>Item successfully added.</div> : null}
         <form>
           <ul>
@@ -48,7 +49,7 @@ class AddProduct extends Component {
                   <input
                     type="text"
                     name={key}
-                    value={this.state.mappedFields[key]}
+                    // value={this.state.mappedFields[key]}
                     onChange={this.handleInput}
                     defaultValue={this.state.mappedFields[key]}
                   />

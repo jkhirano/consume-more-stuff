@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import Habit from "../../components/Habit";
-=======
->>>>>>> acca7971e17d6ce82087fd01ee61a549cd17470d
 // import styles from './HabitList.module.css';
 import { connect } from "react-redux";
 import DetailedHabit from "../../components/DetailedHabit";

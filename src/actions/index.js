@@ -27,6 +27,7 @@ export const actionsToggle = link => dispatch => {
 };
 
 export const actionsAddProduct = data => async dispatch => {
+  console.log("data in actions.js", data);
   let config = {
     method: "POST",
     body: JSON.stringify(data),
@@ -47,6 +48,9 @@ export const actionsAddProduct = data => async dispatch => {
     })
     .catch(err => {
       console.log(err);
+    });
+};
+
 export const loadDetailAsync = id => async dispatch => {
   await fetch(`/habit/${id}`)
     .then(response => {

@@ -1,4 +1,10 @@
-import { TOGGLE, ADD_PRODUCT, LOAD_HABITS, GET_THUMBNAIL } from "../actions";
+import {
+  TOGGLE,
+  ADD_PRODUCT,
+  LOAD_HABITS,
+  GET_THUMBNAIL,
+  LOAD_DETAIL
+} from "../actions";
 
 const defaultState = {
   habits: [],
