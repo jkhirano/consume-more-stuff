@@ -20,7 +20,6 @@ const enhancer = composeEnhancers(applyMiddleware(ReduxThunk)); //applyMiddlewar
 const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
-  //Provider v wraps around the App and gives it access to the store;
   <Provider store={store}>
     <App />
   </Provider>,

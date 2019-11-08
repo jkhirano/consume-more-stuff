@@ -6,7 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("items").insert([
         {
-          name: "Testing",
+          name: "Nose picking",
           description: "Digging for gold",
           price: 1,
           manufacturer: "Acme Digging Co.",
