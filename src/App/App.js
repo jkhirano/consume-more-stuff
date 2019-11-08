@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./App.module.css";
 import { connect } from "react-redux";
-
+import { loadHabits } from "../actions";
 import EditHabit from "../container/EditHabit";
 import HabitList from "../containers/HabitList";
 
@@ -24,5 +24,24 @@ class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    habits: state.habits
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadHabits: () => {
+      return dispatch(loadHabits());
+    }
+  };
+};
+
+App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export default App;

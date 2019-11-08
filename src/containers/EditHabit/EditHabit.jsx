@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 
+import { editHabit } from "../../actions";
+import { connect } from 'react-redux';
+
 import styles from "./EditHabit.module.css";
 
 class EditHabit extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+        nameInput = '',
+        categoryInput = ''
+    };
   }
 
   handleNameInput = e => {
@@ -21,7 +27,7 @@ class EditHabit extends Component {
 
   handleUpdateHabit = () => {
     const { nameInput: name, categoryInput: category } = this.state;
-    this.props.editHabit({ name: nameInput, category, categoryInput });
+    this.props.onEdit({ name, category });
   };
 
   render() {
@@ -50,5 +56,22 @@ class EditHabit extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onEdit: habit => {
+      dispatch(editHabit(habit));
+    }
+  };
+};
+
+EditHabit = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditHabit);
 
 export default EditHabit;

@@ -1,4 +1,4 @@
-import { EDIT_HABIT } from ".../actions";
+import { EDIT_HABIT, LOAD_HABIT } from "../actions";
 
 const defaultState = {
   habits: [
@@ -24,6 +24,8 @@ const reducer =
       case EDIT_HABIT:
         // const habits = state.habits.concat(action.payload);
         return { habits };
+      case LOAD_HABIT:
+        return state.habits;
       default:
         return state;
     }
