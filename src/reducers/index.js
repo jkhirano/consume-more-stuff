@@ -18,11 +18,10 @@ const defaultState = {
   model: "",
   dimensions: "",
   view_count: "",
-  user_id: "",
-  category_id: "",
   category: { category: "" },
-  condition_id: "",
-  item_status_id: "",
+  condition: { condition: "" },
+  status: { status: "" },
+  user: { username: "" },
   created_at: "",
   updated_at: ""
 };
