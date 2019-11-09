@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.createTable("itemStatuses", table => {
+  return knex.schema.createTable("user_statuses", table => {
     table.increments();
     table.string("status").notNullable();
     table.timestamps(true, true);
@@ -7,5 +7,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable("itemStatuses");
+  return knex.schema.dropTable("user_statuses");
 };
