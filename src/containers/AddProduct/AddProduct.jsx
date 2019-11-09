@@ -51,7 +51,6 @@ class AddProduct extends Component {
                     name={key}
                     value={this.state.mappedFields[key]}
                     onChange={this.handleInput}
-                    defaultValue={this.state.mappedFields[key]}
                   />
                 </li>
               );
