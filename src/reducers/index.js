@@ -21,7 +21,7 @@ const defaultState = {
   category: { category: "" },
   condition: { condition: "" },
   status: { status: "" },
-  user: { username: "" },
+  user: { email: "" },
   created_at: "",
   updated_at: ""
 };

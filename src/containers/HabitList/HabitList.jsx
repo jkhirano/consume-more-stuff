@@ -49,7 +49,7 @@ class HabitList extends Component {
             model={this.props.model}
             dimensions={this.props.dimensions}
             view_count={this.props.view_count}
-            user={this.props.user}
+            email={this.props.email}
             category={this.props.category}
             condition={this.props.condition}
             status={this.props.status}
@@ -73,7 +73,7 @@ const mapStateToProps = state => {
     model: state.model,
     dimensions: state.dimensions,
     view_count: state.view_count,
-    user: state.user.username,
+    email: state.user.email,
     category: state.category.category,
     condition: state.condition.condition,
     status: state.status.status,
