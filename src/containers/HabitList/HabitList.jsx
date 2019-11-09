@@ -60,7 +60,6 @@ class HabitList extends Component {
           End of HabitList Component
         </div>
       </div>
-      // localHabits: [{ name: "test" }]
     );
   }
 }

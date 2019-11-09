@@ -74,10 +74,7 @@ class NavigationComponent extends Component {
 }
 
 const mapStateToProps = store => {
-  console.log(store.display);
-  return {
-    display: store.display
-  };
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
