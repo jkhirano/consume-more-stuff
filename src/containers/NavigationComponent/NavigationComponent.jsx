@@ -74,7 +74,7 @@ class NavigationComponent extends Component {
 }
 
 const mapStateToProps = store => {
-  console.log(store.display);
+  console.log("current navbar mapStateToProps...", store.display);
   return {
     display: store.display
   };
@@ -83,7 +83,6 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     toggle: link => {
-      console.log("sending click to actions");
       return dispatch(actionsToggle(link));
     }
   };

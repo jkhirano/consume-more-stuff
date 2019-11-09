@@ -1,7 +1,6 @@
 import {
   TOGGLE,
   ADD_PRODUCT,
-  LOAD_HABITS,
   GET_THUMBNAIL,
   LOAD_DETAIL
 } from "../actions";
@@ -25,22 +24,17 @@ const defaultState = {
   model: "",
   dimensions: "",
   view_count: "",
-  user_id: "",
-  category_id: "",
   category: { category: "" },
-  condition_id: "",
-  item_status_id: "",
+  condition: { condition: "" },
+  status: { status: "" },
+  user: { username: "" },
   created_at: "",
   updated_at: ""
 };
 
 let reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case LOAD_HABITS:
-      return state.habits;
-
     case TOGGLE:
-      console.log("reducer is handling click");
       let toggleDisplay = state.display;
 
       for (let key in toggleDisplay) {
@@ -54,14 +48,14 @@ let reducer = (state = defaultState, action) => {
 
     case ADD_PRODUCT:
       return Object.assign({}, state, { addedProduct: true });
+      
     case LOAD_DETAIL:
-      console.log("reducer...", action.payload);
+      console.log("detail loaded...", action.payload);
       return Object.assign({}, state, action.payload);
+
     case GET_THUMBNAIL:
-      console.log("thumbnail is working");
-      console.log(action.payload);
+      console.log("thumbnails loaded...", action.payload);
       return Object.assign({}, state, { habits: action.payload });
-    // return action.payload; // this becomes the store
 
     default:
       return state;
