@@ -15,7 +15,8 @@ class HabitList extends Component {
   }
 
   componentDidMount() {
-    this.props.getThumbnail();
+    let category = this.props.display;
+    this.props.getThumbnail(category);
   }
 
   changeDetailedId = id => {
@@ -80,7 +81,8 @@ const mapStateToProps = state => {
     condition_id: state.condition_id,
     item_status_id: state.item_status_id,
     created_at: state.created_at,
-    updated_at: state.updated_at
+    updated_at: state.updated_at,
+    display: state.display
   };
 };
 
@@ -89,9 +91,9 @@ const mapDispatchToProps = dispatch => {
     loadDetailAsync: id => {
       return dispatch(loadDetailAsync(id));
     },
-    getThumbnail: () => {
+    getThumbnail: category => {
       console.log("getThumbnail hit");
-      return dispatch(actionsGetThumbnail()); // dispatches getThumbnail in actions/index.js
+      return dispatch(actionsGetThumbnail(category)); // dispatches getThumbnail in actions/index.js
     }
   };
 };

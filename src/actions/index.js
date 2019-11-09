@@ -64,7 +64,14 @@ export const loadDetailAsync = id => async dispatch => {
       });
     });
 };
-export const actionsGetThumbnail = category => async dispatch => {
+export const actionsGetThumbnail = (category = null) => async dispatch => {
+  let body;
+  if (category === null) {
+    body = "";
+  } else {
+    body = category;
+  }
+
   let config = {
     method: "GET",
     body: JSON.stringify(category),
