@@ -1,12 +1,12 @@
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex("userStatuses")
+  return knex("user_statuses")
     .del()
     .then(function() {
       // Inserts seed entries
-      return knex("userStatuses").insert([
-        { status: "inactive" },
-        { status: "active" }
+      return knex("user_statuses").insert([
+        { status: "active" },
+        { status: "inactive" }
       ]);
     });
 };
