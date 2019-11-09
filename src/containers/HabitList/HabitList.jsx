@@ -28,9 +28,9 @@ class HabitList extends Component {
         <ul>
           Thumbnail Component
           {this.props.localHabits.map(element => {
-            // console.log("thumbnail habit is being created...");
             return (
               <ThumbnailHabit
+                key={element.id}
                 habit={element}
                 changeDetailedId={this.changeDetailedId}
               />
@@ -60,7 +60,6 @@ class HabitList extends Component {
           End of HabitList Component
         </div>
       </div>
-      // localHabits: [{ name: "test" }]
     );
   }
 }
@@ -91,7 +90,6 @@ const mapDispatchToProps = dispatch => {
       return dispatch(loadDetailAsync(id));
     },
     getThumbnail: () => {
-      console.log("getThumbnail hit");
       return dispatch(actionsGetThumbnail()); // dispatches getThumbnail in actions/index.js
     }
   };
