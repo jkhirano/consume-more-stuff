@@ -56,23 +56,14 @@ export const loadDetailAsync = id => async dispatch => {
 };
 
 export const actionsGetThumbnail = category => async dispatch => {
-  // let config = {
-  //   method: "GET",
-  //   body: JSON.stringify({
-  //     category: category
-  //   }),
-  //   headers: {
-  //     "Content-type": "application/json"
-  //   }
-  // };
-  await fetch(`/thumbnail/${category}`) // sends request to server/server.js
+  await fetch(`/api/habits/${category}`)
     .then(responseFromServer => {
-      return responseFromServer.json(); // changes from string to json format
+      return responseFromServer.json();
     })
     .then(results => {
       return dispatch({
         type: GET_THUMBNAIL,
         payload: results
-      }); // dispatches payload and type to reducer
+      });
     });
 };

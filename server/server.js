@@ -1,19 +1,25 @@
+//express server
 const express = require("express");
 const bodyParser = require("body-parser");
 const decorator = require("./database/decorator");
 
+//routers
+const users = require("./api/users/index");
+const habits = require("./api/habits/index");
+const auth = require("./api/auth/index");
+
+//authentication
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
+
+//redis
 const redis = require("redis");
 const RedisStore = require("connect-redis")(session);
-
 const saltRounds = 12;
 const User = require("./database/models/User");
-
 const dotenv = require("dotenv").config();
-
 const client = redis.createClient({ url: process.env.REDIS_URL });
 
 const app = express();
@@ -21,10 +27,12 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.static("./server/public"));
 
+//body-parsers and decorator
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(decorator);
 
+//auth-session
 app.use(
   session({
     store: new RedisStore({ client }),
@@ -139,62 +147,53 @@ app.get("/logout", (req, res) => {
   res.send("logged out");
 });
 
-app.get("/", (req, res) => {
+app.use("/api/habits", habits);
+app.use("/api/users", users);
+app.use("/api/auth", auth);
+
+app.get("/smoke", (req, res) => {
   return res.json({ message: "hiyee" });
 });
 
-app.get("/thumbnail/:category", (req, res) => {
-  let reqWithRelated;
+// app.get("/thumbnail/:category", (req, res) => {//deprecated habit route
+//   console.log("depracated habit route");
+//   let reqWithRelated;
 
-  if (req.params.category === "all") {
-    reqWithRelated = ["category", "condition", "images"];
-  } else {
-    reqWithRelated = [
-      {
-        category: query => query.where("category", req.params.category)
-      },
-      "condition",
-      "images"
-    ];
-  }
+//   if (req.params.category === "all") {
+//     reqWithRelated = ["category", "condition", "images"];
+//   } else {
+//     reqWithRelated = [
+//       {
+//         category: query => query.where("category", req.params.category)
+//       },
+//       "condition",
+//       "images"
+//     ];
+//   }
 
-  return req.database.Item.fetchAll({
-    withRelated: reqWithRelated
-  })
-    .then(results => {
-      return results.toJSON();
-    })
-    .then(results => {
-      return results.filter(result => {
-        return result.category.category;
-      });
-    })
-    .then(results => {
-      return res.json(results);
-    })
-    .catch(err => {
-      console.log(err);
-      return res.json(err);
-    });
-});
-
-// app.get("/home", (req, res) => {
-//   console.log("server query in progress");
-//   return req.database.Item.fetchAll()
+//   return req.database.Item.fetchAll({
+//     withRelated: reqWithRelated
+//   })
 //     .then(results => {
 //       return results.toJSON();
 //     })
 //     .then(results => {
-//       console.log("results", results);
-//       return res.send(results);
+//       return results.filter(result => {
+//         return result.category.category;
+//       });
+//     })
+//     .then(results => {
+//       return res.json(results);
 //     })
 //     .catch(err => {
 //       console.log(err);
-//       return res.json({ error: err });
+//       return res.json(err);
 //     });
 // });
 
 app.get("/habit/:id", (req, res) => {
+  //deprecated habit route
+  console.log("deprecated habit route");
   return req.database.Item.where({ id: req.params.id })
     .fetch({
       withRelated: ["user", "images", "category", "condition", "status"]
