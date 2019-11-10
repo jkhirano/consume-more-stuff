@@ -54,8 +54,18 @@ export const loadDetailAsync = id => async dispatch => {
       });
     });
 };
-export const actionsGetThumbnail = () => async dispatch => {
-  await fetch("/thumbnail") // sends request to server/server.js
+
+export const actionsGetThumbnail = category => async dispatch => {
+  // let config = {
+  //   method: "GET",
+  //   body: JSON.stringify({
+  //     category: category
+  //   }),
+  //   headers: {
+  //     "Content-type": "application/json"
+  //   }
+  // };
+  await fetch(`/thumbnail/${category}`) // sends request to server/server.js
     .then(responseFromServer => {
       return responseFromServer.json(); // changes from string to json format
     })

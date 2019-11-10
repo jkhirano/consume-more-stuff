@@ -143,15 +143,56 @@ app.get("/", (req, res) => {
   return res.json({ message: "hiyee" });
 });
 
-app.get("/thumbnail", (req, res) => {
-  return req.database.Item.fetchAll()
+app.get("/thumbnail/:category", (req, res) => {
+  let reqWithRelated;
+
+  if (req.params.category === "all") {
+    reqWithRelated = ["category", "condition", "images"];
+  } else {
+    reqWithRelated = [
+      {
+        category: query => query.where("category", req.params.category)
+      },
+      "condition",
+      "images"
+    ];
+  }
+
+  return req.database.Item.fetchAll({
+    withRelated: reqWithRelated
+  })
     .then(results => {
       return results.toJSON();
     })
     .then(results => {
-      return res.send(results);
+      return results.filter(result => {
+        return result.category.category;
+      });
+    })
+    .then(results => {
+      return res.json(results);
+    })
+    .catch(err => {
+      console.log(err);
+      return res.json(err);
     });
 });
+
+// app.get("/home", (req, res) => {
+//   console.log("server query in progress");
+//   return req.database.Item.fetchAll()
+//     .then(results => {
+//       return results.toJSON();
+//     })
+//     .then(results => {
+//       console.log("results", results);
+//       return res.send(results);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       return res.json({ error: err });
+//     });
+// });
 
 app.get("/habit/:id", (req, res) => {
   return req.database.Item.where({ id: req.params.id })

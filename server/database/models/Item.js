@@ -11,8 +11,9 @@ class Item extends bookshelf.Model {
     return this.hasOne("User", "id", "user_id");
   }
   images() {
-    return this.hasMany("Image", "id", "image_id");
+    return this.hasMany("Image");
   }
+
   category() {
     return this.hasOne("ItemCategory", "id", "category_id");
   }
