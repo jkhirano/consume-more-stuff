@@ -28,6 +28,15 @@ class AddProduct extends Component {
     this.setState(state);
   };
 
+  handleSelect = event => {
+    // when item that's selected = category_id, setState?
+
+    // const state = { ...this.state };
+    // state.unmappedFields = value;
+    // this.setState(state);
+    this.setState({ value: event.target.value });
+  };
+
   clearInput = () => {
     let defaultState = this.state;
     for (let key in defaultState) {
@@ -73,7 +82,11 @@ class AddProduct extends Component {
             })}
             <li>
               <label htmlFor="condition">Condition: </label>
-              <select name="condition_id">
+              <select
+                name="condition_id"
+                onSelect={this.handleSelect}
+                // value={this.state.value}
+              >
                 <option value={1}>Chronic</option>
                 <option value={2}>Learned</option>
                 <option value={3}>Obsessive</option>
