@@ -80,7 +80,6 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     toggle: link => {
-      console.log("sending click to actions");
       return dispatch(actionsToggle(link));
     }
   };

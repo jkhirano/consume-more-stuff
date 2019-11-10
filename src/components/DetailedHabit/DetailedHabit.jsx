@@ -10,19 +10,17 @@ let DetailedHabit = function(props) {
       <div className="price">Price: {props.price}</div>
       <div className="desc">Description: {props.description}</div>
       <div className="postInfo">
-        Category id: {props.category_id}
-        <br />
         Category: {props.category}
         <br />
-        User: {props.username}
+        Email: {props.email}
         <br />
         Views: {props.view_count}
         <br />
         Posted on: {props.created_at}
       </div>
       <ul className="details">
-        <li>Condition: {props.condition_id}</li>
-        <li>Status: {props.item_status_id}</li>
+        <li>Condition: {props.condition}</li>
+        <li>Status: {props.status}</li>
         <li>Manufacturer: {props.manufacturer}</li>
         <li>Model: {props.model}</li>
         <li>Dimensions: {props.dimensions}</li>

@@ -19,7 +19,7 @@ const client = redis.createClient({ url: process.env.REDIS_URL });
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static("./public"));
+app.use(express.static("./server/public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -195,25 +195,17 @@ app.get("/thumbnail/:category", (req, res) => {
 // });
 
 app.get("/habit/:id", (req, res) => {
-  const item = req.params.id;
-  console.log("server id param.. ", item);
-  return req.database.Item.where({ id: item })
+  return req.database.Item.where({ id: req.params.id })
     .fetch({
       withRelated: ["user", "images", "category", "condition", "status"]
     })
     .then(results => {
-      console.log(
-        "server file console log.. ",
-        results.relations.category.attributes.category
-      );
       if (results.toJSON().length === 0) {
         throw new Error("Page not found!");
       } else {
         res.json(results);
       }
     });
-  // console.log("loading habit");
-  // return res.json({ message: "testing habit route" });
 });
 
 app.post("/products", (req, res) => {
