@@ -83,11 +83,7 @@ class AddProduct extends Component {
             })}
             <li>
               <label htmlFor="condition">Condition: </label>
-              <select
-                name="condition_id"
-                onChange={this.handleSelect}
-                // value={this.state.value}
-              >
+              <select name="condition_id" onChange={this.handleSelect}>
                 <option value={1}>Chronic</option>
                 <option value={2}>Learned</option>
                 <option value={3}>Obsessive</option>
@@ -95,7 +91,7 @@ class AddProduct extends Component {
             </li>
             <li>
               <label htmlFor="category">Category: </label>
-              <select name="category_id">
+              <select name="category_id" onChange={this.handleSelect}>
                 <option value={1}>Work</option>
                 <option value={2}>Hygiene</option>
                 <option value={3}>Social</option>
