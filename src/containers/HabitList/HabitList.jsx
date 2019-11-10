@@ -5,6 +5,7 @@ import DetailedHabit from "../../components/DetailedHabit";
 import ThumbnailHabit from "../../components/ThumbnailHabit";
 import { loadDetailAsync } from "../../actions";
 import { actionsGetThumbnail } from "../../actions";
+import "./HabitList.css";
 
 class HabitList extends Component {
   constructor(props) {
@@ -29,11 +30,13 @@ class HabitList extends Component {
           Thumbnail Component
           {this.props.localHabits.map(element => {
             return (
-              <ThumbnailHabit
-                key={element.id}
-                habit={element}
-                changeDetailedId={this.changeDetailedId}
-              />
+              <div className="habitList">
+                <ThumbnailHabit
+                  key={element.id}
+                  habit={element}
+                  changeDetailedId={this.changeDetailedId}
+                />
+              </div>
             );
           })}
           End of Thumbnail Component
