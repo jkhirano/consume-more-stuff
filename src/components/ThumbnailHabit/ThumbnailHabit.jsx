@@ -14,8 +14,7 @@ const ThumbnailHabit = function(props) {
       <li className="name">{props.habit.name}</li>
       {/* <span className={styles.name}>{props.habit.name}</span> */}
       <span className="price">${props.habit.price}</span> |
-      <span className="condition">{props.habit.condition_id}</span> |
-      {props.message}
+      <span className="condition">{props.habit.condition_id}</span>
     </li>
   );
 };

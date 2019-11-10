@@ -6,5 +6,12 @@
 }
 
 .button {
-  border: 1px solid red;
+  background-color: #de2322;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.button:hover {
+  background-color: #990000;
 }
