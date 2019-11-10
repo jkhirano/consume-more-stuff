@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 import { TOGGLE, ADD_PRODUCT, GET_THUMBNAIL, LOAD_DETAIL } from "../actions";
-=======
-import {
-  TOGGLE,
-  ADD_PRODUCT,
-  GET_THUMBNAIL,
-  LOAD_DETAIL
-} from "../actions";
->>>>>>> 8bf7fd3d6e9940dfeb456c63195d1f7a810454e1
 
 const defaultState = {
   habits: [],
@@ -35,7 +26,7 @@ let reducer = (state = defaultState, action) => {
 
     case ADD_PRODUCT:
       return Object.assign({}, state, { addedProduct: true });
-      
+
     case LOAD_DETAIL:
       return Object.assign({}, state, action.payload);
 
