@@ -19,6 +19,7 @@ class AddProduct extends Component {
         category_id: 1
       }
     };
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleInput = event => {
@@ -30,11 +31,11 @@ class AddProduct extends Component {
 
   handleSelect = event => {
     // when item that's selected = category_id, setState?
-
-    // const state = { ...this.state };
-    // state.unmappedFields = value;
-    // this.setState(state);
-    this.setState({ value: event.target.value });
+    const { value, name } = event.target;
+    const state = { ...this.state };
+    state.unmappedFields[name] = value;
+    this.setState(state);
+    // this.setState({ key: event.target.value });
   };
 
   clearInput = () => {
@@ -84,7 +85,7 @@ class AddProduct extends Component {
               <label htmlFor="condition">Condition: </label>
               <select
                 name="condition_id"
-                onSelect={this.handleSelect}
+                onChange={this.handleSelect}
                 // value={this.state.value}
               >
                 <option value={1}>Chronic</option>
