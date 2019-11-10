@@ -28,9 +28,25 @@ class AddProduct extends Component {
     this.setState(state);
   };
 
+  clearInput = () => {
+    let defaultState = this.state;
+    for (let key in defaultState) {
+      if (key === "mappedFields") {
+        for (let mappedKey in defaultState.mappedFields) {
+          defaultState.mappedFields[mappedKey] = "";
+        }
+      }
+    }
+
+    return this.setState({
+      defaultState
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
-    return this.props.addProductSubmit(this.state);
+    this.props.addProductSubmit(this.state);
+    return this.clearInput();
   };
 
   render() {
