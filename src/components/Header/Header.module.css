@@ -1,4 +1,75 @@
-.header{
-  border: 1px solid black;
+.header {
+  /* janelle's color: bf2416 */
+  background-color: #de2322;
   display: flex;
+  height: 75px;
+  text-align: center;
+}
+
+.searchBox {
+  margin-left: 30px;
+  padding-top: 23px;
+  padding-bottom: 23px;
+}
+
+.search {
+  padding-left: 5px;
+  height: 30px;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 4px;
+}
+
+.searchImg {
+  background: url("https://image.flaticon.com/icons/svg/49/49116.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 40%;
+  border: none;
+  margin-left: -30px;
+  height: 30px;
+  width: 30px;
+}
+
+.auth {
+  width: 30%;
+  display: flex;
+  flex-grow: 2;
+  justify-content: flex-end;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 25px;
+}
+
+.register {
+  margin-right: 25px;
+}
+
+.register:hover {
+  text-shadow: 2px 2px 2px rgb(80, 80, 80);
+}
+
+.login:hover {
+  text-shadow: 2px 2px 2px rgb(80, 80, 80);
+}
+
+.loginImg {
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+  width: 20px;
+  -webkit-filter: invert(100%);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+img {
+  height: 75px;
+  width: 143px;
 }

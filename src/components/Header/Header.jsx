@@ -1,33 +1,45 @@
-import React, { Component } from 'react';
-import styles from './Header.module.css';
+import React, { Component } from "react";
+import styles from "./Header.module.css";
 
 class Header extends Component {
   render() {
     return (
       <div className={styles.header}>
-
-        <div className="logo">
-          <img src="https://via.placeholder.com/300x50" alt="placeholder" />
+        <div className={styles.logo}>
+          <a href="/">
+            <img
+              src="https://contenthub-static.grammarly.com/blog/wp-content/uploads/2019/01/bad-habits-760x400.jpg"
+              alt="https://via.placeholder.com/300x50"
+            />
+          </a>
         </div>
 
-        <div className="search-container">
-          <input type="text" placeholder="Search.." name="search" />
-          <button type="submit">Submit</button>
+        <div className={styles.searchBox}>
+          <input
+            className={styles.search}
+            type="text"
+            placeholder="Search..."
+            name="search"
+            size="60"
+          />
+          <button className={styles.searchImg} type="submit"></button>
         </div>
 
-        <div className="user-auth">
-          <div>Welcome, </div>
-          <button>Login</button>
-          <button>Register</button>
+        <div className={styles.auth}>
+          <a className={styles.register} href="/register.html">
+            Register
+          </a>
+          <a className={styles.login} href="/login.html">
+            Login
+            <img
+              className={styles.loginImg}
+              src="https://image.flaticon.com/icons/svg/149/149408.svg"
+              alt="login icon"
+            />
+          </a>
         </div>
-
-        <div className="cart">
-          <span>Cart:</span>
-          <span>0</span>
-        </div>
-
       </div>
-    )
+    );
   }
 }
 
