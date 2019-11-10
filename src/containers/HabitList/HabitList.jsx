@@ -15,8 +15,11 @@ class HabitList extends Component {
   }
 
   componentDidMount() {
-    let category = this.props.display;
-    this.props.getThumbnail(category);
+    this.props.getThumbnail("all");
+  }
+
+  componentDidUpdate() {
+    this.props.getThumbnail(this.props.display);
   }
 
   changeDetailedId = id => {

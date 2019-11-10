@@ -10,27 +10,27 @@ class NavigationComponent extends Component {
   }
 
   handleHomepageClick = () => {
-    this.props.toggle("homepage");
+    this.props.toggle("all");
   };
 
   handleHygieneClick = () => {
-    this.props.toggle("hygiene");
+    this.props.toggle("Hygiene");
   };
 
   handleHomeClick = () => {
-    this.props.toggle("home");
+    this.props.toggle("Home");
   };
 
   handleSocialClick = () => {
-    this.props.toggle("social");
+    this.props.toggle("Social");
   };
 
   handleWorkClick = () => {
-    this.props.toggle("work");
+    this.props.toggle("Work");
   };
 
   handleViewAllClick = () => {
-    this.props.toggle("viewAll");
+    this.props.toggle("all");
   };
   render() {
     return (

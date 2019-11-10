@@ -1,4 +1,3 @@
-export const LOAD_HABITS = "LOAD_HABITS";
 export const TOGGLE = "TOGGLE";
 export const LOAD_DETAIL = "LOAD_DETAIL";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
@@ -12,12 +11,6 @@ export function loadDetail(payload) {
 }
 
 //action create
-export function loadHabits() {
-  return {
-    type: LOAD_HABITS
-  };
-}
-
 export const actionsToggle = link => dispatch => {
   console.log("click being sent to reducer");
   return dispatch({
@@ -64,29 +57,23 @@ export const loadDetailAsync = id => async dispatch => {
       });
     });
 };
-export const actionsGetThumbnail = (category = null) => async dispatch => {
-  let body;
-  if (category === null) {
-    body = "";
-  } else {
-    body = category;
-  }
 
-  let config = {
-    method: "GET",
-    body: JSON.stringify(category),
-    headers: {
-      "Content-type": "application/json"
-    }
-  };
-  console.log("actionsGetThumbnailHit");
-  await fetch("/home", config) // sends request to server/server.js
+export const actionsGetThumbnail = category => async dispatch => {
+  // let config = {
+  //   method: "GET",
+  //   body: JSON.stringify({
+  //     category: category
+  //   }),
+  //   headers: {
+  //     "Content-type": "application/json"
+  //   }
+  // };
+  await fetch(`/thumbnail/${category}`) // sends request to server/server.js
     .then(responseFromServer => {
       // console.log(responseFromServer)
       return responseFromServer.json(); // changes from string to json format
     })
     .then(results => {
-      console.log("after text", results);
       return dispatch({
         type: GET_THUMBNAIL,
         payload: results

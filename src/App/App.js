@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadHabits } from "../actions";
 import "./App.css";
 
 import Header from "../components/Header";
@@ -96,11 +95,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    loadHabits: () => {
-      return dispatch(loadHabits());
-    }
-  };
+  return {};
 };
 
 App = connect(

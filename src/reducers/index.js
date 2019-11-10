@@ -1,14 +1,8 @@
-import {
-  TOGGLE,
-  ADD_PRODUCT,
-  LOAD_HABITS,
-  GET_THUMBNAIL,
-  LOAD_DETAIL
-} from "../actions";
+import { TOGGLE, ADD_PRODUCT, GET_THUMBNAIL, LOAD_DETAIL } from "../actions";
 
 const defaultState = {
   habits: [],
-  display: "",
+  display: "all",
   addedProduct: false,
   name: "",
   description: "",
@@ -28,23 +22,15 @@ const defaultState = {
 
 let reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case LOAD_HABITS:
-      return state.habits;
-
     case TOGGLE:
       return Object.assign({}, state, { display: action.payload });
 
     case ADD_PRODUCT:
       return Object.assign({}, state, { addedProduct: true });
     case LOAD_DETAIL:
-      console.log("reducer...", action.payload);
       return Object.assign({}, state, action.payload);
     case GET_THUMBNAIL:
-      console.log("thumbnail is working");
-      console.log(action.payload);
       return Object.assign({}, state, { habits: action.payload });
-    // return action.payload; // this becomes the store
-
     default:
       return state;
   }
