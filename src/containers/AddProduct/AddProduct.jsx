@@ -19,6 +19,7 @@ class AddProduct extends Component {
         category_id: 1
       }
     };
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleInput = event => {
@@ -26,6 +27,15 @@ class AddProduct extends Component {
     const state = { ...this.state };
     state.mappedFields[name] = value;
     this.setState(state);
+  };
+
+  handleSelect = event => {
+    // when item that's selected = category_id, setState?
+    const { value, name } = event.target;
+    const state = { ...this.state };
+    state.unmappedFields[name] = value;
+    this.setState(state);
+    // this.setState({ key: event.target.value });
   };
 
   clearInput = () => {
@@ -73,7 +83,7 @@ class AddProduct extends Component {
             })}
             <li>
               <label htmlFor="condition">Condition: </label>
-              <select name="condition_id">
+              <select name="condition_id" onChange={this.handleSelect}>
                 <option value={1}>Chronic</option>
                 <option value={2}>Learned</option>
                 <option value={3}>Obsessive</option>
@@ -81,7 +91,7 @@ class AddProduct extends Component {
             </li>
             <li>
               <label htmlFor="category">Category: </label>
-              <select name="category_id">
+              <select name="category_id" onChange={this.handleSelect}>
                 <option value={1}>Work</option>
                 <option value={2}>Hygiene</option>
                 <option value={3}>Social</option>
