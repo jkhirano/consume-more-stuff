@@ -90,6 +90,10 @@ router.use(
   })
 );
 
+router.get("/smoke", (req, res) => {
+  return res.json({ message: "I see smoke in auth." });
+});
+
 router.post("/register", (req, res) => {
   bcrypt.genSalt(saltRounds, (err, salt) => {
     if (err) {
@@ -126,7 +130,4 @@ router.get("/logout", (req, res) => {
   res.send("logged out");
 });
 
-router.get("/smoke", (req, res) => {
-  return res.json({ message: "I see smoke in auth." });
-});
 module.exports = router;

@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+router.get("/smoke", (req, res) => {
+  return res.json({ message: "I see smoke in habits." });
+});
+
 router.get("/cat/:category", (req, res) => {
   let reqWithRelated;
 
@@ -64,10 +68,6 @@ router.post("/", (req, res) => {
       console.log(err);
       return res.json(err);
     });
-});
-
-router.get("/smoke", (req, res) => {
-  return res.json({ message: "I see smoke in habits." });
 });
 
 module.exports = router;

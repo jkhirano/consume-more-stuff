@@ -34,6 +34,7 @@ exports.up = function(knex) {
       .foreign("item_status_id")
       .references("id")
       .inTable("item_statuses");
+
     table.timestamps(true, true);
   });
 };
