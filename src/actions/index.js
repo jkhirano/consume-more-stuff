@@ -2,6 +2,8 @@ export const TOGGLE = "TOGGLE";
 export const LOAD_DETAIL = "LOAD_DETAIL";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 export const ADD_PRODUCT = "ADD_PRODUCT";
+export const LOGIN_SUBMIT = "LOGIN_SUBMIT";
+export const REGISTER_SUBMIT = "REGISTER_SUBMIT";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -56,5 +58,44 @@ export const actionsGetThumbnail = category => async dispatch => {
         type: GET_THUMBNAIL,
         payload: results
       });
+    });
+};
+
+export const actionsLoginSubmit = loginInfo => async dispatch => {
+  let config = {
+    method: "POST",
+    body: JSON.stringify(loginInfo),
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  await fetch("/api/auth/login", config)
+    .then(response => {
+      return response.json();
+    })
+    .then(results => {
+      return dispatch({
+        type: LOGIN_SUBMIT,
+        payload: results
+      });
+    });
+};
+
+export const actionsRegisterSubmit = registerInfo => async dispatch => {
+  let config = {
+    method: "POST",
+    body: JSON.stringify(registerInfo),
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  await fetch("api/auth/register", config)
+    .then(response => {
+      return response.json();
+    })
+    .then(results => {
+      return dispatch({ type: REGISTER_SUBMIT, payload: results });
     });
 };

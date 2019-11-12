@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 import AddProduct from "../containers/AddProduct";
+import LoginComponent from "../containers/LoginComponent";
+import RegisterComponent from "../containers/RegisterComponent";
 
 class App extends Component {
   constructor(props) {
@@ -107,10 +109,13 @@ class App extends Component {
           </div>
         </div>
         <AddProduct />
+        <RegisterComponent />
+        <LoginComponent />
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     habits: state.habits
@@ -121,9 +126,6 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;

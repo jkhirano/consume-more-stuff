@@ -1,0 +1,72 @@
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { actionsLoginSubmit } from "../../actions";
+
+class LoginComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  handleLoginSubmit() {
+    return this.props.dispatchLoginSubmit(this.state);
+  }
+
+  handleEmailInput = event => {
+    return this.setState({ email: event.target.value });
+  };
+
+  handlePasswordInput = event => {
+    return this.setState({ password: event.target.value });
+  };
+
+  render() {
+    return (
+      <div className="loginComponent container">
+        <h3>Login:</h3>
+        <form>
+          <ul>
+            <li>
+              <label for="email">Email:</label>
+              <br />
+              <input
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleEmailInput}
+              />
+            </li>
+            <li>
+              <label for="password">Password:</label>
+              <br />
+              <input
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handlePasswordInput}
+              />
+            </li>
+          </ul>
+          <br />
+          <br />
+          <button onClick={this.handleLoginSubmit}>Login</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLoginSubmit: formData => {
+      return dispatch(actionsLoginSubmit(formData));
+    }
+  };
+};
+
+LoginComponent = connect(null, mapDispatchToProps)(LoginComponent);
+
+export default LoginComponent;
