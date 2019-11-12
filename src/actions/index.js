@@ -3,13 +3,6 @@ export const LOAD_DETAIL = "LOAD_DETAIL";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 
-export function loadDetail(payload) {
-  return {
-    type: LOAD_DETAIL,
-    payload
-  };
-}
-
 export const actionsToggle = link => dispatch => {
   return dispatch({
     type: TOGGLE,
@@ -18,7 +11,6 @@ export const actionsToggle = link => dispatch => {
 };
 
 export const actionsAddProduct = data => async dispatch => {
-  console.log("data in actions.js", data);
   let config = {
     method: "POST",
     body: JSON.stringify(data),
@@ -26,12 +18,11 @@ export const actionsAddProduct = data => async dispatch => {
       "Content-type": "application/json"
     }
   };
-  await fetch("/products", config)
+  await fetch("/api/habits", config)
     .then(response => {
       return response.json();
     })
     .then(results => {
-      console.log("results in actionsAddProduct", results);
       return dispatch({
         type: ADD_PRODUCT,
         payload: results
@@ -43,7 +34,7 @@ export const actionsAddProduct = data => async dispatch => {
 };
 
 export const loadDetailAsync = id => async dispatch => {
-  await fetch(`/habit/${id}`)
+  await fetch(`/api/habits/${id}`)
     .then(response => {
       return response.json();
     })
@@ -56,23 +47,14 @@ export const loadDetailAsync = id => async dispatch => {
 };
 
 export const actionsGetThumbnail = category => async dispatch => {
-  // let config = {
-  //   method: "GET",
-  //   body: JSON.stringify({
-  //     category: category
-  //   }),
-  //   headers: {
-  //     "Content-type": "application/json"
-  //   }
-  // };
-  await fetch(`/thumbnail/${category}`) // sends request to server/server.js
+  await fetch(`/api/habits/cat/${category}`)
     .then(responseFromServer => {
-      return responseFromServer.json(); // changes from string to json format
+      return responseFromServer.json();
     })
     .then(results => {
       return dispatch({
         type: GET_THUMBNAIL,
         payload: results
-      }); // dispatches payload and type to reducer
+      });
     });
 };

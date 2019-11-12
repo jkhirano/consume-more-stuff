@@ -6,11 +6,12 @@ exports.up = function(knex) {
       .unique()
       .notNullable();
     table.string("password").notNullable();
-    table.integer("user_status_id").notNullable;
+    table.integer("user_status_id").notNullable();
     table
       .foreign("user_status_id")
       .references("id")
       .inTable("user_statuses");
+
     table.timestamps(true, true);
   });
 };
