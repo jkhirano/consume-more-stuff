@@ -11,9 +11,10 @@ class LoginComponent extends Component {
     };
   }
 
-  handleLoginSubmit() {
+  handleLoginSubmit = e => {
+    e.preventDefault();
     return this.props.dispatchLoginSubmit(this.state);
-  }
+  };
 
   handleEmailInput = event => {
     return this.setState({ email: event.target.value });

@@ -85,7 +85,7 @@ passport.deserializeUser(function(user, done) {
 router.use(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/secret",
+    successRedirect: "/",
     failureRedirect: "/login.html"
   })
 );

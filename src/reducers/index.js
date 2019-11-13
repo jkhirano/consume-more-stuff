@@ -3,7 +3,8 @@ import {
   ADD_PRODUCT,
   GET_THUMBNAIL,
   LOAD_DETAIL,
-  REGISTER_USER
+  REGISTER_USER,
+  LOGIN_USER
 } from "../actions";
 
 const defaultState = {
@@ -41,6 +42,10 @@ let reducer = (state = defaultState, action) => {
 
     case REGISTER_USER:
       return state;
+
+    case LOGIN_USER:
+      return state;
+
     default:
       return state;
   }

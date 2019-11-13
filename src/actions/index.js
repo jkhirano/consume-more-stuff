@@ -72,6 +72,7 @@ export const actionsLoginSubmit = loginInfo => async dispatch => {
 
   await fetch("/api/auth/login", config)
     .then(response => {
+      console.log("login successful??");
       return response.json();
     })
     .then(results => {
@@ -79,6 +80,9 @@ export const actionsLoginSubmit = loginInfo => async dispatch => {
         type: LOGIN_USER,
         payload: results
       });
+    })
+    .catch(err => {
+      console.log(err);
     });
 };
 
