@@ -111,7 +111,7 @@ router.post("/register", (req, res) => {
         .save()
         .then(user => {
           console.log(user);
-          return res.send({ message: "User created" });
+          return res.status(200);
         })
         .catch(err => {
           console.log(err);

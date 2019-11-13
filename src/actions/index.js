@@ -2,8 +2,8 @@ export const TOGGLE = "TOGGLE";
 export const LOAD_DETAIL = "LOAD_DETAIL";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 export const ADD_PRODUCT = "ADD_PRODUCT";
-export const LOGIN_SUBMIT = "LOGIN_SUBMIT";
-export const REGISTER_SUBMIT = "REGISTER_SUBMIT";
+export const LOGIN_USER = "LOGIN_USER";
+export const REGISTER_USER = "REGISTER_USER";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -76,7 +76,7 @@ export const actionsLoginSubmit = loginInfo => async dispatch => {
     })
     .then(results => {
       return dispatch({
-        type: LOGIN_SUBMIT,
+        type: LOGIN_USER,
         payload: results
       });
     });
@@ -96,6 +96,6 @@ export const actionsRegisterSubmit = registerInfo => async dispatch => {
       return response.json();
     })
     .then(results => {
-      return dispatch({ type: REGISTER_SUBMIT, payload: results });
+      return dispatch({ type: REGISTER_USER, payload: results });
     });
 };

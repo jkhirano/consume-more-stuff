@@ -8,20 +8,29 @@ class RegisterComponent extends Component {
     this.state = {
       email: "",
       password: "",
-      confirmPW: "",
+      confirmPassword: "",
       error: ""
     };
   }
 
-  handleRegisterSubmit() {
-    if (this.state.password !== this.state.confirmPW) {
-      console.log("passwords do not match");
-      return this.setState({ error: "passwords do not match" });
-    } else {
-      return this.props.dispatchRegisterSubmit(this.state);
-      //eventually will need to load LoginComponent
+  clearInput = () => {
+    let defaultState = this.state;
+    for (let key in defaultState) {
+      defaultState[key] = "";
     }
-  }
+    return this.setState(defaultState);
+  };
+
+  handleRegisterSubmit = e => {
+    e.preventDefault();
+
+    if (this.state.password !== this.state.confirmPassword) {
+      return this.setState({ error: "passwords do no match." });
+    } else {
+      this.props.dispatchRegisterSubmit(this.state);
+    }
+    //eventually will need to load LoginComponent
+  };
 
   handleInput = event => {
     const { value, name } = event.target;
@@ -57,15 +66,16 @@ class RegisterComponent extends Component {
               />
             </li>
             <li>
-              <label htmlFor="confirmPW">Confirm password:</label>
+              <label htmlFor="confirmPassword">Confirm password:</label>
               <br />
               <input
                 type="password"
-                name="confirmPW"
-                value={this.state.confirmPW}
+                name="confirmPassword"
+                value={this.state.confirmPassword}
                 onChange={this.handleInput}
               />
             </li>
+            {this.state.error ? <div>{this.state.error}</div> : null}
           </ul>
           <br />
           <br />
