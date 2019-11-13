@@ -36,9 +36,8 @@ class HabitList extends Component {
           Thumbnail Component
           {this.props.localHabits.map(element => {
             return (
-              <div className="habitList">
+              <div className="habitList" key={element.id}>
                 <ThumbnailHabit
-                  key={element.id}
                   habit={element}
                   changeDetailedId={this.changeDetailedId}
                 />
@@ -103,9 +102,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-HabitList = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HabitList);
+HabitList = connect(mapStateToProps, mapDispatchToProps)(HabitList);
 
 export default HabitList;

@@ -15,6 +15,7 @@ class RegisterComponent extends Component {
 
   handleRegisterSubmit() {
     if (this.state.password !== this.state.confirmPW) {
+      console.log("passwords do not match");
       return this.setState({ error: "passwords do not match" });
     } else {
       return this.props.dispatchRegisterSubmit(this.state);
@@ -36,7 +37,7 @@ class RegisterComponent extends Component {
         <form>
           <ul>
             <li>
-              <label for="email">Email:</label>
+              <label htmlFor="email">Email:</label>
               <br />
               <input
                 type="text"
@@ -46,7 +47,7 @@ class RegisterComponent extends Component {
               />
             </li>
             <li>
-              <label for="password">Password:</label>
+              <label htmlFor="password">Password:</label>
               <br />
               <input
                 type="password"
@@ -56,7 +57,7 @@ class RegisterComponent extends Component {
               />
             </li>
             <li>
-              <label for="confirmPW">Confirm password:</label>
+              <label htmlFor="confirmPW">Confirm password:</label>
               <br />
               <input
                 type="password"

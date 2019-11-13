@@ -30,7 +30,7 @@ class LoginComponent extends Component {
         <form>
           <ul>
             <li>
-              <label for="email">Email:</label>
+              <label htmlFor="email">Email:</label>
               <br />
               <input
                 type="text"
@@ -40,7 +40,7 @@ class LoginComponent extends Component {
               />
             </li>
             <li>
-              <label for="password">Password:</label>
+              <label htmlFor="password">Password:</label>
               <br />
               <input
                 type="password"
