@@ -16,28 +16,58 @@ router.get("/cat/:category", (req, res) => {
         category: query => query.where("category", req.params.category)
       },
       "condition",
+      // added
+      // { images: query => query.where("images", req.params.images) }
       "images"
     ];
   }
 
-  return req.database.Item.fetchAll({
-    withRelated: reqWithRelated
-  })
-    .then(results => {
-      return results.toJSON();
+  // let reqImages;
+  // if (req.params.images === )
+
+  // new Photo({ item_id: 1 })
+  //   .fetch({
+  //     withRelated: ["images"]
+  //   })
+  //   .then(function(photo) {
+  //     var images = photo.related("images");
+
+  //     if (images.item_id) {
+  //       return account.related("items").fetch();
+  //     }
+  //   });
+
+  return (
+    req.database.Item.fetchAll({
+      withRelated: reqWithRelated
     })
-    .then(results => {
-      return results.filter(result => {
-        return result.category.category;
-      });
-    })
-    .then(results => {
-      return res.json(results);
-    })
-    .catch(err => {
-      console.log(err);
-      return res.json(err);
-    });
+      .then(results => {
+        return results.toJSON();
+      })
+      .then(results => {
+        return results.filter(result => {
+          return result.category.category;
+        });
+      })
+      // try 1
+      // .then(results => {
+      //   return result.images;
+      // })
+      // try 2
+      // .then(function(photo) {
+      //   let images = results.related("images");
+      //   if (images.item_id) {
+      //     return images.related("items").fetch();
+      //   }
+      // })
+      .then(results => {
+        return res.json(results);
+      })
+      .catch(err => {
+        console.log(err);
+        return res.json(err);
+      })
+  );
 });
 
 router.get("/:id", (req, res) => {

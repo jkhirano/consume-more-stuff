@@ -33,7 +33,6 @@ class HabitList extends Component {
     return (
       <div>
         <ul>
-          Thumbnail Component
           {this.props.localHabits.map(element => {
             return (
               <div className="habitList">
@@ -45,11 +44,9 @@ class HabitList extends Component {
               </div>
             );
           })}
-          End of Thumbnail Component
         </ul>
 
         <div>
-          HabitList Component
           <DetailedHabit
             name={this.props.name}
             description={this.props.description}
@@ -65,7 +62,6 @@ class HabitList extends Component {
             created_at={this.props.created_at}
             updated_at={this.props.updated_at}
           />
-          End of HabitList Component
         </div>
       </div>
     );

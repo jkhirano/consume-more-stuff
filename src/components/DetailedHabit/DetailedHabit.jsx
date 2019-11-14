@@ -5,7 +5,6 @@ import "./DetailedHabit.css";
 let DetailedHabit = function(props) {
   return (
     <div className="detailedHabit">
-      DetailedHabit Component
       <img src="" alt="" />
       <div className="detailedName">{props.name}</div>
       <div className="detailedPrice">$ {props.price}</div>
@@ -31,7 +30,6 @@ let DetailedHabit = function(props) {
       </div>
       <button className="button">Add to cart</button>
       <button className="button">X</button>
-      End of Detailed Habit Component
     </div>
   );
 };
