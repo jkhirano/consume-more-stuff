@@ -31,7 +31,9 @@ let reducer = (state = defaultState, action) => {
       return Object.assign({}, state, action.payload);
 
     case GET_THUMBNAIL:
-      return Object.assign({}, state, { habits: action.payload });
+      return Object.assign({}, state, {
+        habits: action.payload
+      });
     default:
       return state;
   }
