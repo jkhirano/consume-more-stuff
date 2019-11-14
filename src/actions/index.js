@@ -72,7 +72,6 @@ export const actionsLoginSubmit = loginInfo => async dispatch => {
 
   await fetch("/api/auth/login", config)
     .then(response => {
-      console.log("login successful??");
       return response.json();
     })
     .then(results => {

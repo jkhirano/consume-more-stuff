@@ -82,13 +82,9 @@ passport.deserializeUser(function(user, done) {
   return done(null, user);
 });
 
-router.use(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login.html"
-  })
-);
+router.use("/login", passport.authenticate("local"), (req, res) => {
+  res.json({ authenticated: true, session: req.user });
+});
 
 router.get("/smoke", (req, res) => {
   return res.json({ message: "I see smoke in auth." });
@@ -127,7 +123,7 @@ router.get("/secret", isAuthenticated, (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.send("logged out");
+  res.json({ authenticated: true, session: "" });
 });
 
 module.exports = router;

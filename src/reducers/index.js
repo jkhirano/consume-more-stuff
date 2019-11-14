@@ -23,7 +23,8 @@ const defaultState = {
   status: { status: "" },
   user: { email: "" },
   created_at: "",
-  updated_at: ""
+  updated_at: "",
+  authenticated: false
 };
 
 let reducer = (state = defaultState, action) => {
@@ -44,7 +45,13 @@ let reducer = (state = defaultState, action) => {
       return state;
 
     case LOGIN_USER:
-      return state;
+      let { email, id, user_status_id } = action.payload.session;
+      let session = Object.assign(
+        {},
+        { email: email, id: id, user_status_id: user_status_id }
+      );
+      localStorage.setItem("session", JSON.stringify(session));
+      return Object.assign({}, state, { session: session });
 
     default:
       return state;
