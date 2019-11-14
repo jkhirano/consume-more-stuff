@@ -1,6 +1,7 @@
 import React from "react";
 import "./ThumbnailHabit.css";
 // import { styles } from "../ThumbnailHabit.module.css";
+import DeleteProduct from "../../containers/DeleteProduct";
 
 const ThumbnailHabit = function(props) {
   return (
@@ -15,6 +16,7 @@ const ThumbnailHabit = function(props) {
       {/* <span className={styles.name}>{props.habit.name}</span> */}
       <span className="price">${props.habit.price}</span> |
       <span className="condition">{props.habit.condition.condition}</span>
+      <DeleteProduct id={props.habit.id}/>
     </li>
   );
 };

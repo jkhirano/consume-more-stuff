@@ -8,27 +8,24 @@ class DeleteProduct extends Component {
         this.state ={
             data:[
                 //test data
-                {id:1, name: 'Hi'},
-                {id:2, name: 'Hello'},
-                {id:3, name: 'How are you'},
-                {id:4, name: '?'}
+                // {id:1, name: 'Hi'},
+                // {id:2, name: 'Hello'},
+                // {id:3, name: 'How are you'},
+                // {id:4, name: '?'}
             ]
         }
     }
 
     delete(){
-        this.props.deleteProduct(this.state.data[0].id);
+        this.props.deleteProduct(this.props.id);
     }
 
     render() {
-        const listItem = this.state.data.map((item)=>{
-            return <div key={item.id}>
-            <span>{item.name}</span> <button onClick={this.delete}>Delete</button>
-            </div>
-        })
-        return <div>
-            {listItem}
-        </div>  
+      return (
+        <div>
+          <button onClick={this.delete}>Delete</button>
+        </div>
+      )
     }
 };
 
