@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import styles from "./Header.module.css";
+import { connect } from "react-redux";
+import { actionsHandleLogout } from "../../actions";
 
 class Header extends Component {
+  handleLogout = () => {
+    return this.props.dispatchHandleLogout();
+  };
+
   render() {
     return (
       <div className={styles.header}>
@@ -26,10 +32,10 @@ class Header extends Component {
         </div>
 
         <div className={styles.auth}>
-          <a className={styles.register} href="/register.html">
+          <a className={styles.register} href="/">
             Register
           </a>
-          <a className={styles.login} href="/login.html">
+          <a className={styles.login} href="/">
             Login
             <img
               className={styles.loginImg}
@@ -37,10 +43,25 @@ class Header extends Component {
               alt="login icon"
             />
           </a>
+          <button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchHandleLogout: () => {
+      return dispatch(actionsHandleLogout());
+    }
+  };
+};
+
+Header = connect(mapStateToProps, mapDispatchToProps)(Header);
 
 export default Header;

@@ -4,6 +4,7 @@ export const GET_THUMBNAIL = "GET_THUMBNAIL";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const LOGIN_USER = "LOGIN_USER";
 export const REGISTER_USER = "REGISTER_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -100,5 +101,18 @@ export const actionsRegisterSubmit = registerInfo => async dispatch => {
     })
     .then(results => {
       return dispatch({ type: REGISTER_USER, payload: results });
+    });
+};
+
+export const actionsHandleLogout = () => async dispatch => {
+  await fetch("/api/auth/logout")
+    .then(response => {
+      response.json();
+    })
+    .then(results => {
+      return dispatch({ type: LOGOUT_USER, payload: results });
+    })
+    .catch(err => {
+      console.log(err);
     });
 };

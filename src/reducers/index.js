@@ -4,7 +4,8 @@ import {
   GET_THUMBNAIL,
   LOAD_DETAIL,
   REGISTER_USER,
-  LOGIN_USER
+  LOGIN_USER,
+  LOGOUT_USER
 } from "../actions";
 
 const defaultState = {
@@ -52,6 +53,10 @@ let reducer = (state = defaultState, action) => {
       );
       localStorage.setItem("session", JSON.stringify(session));
       return Object.assign({}, state, { session: session });
+
+    case LOGOUT_USER:
+      localStorage.removeItem("session");
+      return Object.assign({}, state, { session: action.payload.session });
 
     default:
       return state;
