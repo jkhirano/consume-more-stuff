@@ -1,9 +1,10 @@
-import { TOGGLE, ADD_PRODUCT, GET_THUMBNAIL, LOAD_DETAIL } from "../actions";
+import { TOGGLE, ADD_PRODUCT, GET_THUMBNAIL, LOAD_DETAIL, DELETE_PRODUCT } from "../actions";
 
 const defaultState = {
   habits: [],
   display: "all",
   addedProduct: false,
+  removeProduct: false,
   name: "",
   description: "",
   price: "",
@@ -32,7 +33,11 @@ let reducer = (state = defaultState, action) => {
 
     case GET_THUMBNAIL:
       return Object.assign({}, state, { habits: action.payload });
-    default:
+
+    case DELETE_PRODUCT:
+      return Object.assign({}, state, { removeProduct: true })
+    
+      default:
       return state;
   }
 };

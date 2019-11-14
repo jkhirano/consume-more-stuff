@@ -70,4 +70,16 @@ router.post("/", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  res.send('Got a DELETE request');
+  return req.database.Item.where({ id: req.params.id })
+    .destroy()
+    .then(results => {
+      return res.status(200).json({ message: 'Item Deleted' });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+})
+
 module.exports = router;

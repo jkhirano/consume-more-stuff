@@ -2,6 +2,7 @@ export const TOGGLE = "TOGGLE";
 export const LOAD_DETAIL = "LOAD_DETAIL";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 export const ADD_PRODUCT = "ADD_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -58,3 +59,15 @@ export const actionsGetThumbnail = category => async dispatch => {
       });
     });
 };
+
+export const actionsDeleteProduct = id => async dispatch => {
+  let config={
+    method: 'DELETE'
+  };
+  await fetch(`/api/habits/${id},`, config).then(response => {
+    dispatch({
+      type: DELETE_PRODUCT,
+      deleteProduct: response.data
+    })
+  })
+}
