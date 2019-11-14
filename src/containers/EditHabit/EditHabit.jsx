@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 
 import { editHabit } from "../../actions";
-import { connect } from 'react-redux';
+import { editHabitAsync } from "../../actions";
+import { connect } from "react-redux";
 
-import styles from "./EditHabit.module.css";
+// import styles from "./EditHabit.module.css";
 
 class EditHabit extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        nameInput = '',
-        categoryInput = ''
+      idInput: "",
+      nameInput: "",
+      categoryInput: ""
     };
   }
+
+  handleIdInput = e => {
+    const { value } = e.target;
+    this.setState({ idInput: value });
+  };
 
   handleNameInput = e => {
     const { value } = e.target;
@@ -26,13 +33,24 @@ class EditHabit extends Component {
   };
 
   handleUpdateHabit = () => {
-    const { nameInput: name, categoryInput: category } = this.state;
-    this.props.onEdit({ name, category });
+    this.props.onEdit({
+      id: parseInt(this.state.idInput),
+      name: this.state.nameInput,
+      category: this.state.categoryInput
+    });
   };
 
   render() {
     return (
       <div>
+        <div>
+          <input
+            type="text"
+            value={this.state.idInput}
+            onChange={this.handleIdInput}
+            placeholder="ID"
+          />
+        </div>
         <div>
           <input
             type="text"
@@ -58,12 +76,17 @@ class EditHabit extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  console.log("MAP STATE TO PROPS");
+  console.log(state);
+  return { habits: state.habits };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onEdit: habit => {
+      // dispatch(editHabitAsync(habit));
+      console.log("MAP DISPATCH TO PROPS ONEDIT HABIT");
+      console.log(habit);
       dispatch(editHabit(habit));
     }
   };

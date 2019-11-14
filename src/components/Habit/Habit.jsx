@@ -4,6 +4,7 @@ import React from "react";
 const Habit = function(props) {
   return (
     <div>
+      <span className="id">{props.id}</span>:
       <span className="name">{props.name}</span>:
       <span className="category">{props.category}</span>
     </div>
@@ -11,4 +12,3 @@ const Habit = function(props) {
 };
 
 export default Habit;
-// testing Github... there is a empty new line below this...

@@ -1,19 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import styles from "./App.module.css";
 import { connect } from "react-redux";
+import { loadHabitsAsync } from "../actions";
 import { loadHabits } from "../actions";
-import EditHabit from "../container/EditHabit";
+import EditHabit from "../containers/EditHabit";
 import HabitList from "../containers/HabitList";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
-  editHabit = ({ name, category }) => {
-    // const habits = this.props.habits.concat({ name, category });
-    this.setState({ habits });
-  };
+  // editHabit = ({ key, name, category }) => {
+  //   const habits = this.props.habits.concat({ key, name, category });
+  //   this.setState({ habits });
+  // };
+
+  componentDidMount() {
+    // this.props.loadHabitsAsync();
+    console.log("COMPONENT DID MOUNT");
+    console.log(this.props);
+    this.props.loadHabits();
+  }
 
   render() {
     return (
@@ -33,6 +41,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    // loadHabitsAsync: () => {
+    //   return dispatch(loadHabitsAsync());
+    // }
     loadHabits: () => {
       return dispatch(loadHabits());
     }
