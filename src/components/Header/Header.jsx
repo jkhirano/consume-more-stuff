@@ -55,7 +55,7 @@ class Header extends Component {
               alt="login icon"
             />
           </div>
-          l<button onClick={this.handleLogout}>Logout</button>
+          <div onClick={this.handleLogout}>Logout</div>
         </div>
       </div>
     );
