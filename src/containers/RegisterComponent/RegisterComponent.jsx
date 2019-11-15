@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionsRegisterSubmit } from "../../actions";
+import { actionsRegisterSubmit, actionsGoBack } from "../../actions";
 
 class RegisterComponent extends Component {
   constructor(props) {
@@ -40,10 +40,15 @@ class RegisterComponent extends Component {
     this.setState(state);
   };
 
+  handleGoBack = () => {
+    return this.props.dispatchGoBack();
+  };
+
   render() {
     return (
       <div className="registerComponent container">
-        <h3>Register:</h3>
+        <h3>Register now</h3>
+        <button onClick={this.handleGoBack}>Go back</button>
         <form>
           <ul>
             <li>
@@ -91,6 +96,9 @@ const mapDispatchToProps = dispatch => {
   return {
     dispatchRegisterSubmit: formData => {
       return dispatch(actionsRegisterSubmit(formData));
+    },
+    dispatchGoBack: () => {
+      return dispatch(actionsGoBack());
     }
   };
 };

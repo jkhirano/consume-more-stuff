@@ -109,8 +109,11 @@ class App extends Component {
           </div>
         </div>
         <AddProduct />
-        <RegisterComponent />
-        <LoginComponent />
+        {this.props.login_register === "register" ? (
+          <RegisterComponent />
+        ) : null}
+
+        {this.props.login_register === "login" ? <LoginComponent /> : null}
       </div>
     );
   }
@@ -118,7 +121,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    habits: state.habits
+    habits: state.habits,
+    login_register: state.login_register
   };
 };
 

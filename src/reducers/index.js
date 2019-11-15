@@ -5,7 +5,8 @@ import {
   LOAD_DETAIL,
   REGISTER_USER,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
+  GO_BACK
 } from "../actions";
 
 const defaultState = {
@@ -25,7 +26,8 @@ const defaultState = {
   user: { email: "" },
   created_at: "",
   updated_at: "",
-  authenticated: false
+  authenticated: false,
+  login_register: "login"
 };
 
 let reducer = (state = defaultState, action) => {
@@ -57,6 +59,9 @@ let reducer = (state = defaultState, action) => {
     case LOGOUT_USER:
       localStorage.removeItem("session");
       return Object.assign({}, state, { session: action.payload.session });
+
+    case GO_BACK:
+      return Object.assign({}, state, { login_register: action.payload });
 
     default:
       return state;

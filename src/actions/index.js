@@ -5,6 +5,7 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const LOGIN_USER = "LOGIN_USER";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const GO_BACK = "GO_BACK";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -115,4 +116,11 @@ export const actionsHandleLogout = () => async dispatch => {
     .catch(err => {
       console.log(err);
     });
+};
+
+export const actionsGoBack = () => dispatch => {
+  return dispatch({
+    type: GO_BACK,
+    payload: ""
+  });
 };
