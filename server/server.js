@@ -1,20 +1,25 @@
+//express server
 const express = require("express");
 const bodyParser = require("body-parser");
 const habits = require("./routes/habits.js");
 const decorator = require("./database/decorator");
-const methodOverride = require("method-override");
+const api = require("./api/index");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.use(express.static("./server/public"));
+
+//body-parsers and decorator
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(decorator);
 
-app.use(methodOverride("_method"));
+app.use("/api/habits", api.habits);
+app.use("/api/users", api.users);
+app.use("/api/auth", api.auth);
 
-app.use("/habits", habits);
-
-app.get("/", (req, res) => {
+app.get("/smoke", (req, res) => {
   return res.json({ message: "hiyee" });
 });
 

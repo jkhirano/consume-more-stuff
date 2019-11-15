@@ -7,7 +7,7 @@ services:
     command: ["node", "deploy-dev.js"]
     container_name: ${IMAGE_NAME}
     volumes:
-      - ".:/src/App"
+      - ".:/src/app"
     env_file: .env
     ports:
       - "${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}"

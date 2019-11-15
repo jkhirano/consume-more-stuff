@@ -8,20 +8,21 @@ class Item extends bookshelf.Model {
     return true;
   }
   user() {
-    return this.hasOne("User");
+    return this.hasOne("User", "id", "user_id");
   }
   images() {
-    return this.belongsToMany("Image");
+    return this.hasMany("Image");
   }
+
   category() {
-    return this.hasOne("ItemCategory");
+    return this.hasOne("ItemCategory", "id", "category_id");
   }
   condition() {
-    return this.hasOne("ItemCondition");
+    return this.hasOne("ItemCondition", "id", "condition_id");
   }
 
   status() {
-    return this.hasOne("ItemStatus");
+    return this.hasOne("ItemStatus", "id", "item_status_id");
   }
 }
 

@@ -25,15 +25,16 @@ exports.up = function(knex) {
     table
       .foreign("category_id")
       .references("id")
-      .inTable("itemCategories");
+      .inTable("item_categories");
     table
       .foreign("condition_id")
       .references("id")
-      .inTable("itemConditions");
+      .inTable("item_conditions");
     table
       .foreign("item_status_id")
       .references("id")
-      .inTable("itemStatuses");
+      .inTable("item_statuses");
+
     table.timestamps(true, true);
   });
 };

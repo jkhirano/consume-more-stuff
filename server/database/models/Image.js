@@ -7,8 +7,8 @@ class Image extends bookshelf.Model {
   get hasTimestamps() {
     return true;
   }
-  items() {
-    return this.hasOne("Item");
+  item() {
+    return this.belongsTo("Item");
   }
 }
 

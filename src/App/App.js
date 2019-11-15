@@ -11,11 +11,6 @@ class App extends Component {
   //   super(props);
   // }
 
-  // editHabit = ({ key, name, category }) => {
-  //   const habits = this.props.habits.concat({ key, name, category });
-  //   this.setState({ habits });
-  // };
-
   componentDidMount() {
     // this.props.loadHabitsAsync();
     console.log("COMPONENT DID MOUNT");
@@ -32,7 +27,6 @@ class App extends Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
     habits: state.habits
@@ -50,9 +44,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;
