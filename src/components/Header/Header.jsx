@@ -55,6 +55,7 @@ class Header extends Component {
               alt="login icon"
             />
           </div>
+          {sessionStorage.}
           <div onClick={this.handleLogout}>Logout</div>
         </div>
       </div>
