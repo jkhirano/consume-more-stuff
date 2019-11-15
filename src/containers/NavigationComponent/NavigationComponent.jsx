@@ -69,7 +69,7 @@ class NavigationComponent extends Component {
         <div className="navButton" onClick={this.handleViewAllClick}>
           All
         </div>
-        <div className="addButton">
+        <div className="navButton">
           <AddProductButton />
         </div>
       </nav>

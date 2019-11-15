@@ -15,9 +15,15 @@ class AddProductButton extends Component {
 
   render() {
     return (
-      <button className="addProduct" onClick={this.handleAddClick}>
-        New +
-      </button>
+      <img
+        className="navButton"
+        src="https://image.flaticon.com/icons/svg/1237/1237946.svg"
+        alt="add button"
+        onClick={this.handleAddClick}
+      />
+      // <button className="addProduct" onClick={this.handleAddClick}>
+      //   New +
+      // </button>
     );
   }
 }
