@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionsToggle } from "../../actions";
+import AddProductButton from "../AddProductButton";
 import "./Navigation.css";
 
 class NavigationComponent extends Component {
@@ -67,6 +68,9 @@ class NavigationComponent extends Component {
         />
         <div className="navButton" onClick={this.handleViewAllClick}>
           All
+        </div>
+        <div className="addButton">
+          <AddProductButton />
         </div>
       </nav>
     );

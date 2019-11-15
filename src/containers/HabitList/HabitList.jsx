@@ -20,7 +20,10 @@ class HabitList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.display !== prevProps.display) {
+    if (
+      this.props.display !== prevProps.display &&
+      this.props.display !== "add"
+    ) {
       this.props.getThumbnail(this.props.display);
     }
   }
