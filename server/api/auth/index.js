@@ -25,13 +25,6 @@ router.use(
 router.use(passport.initialize());
 router.use(passport.session());
 
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    return res.send({ message: "You have not been authenticated" });
-  }
-}
 passport.use(
   new LocalStrategy(
     {

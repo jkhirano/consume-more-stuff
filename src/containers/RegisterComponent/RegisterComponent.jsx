@@ -33,7 +33,8 @@ class RegisterComponent extends Component {
       return this.setState({ error: "passwords do no match." });
     } else {
       this.props.dispatchRegisterSubmit(this.state);
-      return this.clearInput();
+      this.clearInput();
+      return this.props.dispatchLogin();
     }
     //eventually will need to load LoginComponent
   };

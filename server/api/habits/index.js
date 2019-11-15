@@ -1,5 +1,14 @@
 const express = require("express");
 const router = express.Router();
+require("passport");
+
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    return res.send({ message: "You have not been authenticated" });
+  }
+}
 
 router.get("/smoke", (req, res) => {
   return res.json({ message: "I see smoke in habits." });
@@ -58,7 +67,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", isAuthenticated, (req, res) => {
   return req.database.Item.forge(req.body)
     .save()
     .then(results => {

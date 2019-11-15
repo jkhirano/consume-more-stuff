@@ -18,7 +18,8 @@ class LoginComponent extends Component {
 
   handleLoginSubmit = e => {
     e.preventDefault();
-    return this.props.dispatchLoginSubmit(this.state);
+    this.props.dispatchLoginSubmit(this.state);
+    return this.props.dispatchGoBack();
   };
 
   handleEmailInput = event => {
