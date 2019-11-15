@@ -6,7 +6,9 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GO_BACK
+  GO_BACK,
+  GO_REGISTER,
+  GO_LOGIN
 } from "../actions";
 
 const defaultState = {
@@ -27,7 +29,7 @@ const defaultState = {
   created_at: "",
   updated_at: "",
   authenticated: false,
-  login_register: "login"
+  login_register: ""
 };
 
 let reducer = (state = defaultState, action) => {
@@ -61,6 +63,12 @@ let reducer = (state = defaultState, action) => {
       return Object.assign({}, state, { session: action.payload.session });
 
     case GO_BACK:
+      return Object.assign({}, state, { login_register: action.payload });
+
+    case GO_REGISTER:
+      return Object.assign({}, state, { login_register: action.payload });
+
+    case GO_LOGIN:
       return Object.assign({}, state, { login_register: action.payload });
 
     default:

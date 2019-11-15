@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionsLoginSubmit, actionsGoBack } from "../../actions";
+import "./LoginComponent.css";
+import {
+  actionsLoginSubmit,
+  actionsGoBack,
+  actionsOpenRegister
+} from "../../actions";
 
 class LoginComponent extends Component {
   constructor(props) {
@@ -28,14 +33,18 @@ class LoginComponent extends Component {
     return this.props.dispatchGoBack();
   };
 
+  handleRegisterClick = () => {
+    return this.props.dispatchRegister();
+  };
+
   render() {
     return (
       <div className="loginComponent container">
-        <h3>Login:</h3>
+        <h3>Login</h3>
         <button onClick={this.handleGoBack}>Go back</button>
         <form>
           <ul>
-            <li>
+            <li className="input">
               <label htmlFor="email">Email:</label>
               <br />
               <input
@@ -45,7 +54,7 @@ class LoginComponent extends Component {
                 onChange={this.handleEmailInput}
               />
             </li>
-            <li>
+            <li className="input">
               <label htmlFor="password">Password:</label>
               <br />
               <input
@@ -60,6 +69,10 @@ class LoginComponent extends Component {
           <br />
           <button onClick={this.handleLoginSubmit}>Login</button>
         </form>
+        <div className="notAMember">
+          Not a member?
+          <p onClick={this.handleRegisterClick}>Register now.</p>
+        </div>
       </div>
     );
   }
@@ -72,6 +85,9 @@ const mapDispatchToProps = dispatch => {
     },
     dispatchGoBack: () => {
       return dispatch(actionsGoBack());
+    },
+    dispatchRegister: () => {
+      return dispatch(actionsOpenRegister());
     }
   };
 };

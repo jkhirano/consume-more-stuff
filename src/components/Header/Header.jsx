@@ -1,11 +1,23 @@
 import React, { Component } from "react";
 import styles from "./Header.module.css";
 import { connect } from "react-redux";
-import { actionsHandleLogout } from "../../actions";
+import {
+  actionsHandleLogout,
+  actionsOpenRegister,
+  actionsOpenLogin
+} from "../../actions";
 
 class Header extends Component {
   handleLogout = () => {
     return this.props.dispatchHandleLogout();
+  };
+
+  handleRegisterClick = () => {
+    return this.props.dispatchRegister();
+  };
+
+  handleLoginClick = () => {
+    return this.props.dispatchLogin();
   };
 
   render() {
@@ -32,18 +44,18 @@ class Header extends Component {
         </div>
 
         <div className={styles.auth}>
-          <a className={styles.register} href="/">
+          <div className={styles.register} onClick={this.handleRegisterClick}>
             Register
-          </a>
-          <a className={styles.login} href="/">
+          </div>
+          <div className={styles.login} onClick={this.handleLoginClick}>
             Login
             <img
               className={styles.loginImg}
               src="https://image.flaticon.com/icons/svg/149/149408.svg"
               alt="login icon"
             />
-          </a>
-          <button onClick={this.handleLogout}>Logout</button>
+          </div>
+          l<button onClick={this.handleLogout}>Logout</button>
         </div>
       </div>
     );
@@ -58,6 +70,12 @@ const mapDispatchToProps = dispatch => {
   return {
     dispatchHandleLogout: () => {
       return dispatch(actionsHandleLogout());
+    },
+    dispatchRegister: () => {
+      return dispatch(actionsOpenRegister());
+    },
+    dispatchLogin: () => {
+      return dispatch(actionsOpenLogin());
     }
   };
 };

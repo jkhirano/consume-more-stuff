@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { actionsRegisterSubmit, actionsGoBack } from "../../actions";
+import {
+  actionsRegisterSubmit,
+  actionsGoBack,
+  actionsOpenLogin
+} from "../../actions";
+import "./RegisterComponent.css";
 
 class RegisterComponent extends Component {
   constructor(props) {
@@ -44,14 +49,18 @@ class RegisterComponent extends Component {
     return this.props.dispatchGoBack();
   };
 
+  handleLoginClick = () => {
+    return this.props.dispatchLogin();
+  };
+
   render() {
     return (
       <div className="registerComponent container">
-        <h3>Register now</h3>
+        <h3>Register</h3>
         <button onClick={this.handleGoBack}>Go back</button>
         <form>
           <ul>
-            <li>
+            <li className="input">
               <label htmlFor="email">Email:</label>
               <br />
               <input
@@ -61,7 +70,7 @@ class RegisterComponent extends Component {
                 onChange={this.handleInput}
               />
             </li>
-            <li>
+            <li className="input">
               <label htmlFor="password">Password:</label>
               <br />
               <input
@@ -71,7 +80,7 @@ class RegisterComponent extends Component {
                 onChange={this.handleInput}
               />
             </li>
-            <li>
+            <li className="input">
               <label htmlFor="confirmPassword">Confirm password:</label>
               <br />
               <input
@@ -87,6 +96,10 @@ class RegisterComponent extends Component {
           <br />
           <button onClick={this.handleRegisterSubmit}>Register</button>
         </form>
+        <div className="AlreadyAMember">
+          Already a member?
+          <p onClick={this.handleLoginClick}>Login now.</p>
+        </div>
       </div>
     );
   }
@@ -99,6 +112,9 @@ const mapDispatchToProps = dispatch => {
     },
     dispatchGoBack: () => {
       return dispatch(actionsGoBack());
+    },
+    dispatchLogin: () => {
+      return dispatch(actionsOpenLogin());
     }
   };
 };

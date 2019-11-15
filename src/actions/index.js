@@ -6,6 +6,8 @@ export const LOGIN_USER = "LOGIN_USER";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const GO_BACK = "GO_BACK";
+export const GO_REGISTER = "GO_REGISTER";
+export const GO_LOGIN = "GO_LOGIN";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -122,5 +124,19 @@ export const actionsGoBack = () => dispatch => {
   return dispatch({
     type: GO_BACK,
     payload: ""
+  });
+};
+
+export const actionsOpenRegister = () => dispatch => {
+  return dispatch({
+    type: GO_REGISTER,
+    payload: "register"
+  });
+};
+
+export const actionsOpenLogin = () => dispatch => {
+  return dispatch({
+    type: GO_LOGIN,
+    payload: "login"
   });
 };
