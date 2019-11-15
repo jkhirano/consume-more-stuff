@@ -9,6 +9,7 @@ import {
 
 class Header extends Component {
   handleLogout = () => {
+    console.log("handleLogout");
     return this.props.dispatchHandleLogout();
   };
 
@@ -42,21 +43,29 @@ class Header extends Component {
           />
           <button className={styles.searchImg} type="submit"></button>
         </div>
-
         <div className={styles.auth}>
-          <div className={styles.register} onClick={this.handleRegisterClick}>
-            Register
-          </div>
-          <div className={styles.login} onClick={this.handleLoginClick}>
-            Login
-            <img
-              className={styles.loginImg}
-              src="https://image.flaticon.com/icons/svg/149/149408.svg"
-              alt="login icon"
-            />
-          </div>
-          {sessionStorage.}
-          <div onClick={this.handleLogout}>Logout</div>
+          {this.props.session ? (
+            <div className={styles.logout} onClick={this.handleLogout}>
+              Logout
+            </div>
+          ) : (
+            <>
+              <div
+                className={styles.register}
+                onClick={this.handleRegisterClick}
+              >
+                Register
+              </div>
+              <div className={styles.login} onClick={this.handleLoginClick}>
+                Login
+                <img
+                  className={styles.loginImg}
+                  src="https://image.flaticon.com/icons/svg/149/149408.svg"
+                  alt="login icon"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     );
@@ -64,12 +73,15 @@ class Header extends Component {
 }
 
 const mapStateToProps = () => {
-  return {};
+  return {
+    session: localStorage.getItem("session")
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatchHandleLogout: () => {
+      console.log("dispatchHandleLogout");
       return dispatch(actionsHandleLogout());
     },
     dispatchRegister: () => {

@@ -104,16 +104,22 @@ export const actionsRegisterSubmit = registerInfo => async dispatch => {
     })
     .then(results => {
       return dispatch({ type: REGISTER_USER, payload: results });
+    })
+    .catch(err => {
+      console.log(err);
+      return err;
     });
 };
 
 export const actionsHandleLogout = () => async dispatch => {
+  console.log("actionsHandleLogout");
   await fetch("/api/auth/logout")
     .then(response => {
+      console.log("actionsHandleLogout got response from server.");
       response.json();
     })
     .then(results => {
-      return dispatch({ type: LOGOUT_USER, payload: results });
+      return dispatch({ type: LOGOUT_USER, payload: null });
     })
     .catch(err => {
       console.log(err);

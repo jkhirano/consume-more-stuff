@@ -28,7 +28,6 @@ const defaultState = {
   user: { email: "" },
   created_at: "",
   updated_at: "",
-  authenticated: false,
   login_register: ""
 };
 
@@ -56,11 +55,12 @@ let reducer = (state = defaultState, action) => {
         { email: email, id: id, user_status_id: user_status_id }
       );
       localStorage.setItem("session", JSON.stringify(session));
-      return Object.assign({}, state, { session: session });
+      return Object.assign({}, state);
 
     case LOGOUT_USER:
+      console.log("reducer LOGOUT_USER");
       localStorage.removeItem("session");
-      return Object.assign({}, state, { session: action.payload.session });
+      return Object.assign({}, state);
 
     case GO_BACK:
       return Object.assign({}, state, { login_register: action.payload });
