@@ -36,11 +36,6 @@ let reducer = (state = defaultState, action) => {
 
     case EDIT_ITEM:
       return Object.assign({}, state, { editedItem: true });
-    // const filteredHabits = state.habits.filter(function(element) {
-    //   if (element.id !== action.payload.id) return element;
-    // });
-    // const mergedHabits = [...filteredHabits, action.payload];
-    // return { habits: mergedHabits };
 
     case LOAD_DETAIL:
       return Object.assign({}, state, action.payload);
@@ -56,29 +51,7 @@ let reducer = (state = defaultState, action) => {
 
 export default reducer;
 
-// RIAN'S CURRENTLY DEPRECATED CODE
-
-// import { EDIT_HABIT, LOAD_HABIT } from "../actions";
-
-// const defaultState = {
-//   habits: [
-//     {
-//       id: 1,
-//       name: "Bitting nail",
-//       category: "Hygiene"
-//     },
-//     {
-//       id: 2,
-//       name: "Not washing your hand",
-//       category: "Hygiene"
-//     },
-//     {
-//       id: 3,
-//       name: "Not taking shower",
-//       category: "Hygiene"
-//     }
-//   ]
-// };
+// RIAN'S CURRENTLY DEPRECATED CODE - MAY STILL NEED
 
 // const reducer = (state = defaultState, action) => {
 //   switch (action.type) {
@@ -88,13 +61,7 @@ export default reducer;
 //       });
 //       const mergedHabits = [...filteredHabits, action.payload];
 //       return { habits: mergedHabits };
-
-//     case LOAD_HABIT:
-//       return action.payload;
-
 //     default:
 //       return state;
 //   }
 // };
-
-// export default reducer;

@@ -2,7 +2,6 @@ import React from "react";
 // import styles from './DetailedHabit.module.css';
 import "./DetailedHabit.css";
 import EditItem from "../../containers/EditItem";
-import { actionsEditItem } from "../../actions";
 
 let DetailedHabit = function(props) {
   return (

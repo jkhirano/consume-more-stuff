@@ -102,39 +102,3 @@ const mapDispatchToProps = dispatch => {
 HabitList = connect(mapStateToProps, mapDispatchToProps)(HabitList);
 
 export default HabitList;
-
-// RIAN'S CURRENTLY DEPRECATED CODE
-
-// import React, { Component } from "react";
-// // import Habit from "../../components/Habit";
-// // import styles from './HabitList.module.css';
-// import { connect } from "react-redux";
-// import DetailedHabit from "../../components/DetailedHabit";
-// import ThumbnailHabit from "../../components/ThumbnailHabit";
-// import { loadDetailAsync } from "../../actions";
-// import { actionsGetThumbnail } from "../../actions";
-// import "./HabitList.css";
-
-// class HabitList extends Component {
-//   // constructor(props) {
-//   //   super(props);
-//   // }
-//   render() {
-//     return (
-//       <ul>
-//         {this.props.habits.map(habit => {
-//           return (
-//             <Habit
-//               key={habit.id}
-//               id={habit.id}
-//               name={habit.name}
-//               category={habit.category}
-//             />
-//           );
-//         })}
-//       </ul>
-//     );
-//   }
-// }
-
-// export default HabitList;
