@@ -5,7 +5,7 @@ import {
   actionsGoBack,
   actionsOpenLogin
 } from "../../actions";
-import "./RegisterComponent.css";
+import styles from "./RegisterComponent.module.css";
 
 class RegisterComponent extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class RegisterComponent extends Component {
     e.preventDefault();
 
     if (this.state.password !== this.state.confirmPassword) {
-      return this.setState({ error: "passwords do no match." });
+      return this.setState({ error: "passwords must match" });
     } else {
       this.props.dispatchRegisterSubmit(this.state);
       this.clearInput();
@@ -46,7 +46,7 @@ class RegisterComponent extends Component {
     this.setState(state);
   };
 
-  handleGoBack = () => {
+  handleClose = () => {
     return this.props.dispatchGoBack();
   };
 
@@ -56,50 +56,69 @@ class RegisterComponent extends Component {
 
   render() {
     return (
-      <div className="registerComponent container">
-        <h3>Register</h3>
-        <button onClick={this.handleGoBack}>Go back</button>
+      <div className={styles.registerComponent}>
         <form>
           <ul>
-            <li className="input">
-              <label htmlFor="email">Email:</label>
-              <br />
+            <li className={styles.input}>
+              <div className={styles.imgContainer}>
+                <img
+                  src="https://image.flaticon.com/icons/svg/25/25236.svg"
+                  alt="email"
+                />
+              </div>
               <input
                 type="text"
                 name="email"
                 value={this.state.email}
                 onChange={this.handleInput}
+                placeholder="Your email"
               />
             </li>
-            <li className="input">
-              <label htmlFor="password">Password:</label>
-              <br />
+            <li className={styles.input}>
+              <div className={styles.imgContainer}>
+                <img
+                  src="https://image.flaticon.com/icons/svg/25/25239.svg"
+                  alt="password"
+                />
+              </div>
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInput}
+                placeholder="Your password"
               />
             </li>
-            <li className="input">
-              <label htmlFor="confirmPassword">Confirm password:</label>
-              <br />
+            <li className={styles.input}>
+              <div className={styles.imgContainer}></div>
               <input
                 type="password"
                 name="confirmPassword"
                 value={this.state.confirmPassword}
                 onChange={this.handleInput}
+                placeholder="Retype password"
               />
             </li>
-            {this.state.error ? <div>{this.state.error}</div> : null}
+            <li className={styles.input}>
+              {this.state.error ? (
+                <p className={styles.error}>{this.state.error}</p>
+              ) : null}
+            </li>
           </ul>
-          <br />
-          <br />
           <button onClick={this.handleRegisterSubmit}>Register</button>
         </form>
-        <div className="AlreadyAMember">
-          Already a member?
-          <p onClick={this.handleLoginClick}>Login now.</p>
+        <div className={styles.options}>
+          <div className={styles.AlreadyAMember}>
+            <p>
+              Already a member?{" "}
+              <span onClick={this.handleLoginClick}>Login</span>
+            </p>
+          </div>
+          <div>
+            <button className={styles.close} onClick={this.handleClose}>
+              Close
+            </button>
+          </div>
         </div>
       </div>
     );
