@@ -5,7 +5,6 @@ import "./DetailedHabit.css";
 let DetailedHabit = function(props) {
   return (
     <div className="detailedHabit">
-      <img src="" alt="" />
       <div className="detailedName">{props.name}</div>
       <div className="detailedPrice">$ {props.price}</div>
       <span className="title">Description:</span> {props.description}
@@ -29,7 +28,7 @@ let DetailedHabit = function(props) {
         Posted on: {props.created_at}
       </div>
       <button className="button">Add to cart</button>
-      <button className="button">X</button>
+      <button className="exitButton">X</button>
     </div>
   );
 };

@@ -9,6 +9,7 @@ class AddProductButton extends Component {
   }
 
   handleAddClick = () => {
+    console.log("handleAddClick works");
     this.props.toggle("add");
     //
   };
@@ -21,9 +22,6 @@ class AddProductButton extends Component {
         alt="add button"
         onClick={this.handleAddClick}
       />
-      // <button className="addProduct" onClick={this.handleAddClick}>
-      //   New +
-      // </button>
     );
   }
 }
