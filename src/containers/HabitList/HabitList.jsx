@@ -5,6 +5,7 @@ import DetailedHabit from "../../components/DetailedHabit";
 import ThumbnailHabit from "../../components/ThumbnailHabit";
 import { loadDetailAsync } from "../../actions";
 import { actionsGetThumbnail } from "../../actions";
+import { actionsToggle } from "../../actions";
 
 class HabitList extends Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class HabitList extends Component {
   componentDidUpdate(prevProps) {
     if (
       this.props.display !== prevProps.display &&
-      this.props.display !== "add"
+      this.props.display !== "add" &&
+      this.props.display !== "detailed"
     ) {
       this.props.getThumbnail(this.props.display);
     }
@@ -29,6 +31,11 @@ class HabitList extends Component {
 
   changeDetailedId = id => {
     this.props.loadDetailAsync(id);
+    return this.handleDetailedClick();
+  };
+
+  handleDetailedClick = () => {
+    this.props.toggle("detailed");
   };
 
   render() {
@@ -139,7 +146,7 @@ class HabitList extends Component {
             created_at={this.props.created_at}
             updated_at={this.props.updated_at}
           />
-        </div>
+        )}
       </div>
     );
   }
@@ -171,7 +178,10 @@ const mapDispatchToProps = dispatch => {
       return dispatch(loadDetailAsync(id));
     },
     getThumbnail: category => {
-      return dispatch(actionsGetThumbnail(category)); // dispatches getThumbnail in actions/index.js
+      return dispatch(actionsGetThumbnail(category));
+    },
+    toggle: link => {
+      return dispatch(actionsToggle(link));
     }
   };
 };

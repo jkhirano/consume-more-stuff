@@ -1,15 +1,11 @@
 import React from "react";
 import "./ThumbnailHabit.css";
-// import { styles } from "../ThumbnailHabit.module.css";
 
 const ThumbnailHabit = function(props) {
-  // console.log("props habit", props.habit);
-  // console.log(props.habit.images[0].url);
   return (
     <ul
       className="thumbnail"
       onClick={function() {
-        // console.log("bleh", props.habit.images[0]);
         props.changeDetailedId(props.habit.id);
       }}
     >

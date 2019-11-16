@@ -48,6 +48,9 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-App = connect(mapStateToProps, mapDispatchToProps)(App);
+App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export default App;

@@ -21,9 +21,6 @@ class AddProductButton extends Component {
         alt="add button"
         onClick={this.handleAddClick}
       />
-      // <button className="addProduct" onClick={this.handleAddClick}>
-      //   New +
-      // </button>
     );
   }
 }
