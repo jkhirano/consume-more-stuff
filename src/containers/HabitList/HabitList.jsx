@@ -5,6 +5,7 @@ import DetailedHabit from "../../components/DetailedHabit";
 import ThumbnailHabit from "../../components/ThumbnailHabit";
 import { loadDetailAsync } from "../../actions";
 import { actionsGetThumbnail } from "../../actions";
+import { actionsToggle } from "../../actions";
 import "./HabitList.css";
 
 class HabitList extends Component {
@@ -22,7 +23,8 @@ class HabitList extends Component {
   componentDidUpdate(prevProps) {
     if (
       this.props.display !== prevProps.display &&
-      this.props.display !== "add"
+      this.props.display !== "add" &&
+      this.props.display !== "detailed"
     ) {
       this.props.getThumbnail(this.props.display);
     }
@@ -30,26 +32,31 @@ class HabitList extends Component {
 
   changeDetailedId = id => {
     this.props.loadDetailAsync(id);
+    return this.handleDetailedClick();
+  };
+
+  handleDetailedClick = () => {
+    this.props.toggle("detailed");
   };
 
   render() {
     return (
       <div>
-        <ul>
-          {this.props.localHabits.map(element => {
-            return (
-              <div className="habitList">
-                <ThumbnailHabit
-                  key={element.id}
-                  habit={element}
-                  changeDetailedId={this.changeDetailedId}
-                />
-              </div>
-            );
-          })}
-        </ul>
-
-        <div>
+        {this.props.display !== "detailed" ? (
+          <ul>
+            {this.props.localHabits.map(element => {
+              return (
+                <div className="habitList">
+                  <ThumbnailHabit
+                    key={element.id}
+                    habit={element}
+                    changeDetailedId={this.changeDetailedId}
+                  />
+                </div>
+              );
+            })}
+          </ul>
+        ) : (
           <DetailedHabit
             name={this.props.name}
             description={this.props.description}
@@ -65,7 +72,7 @@ class HabitList extends Component {
             created_at={this.props.created_at}
             updated_at={this.props.updated_at}
           />
-        </div>
+        )}
       </div>
     );
   }
@@ -97,7 +104,10 @@ const mapDispatchToProps = dispatch => {
       return dispatch(loadDetailAsync(id));
     },
     getThumbnail: category => {
-      return dispatch(actionsGetThumbnail(category)); // dispatches getThumbnail in actions/index.js
+      return dispatch(actionsGetThumbnail(category));
+    },
+    toggle: link => {
+      return dispatch(actionsToggle(link));
     }
   };
 };
