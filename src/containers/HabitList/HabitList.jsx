@@ -39,6 +39,7 @@ class HabitList extends Component {
     this.props.toggle("detailed");
   };
 
+  // fix this section
   render() {
     return (
       <div>
