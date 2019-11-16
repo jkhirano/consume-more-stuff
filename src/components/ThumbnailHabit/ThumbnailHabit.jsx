@@ -6,7 +6,7 @@ const ThumbnailHabit = function(props) {
   // console.log("props habit", props.habit);
   // console.log(props.habit.images[0].url);
   return (
-    <li
+    <ul
       className="thumbnail"
       onClick={function() {
         // console.log("bleh", props.habit.images[0]);
@@ -19,7 +19,7 @@ const ThumbnailHabit = function(props) {
       <li className="name">{props.habit.name}</li>
       <span className="price">${props.habit.price}</span> |
       <span className="condition">{props.habit.condition.condition}</span>
-    </li>
+    </ul>
   );
 };
 

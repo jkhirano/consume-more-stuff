@@ -32,10 +32,7 @@ class App extends Component {
             )}
           </div>
         </div>
-
-        <AddProduct />
         <Footer />
-
       </div>
     );
   }
