@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 import AddProduct from "../containers/AddProduct";
-import DeleteProduct from "../containers/DeleteProduct";
 
 class App extends Component {
   constructor(props) {
@@ -26,9 +25,9 @@ class App extends Component {
           </div>
           <div className="HabitList">
             <HabitList habits={this.props.habits} />
-          <DeleteProduct/>
           </div>
         </div>
+
         <div className="Footer">
           Footer
           <div>

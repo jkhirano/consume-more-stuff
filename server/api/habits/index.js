@@ -71,7 +71,7 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  res.send('Got a DELETE request');
+  console.log('EXPRESS ID', req.params.id);
   return req.database.Item.where({ id: req.params.id })
     .destroy()
     .then(results => {
@@ -81,5 +81,6 @@ router.delete("/:id", (req, res) => {
       console.log(err);
     });
 })
+
 
 module.exports = router;

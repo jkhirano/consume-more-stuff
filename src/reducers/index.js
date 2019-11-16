@@ -1,10 +1,15 @@
-import { TOGGLE, ADD_PRODUCT, GET_THUMBNAIL, LOAD_DETAIL, DELETE_PRODUCT } from "../actions";
+import {
+  TOGGLE,
+  ADD_PRODUCT,
+  GET_THUMBNAIL,
+  LOAD_DETAIL,
+  DELETE_PRODUCT
+} from "../actions";
 
 const defaultState = {
   habits: [],
   display: "all",
   addedProduct: false,
-  removeProduct: false,
   name: "",
   description: "",
   price: "",
@@ -12,10 +17,18 @@ const defaultState = {
   model: "",
   dimensions: "",
   view_count: "",
-  category: { category: "" },
-  condition: { condition: "" },
-  status: { status: "" },
-  user: { email: "" },
+  category: {
+    category: ""
+  },
+  condition: {
+    condition: ""
+  },
+  status: {
+    status: ""
+  },
+  user: {
+    email: ""
+  },
   created_at: "",
   updated_at: ""
 };
@@ -23,21 +36,28 @@ const defaultState = {
 let reducer = (state = defaultState, action) => {
   switch (action.type) {
     case TOGGLE:
-      return Object.assign({}, state, { display: action.payload });
+      return Object.assign({}, state, {
+        display: action.payload
+      });
 
     case ADD_PRODUCT:
-      return Object.assign({}, state, { addedProduct: true });
+      return Object.assign({}, state, {
+        addedProduct: true
+      });
 
     case LOAD_DETAIL:
       return Object.assign({}, state, action.payload);
 
     case GET_THUMBNAIL:
-      return Object.assign({}, state, { habits: action.payload });
+      return Object.assign({}, state, {
+        habits: action.payload
+      });
 
     case DELETE_PRODUCT:
-      return Object.assign({}, state, { removeProduct: true })
-    
-      default:
+      return console.log('reducer delete')
+    // return state.filter((habit, i) => i !== action.payload);
+
+    default:
       return state;
   }
 };

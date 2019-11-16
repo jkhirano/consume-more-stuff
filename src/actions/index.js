@@ -61,13 +61,13 @@ export const actionsGetThumbnail = category => async dispatch => {
 };
 
 export const actionsDeleteProduct = id => async dispatch => {
-  let config={
+  let config = {
     method: 'DELETE'
   };
-  await fetch(`/api/habits/${id},`, config).then(response => {
+  await fetch(`/api/habits/${id}`, config).then(response => {
     dispatch({
       type: DELETE_PRODUCT,
-      deleteProduct: response.data
+      payload: response
     })
   })
 }

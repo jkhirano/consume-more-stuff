@@ -2,7 +2,7 @@ import React from "react";
 // import styles from './DetailedHabit.module.css';
 import "./DetailedHabit.css";
 
-let DetailedHabit = function(props) {
+let DetailedHabit = function (props) {
   return (
     <div className="detailedHabit">
       DetailedHabit Component
