@@ -7,6 +7,7 @@ import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 import AddProduct from "../containers/AddProduct";
 import AuthBox from "../containers/AuthBox/AuthBox";
+import Footer from "../components/Footer";
 
 class App extends Component {
   constructor(props) {
@@ -25,93 +26,14 @@ class App extends Component {
             <NavigationComponent />
           </div>
           <div className="HabitList">
-            <HabitList habits={this.props.habits} />
+            {this.props.display !== "add" ? (
+              <HabitList habits={this.props.habits} />
+            ) : (
+              <AddProduct />
+            )}
           </div>
         </div>
-        <div className="Footer">
-          Footer
-          <div>
-            Icons made by{" "}
-            <a
-              href="https://www.flaticon.com/authors/dave-gandy"
-              title="Dave Gandy"
-            >
-              Dave Gandy
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <div>
-            Icons made by{" "}
-            <a href="https://www.flaticon.com/authors/google" title="Google">
-              Google
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <div>
-            Icons made by{" "}
-            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-              Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <div>
-            Icons made by{" "}
-            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-              Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <div>
-            Icons made by{" "}
-            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-              Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <div>
-            Icons made by{" "}
-            <a
-              href="https://www.flaticon.com/authors/smashicons"
-              title="Smashicons"
-            >
-              Smashicons
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <div>
-            Icons made by{" "}
-            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-              Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-        </div>
-        <AddProduct />
-        {this.props.login_register === "register" ||
-        this.props.login_register === "login" ? (
-          <AuthBox login_register={this.props.login_register} />
-        ) : null}
+        <Footer />
       </div>
     );
   }
@@ -120,7 +42,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     habits: state.habits,
-    login_register: state.login_register
+    login_register: state.login_register,
+    display: state.display
   };
 };
 

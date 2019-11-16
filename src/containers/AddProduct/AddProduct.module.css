@@ -1,0 +1,25 @@
+.newItem {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: #404040;
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.list {
+  list-style-type: none;
+  margin: 5px;
+  padding: 0;
+}
+
+button {
+  background-color: #de2322;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: #990000;
+}

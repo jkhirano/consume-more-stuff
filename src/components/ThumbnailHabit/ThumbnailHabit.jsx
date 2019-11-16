@@ -1,21 +1,21 @@
 import React from "react";
 import "./ThumbnailHabit.css";
-// import { styles } from "../ThumbnailHabit.module.css";
 
 const ThumbnailHabit = function(props) {
   return (
-    <div
+    <ul
       className="thumbnail"
       onClick={function() {
         props.changeDetailedId(props.habit.id);
       }}
     >
-      <li className="image">{props.habit.url}</li>
+      {props.habit.images && (
+        <img className="image" alt="habit" src={props.habit.images[0].url} />
+      )}
       <li className="name">{props.habit.name}</li>
-      {/* <span className={styles.name}>{props.habit.name}</span> */}
       <span className="price">${props.habit.price}</span> |
       <span className="condition">{props.habit.condition.condition}</span>
-    </div>
+    </ul>
   );
 };
 

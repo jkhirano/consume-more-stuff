@@ -25,6 +25,7 @@ router.get("/cat/:category", (req, res) => {
         category: query => query.where("category", req.params.category)
       },
       "condition",
+
       "images"
     ];
   }

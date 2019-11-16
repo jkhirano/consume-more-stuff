@@ -26,11 +26,27 @@
 
 .button {
   background-color: #de2322;
+  border: 1px solid #de2322;
   color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.button:hover {
+  background-color: #137a53;
+  border: 1px solid #137a53;
+}
+
+.exitButton {
+  background-color: white;
+  border: 1px solid #de2322;
+  color: #de2322;
   border-radius: 5px;
   padding: 5px;
 }
 
-.button:hover {
-  background-color: #990000;
+.exitButton:hover {
+  background-color: #de2322;
+  color: white;
 }

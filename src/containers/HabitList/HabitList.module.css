@@ -1,3 +1,17 @@
-.test {
-  font: bold;
+.habitList {
+  display: inline-flex;
+  padding: 10px;
+  padding-bottom: 5px;
+}
+
+.sectionName {
+  font-family: "Montserrat", sans-serif;
+  padding-left: 10px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.begoneError {
+  height: 0;
+  width: 0;
 }
