@@ -22,10 +22,9 @@ class EditItem extends Component {
     };
   }
 
-  handleIdInput = e => {
-    const { value } = e.target;
-    this.setState({ idInput: value });
-  };
+  componentDidMount() {
+    this.setState({ id: this.props.id });
+  }
 
   handleNameInput = e => {
     const { value } = e.target;
@@ -73,9 +72,8 @@ class EditItem extends Component {
   };
 
   handleUpdateItem = () => {
-    console.log("HANDLE UPDATE ITEM");
     this.props.onEdit({
-      id: parseInt(this.state.idInput),
+      id: this.props.id,
       name: this.state.nameInput,
       description: this.state.descriptionInput,
       price: parseFloat(this.state.priceInput),
@@ -90,86 +88,89 @@ class EditItem extends Component {
   };
 
   render() {
+    console.log("EDIT ITEM RENDER PROPS");
+    console.log(this.props.item);
     return (
       <div>
         <div>
-          <input
-            type="text"
-            value={this.state.idInput}
-            onChange={this.handleIdInput}
-            placeholder="ID"
-          />
-        </div>
-        <div>
+          Name:
           <input
             type="text"
             value={this.state.nameInput}
             onChange={this.handleNameInput}
-            placeholder="Name"
+            placeholder={this.props.item.name}
           />
         </div>
         <div>
+          Description:
           <input
             type="text"
             value={this.state.descriptionInput}
             onChange={this.handleDescriptionInput}
-            placeholder="Description"
+            placeholder={this.props.item.description}
           />
         </div>
         <div>
+          Price:
           <input
             type="text"
             value={this.state.priceInput}
             onChange={this.handlePriceInput}
-            placeholder="Price"
+            placeholder={this.props.item.price}
           />
         </div>
         <div>
+          Manufacturer:
           <input
             type="text"
             value={this.state.manufacturerInput}
             onChange={this.handleManufacturerInput}
-            placeholder="Manufacturer"
+            placeholder={this.props.item.manufacturer}
           />
         </div>
         <div>
+          Model:
           <input
             type="text"
             value={this.state.modelInput}
             onChange={this.handleModelInput}
-            placeholder="Model"
+            placeholder={this.props.item.model}
           />
         </div>
         <div>
+          Dimensions:
           <input
             type="text"
             value={this.state.dimensionsInput}
             onChange={this.handleDimensionsInput}
-            placeholder="Dimensions"
+            placeholder={this.props.item.dimensions}
           />
         </div>
         <div>
+          Category:
           <input
             type="text"
             value={this.state.categoryInput}
             onChange={this.handleCategoryInput}
-            placeholder="Category"
+            placeholder={this.props.item.category}
           />
         </div>
         <div>
+          Condition:
           <input
             type="text"
             value={this.state.conditionInput}
             onChange={this.handleConditionInput}
-            placeholder="Condition"
+            placeholder={this.props.item.condition}
           />
         </div>
         <div>
+          Item Status:
           <input
             type="text"
             value={this.state.itemStatusInput}
             onChange={this.handleItemStatusInput}
-            placeholder="Item Status"
+            placeholder={this.props.item.status}
           />
         </div>
         <div>
@@ -179,22 +180,6 @@ class EditItem extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   console.log("MAP STATE TO PROPS");
-//   console.log(state);
-//   return { habits: state.habits };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onEdit: habit => {
-//       console.log("MAP DISPATCH TO PROPS ONEDIT ITEM");
-//       console.log(habit);
-//       dispatch(actionsEditItem(habit));
-//     }
-//   };
-// };
 
 const mapStateToProps = store => {
   return {
