@@ -41,111 +41,113 @@ class HabitList extends Component {
   render() {
     return (
       <div>
-        <div>
-          {this.props.display === "all" ? (
-            <>
-              <h3 className={styles.sectionName}>Hygiene</h3>
+        {this.props.display !== "detailed" ? (
+          <div>
+            {this.props.display === "all" ? (
+              <>
+                <h3 className={styles.sectionName}>Hygiene</h3>
+                <ul>
+                  {this.props.localHabits.map(element => {
+                    if (element.category.category === "Hygiene") {
+                      return (
+                        <div className={styles.habitList}>
+                          <ThumbnailHabit
+                            key={element.id}
+                            habit={element}
+                            changeDetailedId={this.changeDetailedId}
+                          />
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </ul>
+                <h3 className={styles.sectionName}>Work</h3>
+                <ul>
+                  {this.props.localHabits.map(element => {
+                    if (element.category.category === "Work") {
+                      return (
+                        <div className={styles.habitList}>
+                          <ThumbnailHabit
+                            key={element.id}
+                            habit={element}
+                            changeDetailedId={this.changeDetailedId}
+                          />
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </ul>
+                <h3 className={styles.sectionName}>Social</h3>
+                <ul>
+                  {this.props.localHabits.map(element => {
+                    if (element.category.category === "Social") {
+                      return (
+                        <div className={styles.habitList}>
+                          <ThumbnailHabit
+                            key={element.id}
+                            habit={element}
+                            changeDetailedId={this.changeDetailedId}
+                          />
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </ul>
+                <h3 className={styles.sectionName}>Home</h3>
+                <ul>
+                  {this.props.localHabits.map(element => {
+                    if (element.category.category === "Home") {
+                      return (
+                        <div className={styles.habitList}>
+                          <ThumbnailHabit
+                            key={element.id}
+                            habit={element}
+                            changeDetailedId={this.changeDetailedId}
+                          />
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
+                </ul>
+              </>
+            ) : (
               <ul>
                 {this.props.localHabits.map(element => {
-                  if (element.category.category === "Hygiene") {
-                    return (
-                      <div className={styles.habitList}>
-                        <ThumbnailHabit
-                          key={element.id}
-                          habit={element}
-                          changeDetailedId={this.changeDetailedId}
-                        />
-                      </div>
-                    );
-                  }
-                  return null;
+                  return (
+                    <div className={styles.habitList}>
+                      <ThumbnailHabit
+                        key={element.id}
+                        habit={element}
+                        changeDetailedId={this.changeDetailedId}
+                      />
+                    </div>
+                  );
                 })}
               </ul>
-              <h3 className={styles.sectionName}>Work</h3>
-              <ul>
-                {this.props.localHabits.map(element => {
-                  if (element.category.category === "Work") {
-                    return (
-                      <div className={styles.habitList}>
-                        <ThumbnailHabit
-                          key={element.id}
-                          habit={element}
-                          changeDetailedId={this.changeDetailedId}
-                        />
-                      </div>
-                    );
-                  }
-                  return null;
-                })}
-              </ul>
-              <h3 className={styles.sectionName}>Social</h3>
-              <ul>
-                {this.props.localHabits.map(element => {
-                  if (element.category.category === "Social") {
-                    return (
-                      <div className={styles.habitList}>
-                        <ThumbnailHabit
-                          key={element.id}
-                          habit={element}
-                          changeDetailedId={this.changeDetailedId}
-                        />
-                      </div>
-                    );
-                  }
-                  return null;
-                })}
-              </ul>
-              <h3 className={styles.sectionName}>Home</h3>
-              <ul>
-                {this.props.localHabits.map(element => {
-                  if (element.category.category === "Home") {
-                    return (
-                      <div className={styles.habitList}>
-                        <ThumbnailHabit
-                          key={element.id}
-                          habit={element}
-                          changeDetailedId={this.changeDetailedId}
-                        />
-                      </div>
-                    );
-                  }
-                  return null;
-                })}
-              </ul>
-            </>
-          ) : (
-            <ul>
-              {this.props.localHabits.map(element => {
-                return (
-                  <div className={styles.habitList}>
-                    <ThumbnailHabit
-                      key={element.id}
-                      habit={element}
-                      changeDetailedId={this.changeDetailedId}
-                    />
-                  </div>
-                );
-              })}
-            </ul>
-          )}
-        </div>
-
-        <div>
-          <DetailedHabit
-            name={this.props.name}
-            description={this.props.description}
-            price={this.props.price}
-            manufacturer={this.props.manufacturer}
-            model={this.props.model}
-            dimensions={this.props.dimensions}
-            view_count={this.props.view_count}
-            email={this.props.email}
-            category={this.props.category}
-            condition={this.props.condition}
-            status={this.props.status}
-            created_at={this.props.created_at}
-            updated_at={this.props.updated_at}
-          />
+            )}
+          </div>
+        ) : (
+          <div>
+            <DetailedHabit
+              name={this.props.name}
+              description={this.props.description}
+              price={this.props.price}
+              manufacturer={this.props.manufacturer}
+              model={this.props.model}
+              dimensions={this.props.dimensions}
+              view_count={this.props.view_count}
+              email={this.props.email}
+              category={this.props.category}
+              condition={this.props.condition}
+              status={this.props.status}
+              created_at={this.props.created_at}
+              updated_at={this.props.updated_at}
+            />
+          </div>
         )}
       </div>
     );
