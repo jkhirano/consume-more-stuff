@@ -1,0 +1,40 @@
+.footer {
+  /* janelle's color: bf2416 */
+  background-color: #de2322;
+  height: 30px;
+  width: 100%;
+  font-size: 0.7em;
+  vertical-align: center;
+  z-index: 1;
+  position: bottom;
+  bottom: 0;
+  user-select: none;
+}
+
+.footerList {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.footerItem {
+  padding-top: 5px;
+  display: inline;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footerLink {
+  display: inline;
+  padding: 8px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footerLink:hover {
+  color: white;
+  transition: 0.3s;
+}

@@ -14,7 +14,8 @@
 .content-container {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 
 .Navigation {
@@ -26,7 +27,6 @@
 }
 
 .Footer {
-  width: 100%;
-  height: auto;
-  border: purple 1px dotted;
+  position: absolute;
+  bottom: 0;
 }
