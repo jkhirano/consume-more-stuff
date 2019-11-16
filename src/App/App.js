@@ -25,18 +25,25 @@ class App extends Component {
             <NavigationComponent />
           </div>
           <div className="HabitList">
-            <HabitList habits={this.props.habits} />
+            {this.props.display !== "add" ? (
+              <HabitList habits={this.props.habits} />
+            ) : (
+              <AddProduct />
+            )}
           </div>
         </div>
+
         <AddProduct />
         <Footer />
+
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    habits: state.habits
+    habits: state.habits,
+    display: state.display
   };
 };
 
