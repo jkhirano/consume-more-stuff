@@ -1,5 +1,4 @@
 import React from "react";
-// import styles from './DetailedHabit.module.css';
 import "./DetailedHabit.css";
 
 let DetailedHabit = function(props) {

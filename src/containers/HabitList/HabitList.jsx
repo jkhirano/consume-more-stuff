@@ -50,7 +50,6 @@ class HabitList extends Component {
                   <ThumbnailHabit
                     key={element.id}
                     habit={element}
-                    // onClick={this.handleDetailedClick}
                     changeDetailedId={this.changeDetailedId}
                   />
                 </div>

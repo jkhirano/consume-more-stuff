@@ -9,7 +9,6 @@ class AddProductButton extends Component {
   }
 
   handleAddClick = () => {
-    console.log("handleAddClick works");
     this.props.toggle("add");
     //
   };

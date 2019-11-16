@@ -4,8 +4,6 @@ const defaultState = {
   habits: [],
   display: "all",
   addedProduct: false,
-  // newProduct: false,
-  // detailedProduct: false,
   name: "",
   description: "",
   price: "",
