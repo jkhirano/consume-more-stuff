@@ -1,54 +1,31 @@
 //action types
-export const EDIT_HABIT = "EDIT_HABIT";
-export const LOAD_HABIT = "LOAD_HABIT";
+export const EDIT_ITEM = "EDIT_ITEM";
 
 //action creators
-export function editHabit(payload) {
-  return {
-    type: EDIT_HABIT,
-    payload
-  };
-}
-
-export function loadHabits(payload) {
-  console.log("LOADHABITS");
-  console.log(payload);
-  return {
-    type: LOAD_HABIT,
-    payload
-  };
-}
-
-// action creators async
-export const loadHabitsAsync = () => async dispatch => {
-  await fetch("/habits")
-    .then(response => {
-      return response.json();
-    })
-    .then(habits => {
-      dispatch({
-        type: LOAD_HABIT,
-        payload: habits
-      });
-    });
-};
-
-export const editHabitAsync = habit => async dispatch => {
-  await fetch("/habits", {
+export const actionsEditItem = data => async dispatch => {
+  console.log("ACTIONS EDIT ITEM");
+  console.log(data);
+  console.log(JSON.stringify(data));
+  let config = {
     method: "POST",
-    body: JSON.stringify(habit),
-    header: {
-      "Content-Type": "application/json"
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json"
     }
-  })
+  };
+  console.log(config);
+  await fetch(`/api/habits/${data.id}`, config)
     .then(response => {
       return response.json();
     })
-    .then(body => {
-      dispatch({
-        type: EDIT_HABIT,
-        payload: body
+    .then(results => {
+      return dispatch({
+        type: EDIT_ITEM,
+        payload: results
       });
+    })
+    .catch(err => {
+      console.log(err);
     });
 };
 

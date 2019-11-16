@@ -1,6 +1,8 @@
 import React from "react";
 // import styles from './DetailedHabit.module.css';
 import "./DetailedHabit.css";
+import EditItem from "../../containers/EditItem";
+import { actionsEditItem } from "../../actions";
 
 let DetailedHabit = function(props) {
   return (
@@ -30,6 +32,9 @@ let DetailedHabit = function(props) {
       </div>
       <button className="button">Add to cart</button>
       <button className="button">X</button>
+      <div>
+        <EditItem />
+      </div>
     </div>
   );
 };
