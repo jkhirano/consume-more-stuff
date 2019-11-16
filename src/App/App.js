@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 import AddProduct from "../containers/AddProduct";
+import Footer from "../components/Footer";
 
 class App extends Component {
   constructor(props) {
