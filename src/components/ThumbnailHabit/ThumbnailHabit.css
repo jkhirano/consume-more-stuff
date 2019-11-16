@@ -16,6 +16,11 @@
   color: #de2322;
 }
 
+.condition {
+  /* added to fix broken reference in ThumbnailHabit.jsx */
+  color: black;
+}
+
 /* .details {
   display: inline-flex;
 } */

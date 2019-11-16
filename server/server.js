@@ -1,7 +1,7 @@
 //express server
 const express = require("express");
 const bodyParser = require("body-parser");
-const habits = require("./routes/habits.js");
+const habits = require("./api/habits/index");
 const decorator = require("./database/decorator");
 const api = require("./api/index");
 
