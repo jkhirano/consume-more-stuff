@@ -3,7 +3,7 @@ import "./ThumbnailHabit.css";
 
 const ThumbnailHabit = function(props) {
   return (
-    <li
+    <ul
       className="thumbnail"
       onClick={function() {
         props.changeDetailedId(props.habit.id);
@@ -15,7 +15,7 @@ const ThumbnailHabit = function(props) {
       <li className="name">{props.habit.name}</li>
       <span className="price">${props.habit.price}</span> |
       <span className="condition">{props.habit.condition.condition}</span>
-    </li>
+    </ul>
   );
 };
 
