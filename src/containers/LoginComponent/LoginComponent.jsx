@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./LoginComponent.css";
+import styles from "./LoginComponent.module.css";
 import {
   actionsLoginSubmit,
   actionsGoBack,
@@ -30,7 +30,7 @@ class LoginComponent extends Component {
     return this.setState({ password: event.target.value });
   };
 
-  handleGoBack = () => {
+  handleClose = () => {
     return this.props.dispatchGoBack();
   };
 
@@ -40,39 +40,67 @@ class LoginComponent extends Component {
 
   render() {
     return (
-      <div className="loginComponent container">
-        <h3>Login</h3>
-        <button onClick={this.handleGoBack}>Go back</button>
+      <div className={styles.loginComponent}>
         <form>
           <ul>
-            <li className="input">
-              <label htmlFor="email">Email:</label>
-              <br />
+            <li className={styles.input}>
+              <div className={styles.imgContainer}>
+                <img
+                  src="https://image.flaticon.com/icons/svg/25/25236.svg"
+                  alt="email"
+                />
+              </div>
               <input
                 type="text"
                 name="email"
                 value={this.state.email}
                 onChange={this.handleEmailInput}
+                placeholder="Your email"
               />
             </li>
-            <li className="input">
-              <label htmlFor="password">Password:</label>
-              <br />
+            <li className={styles.input}>
+              <div className={styles.imgContainer}>
+                <img
+                  src="https://image.flaticon.com/icons/svg/25/25239.svg"
+                  alt="password"
+                />
+              </div>
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handlePasswordInput}
+                placeholder="Your password"
               />
             </li>
           </ul>
-          <br />
-          <br />
-          <button onClick={this.handleLoginSubmit}>Login</button>
+
+          <button onClick={this.handleLoginSubmit}>
+            Login{" "}
+            <img
+              src="https://image.flaticon.com/icons/svg/149/149408.svg"
+              alt="login icon"
+              className={styles.loginImg}
+            />
+          </button>
         </form>
-        <div className="notAMember">
-          Not a member?
-          <p onClick={this.handleRegisterClick}>Register now.</p>
+        <div className={styles.options}>
+          <div className={styles.additionalOptions}>
+            <div className={styles.notAMember}>
+              <p>
+                Not a member?{" "}
+                <span onClick={this.handleRegisterClick}>Sign up</span>
+              </p>
+            </div>
+            <div className={styles.notAMember}>
+              <p>
+                Forgot <span onClick={this.handleRegisterClick}>Password</span>
+              </p>
+            </div>
+          </div>
+          <button className={styles.close} onClick={this.handleClose}>
+            Close
+          </button>
         </div>
       </div>
     );

@@ -6,8 +6,7 @@ import Header from "../components/Header";
 import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 import AddProduct from "../containers/AddProduct";
-import LoginComponent from "../containers/LoginComponent";
-import RegisterComponent from "../containers/RegisterComponent";
+import AuthBox from "../containers/AuthBox/AuthBox";
 
 class App extends Component {
   constructor(props) {
@@ -109,11 +108,10 @@ class App extends Component {
           </div>
         </div>
         <AddProduct />
-        {this.props.login_register === "register" ? (
-          <RegisterComponent />
+        {this.props.login_register === "register" ||
+        this.props.login_register === "login" ? (
+          <AuthBox login_register={this.props.login_register} />
         ) : null}
-
-        {this.props.login_register === "login" ? <LoginComponent /> : null}
       </div>
     );
   }
