@@ -43,12 +43,11 @@ class LoginComponent extends Component {
       <div className={styles.loginComponent}>
         <form>
           <ul>
-            <li className={styles.liInput}>
+            <li className={styles.input}>
               <div className={styles.imgContainer}>
                 <img
                   src="https://image.flaticon.com/icons/svg/25/25236.svg"
                   alt="email"
-                  className={styles.img}
                 />
               </div>
               <input
@@ -59,12 +58,11 @@ class LoginComponent extends Component {
                 placeholder="Your email"
               />
             </li>
-            <li className={styles.liInput}>
+            <li className={styles.input}>
               <div className={styles.imgContainer}>
                 <img
                   src="https://image.flaticon.com/icons/svg/25/25239.svg"
                   alt="password"
-                  className={styles.img}
                 />
               </div>
               <input
@@ -77,7 +75,7 @@ class LoginComponent extends Component {
             </li>
           </ul>
 
-          <button className={styles.button} onClick={this.handleLoginSubmit}>
+          <button onClick={this.handleLoginSubmit}>
             Login{" "}
             <img
               src="https://image.flaticon.com/icons/svg/149/149408.svg"
@@ -91,23 +89,12 @@ class LoginComponent extends Component {
             <div className={styles.notAMember}>
               <p>
                 Not a member?{" "}
-                <span
-                  className={styles.span}
-                  onClick={this.handleRegisterClick}
-                >
-                  Sign up
-                </span>
+                <span onClick={this.handleRegisterClick}>Sign up</span>
               </p>
             </div>
             <div className={styles.notAMember}>
               <p>
-                Forgot{" "}
-                <span
-                  className={styles.span}
-                  onClick={this.handleRegisterClick}
-                >
-                  Password
-                </span>
+                Forgot <span onClick={this.handleRegisterClick}>Password</span>
               </p>
             </div>
           </div>

@@ -3,7 +3,7 @@ import styles from "./ThumbnailHabit.module.css";
 
 const ThumbnailHabit = function(props) {
   return (
-    <div
+    <ul
       className="thumbnail"
       onClick={function() {
         props.changeDetailedId(props.habit.id);
@@ -16,12 +16,10 @@ const ThumbnailHabit = function(props) {
           src={props.habit.images[0].url}
         />
       )}
-      <li className={styles.name}>{props.habit.name}</li>
-      <span className={styles.price}>${props.habit.price}</span> |
-      <span className={styles.condition}>
-        {props.habit.condition.condition}
-      </span>
-    </div>
+      <li className="name">{props.habit.name}</li>
+      <span className="price">${props.habit.price}</span> |
+      <span className="condition">{props.habit.condition.condition}</span>
+    </ul>
   );
 };
 
