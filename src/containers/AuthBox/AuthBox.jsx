@@ -54,10 +54,6 @@ class AuthBox extends Component {
             <img
               src="https://i.postimg.cc/050ygKWP/man-user.png"
               alt="login icon"
-<<<<<<< HEAD
-              className={styles.authImg}
-=======
->>>>>>> 28fa94c4d98aa11e2ac2473797ed989d0a7ccc4a
             />
             Login
           </div>
@@ -73,10 +69,6 @@ class AuthBox extends Component {
             <img
               src="https://i.postimg.cc/q7q3qXFs/new-user-1.png"
               alt="register icon"
-<<<<<<< HEAD
-              className={styles.authImg}
-=======
->>>>>>> 28fa94c4d98aa11e2ac2473797ed989d0a7ccc4a
             />
             Register
           </div>
