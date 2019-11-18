@@ -59,11 +59,12 @@ class RegisterComponent extends Component {
       <div className={styles.registerComponent}>
         <form>
           <ul>
-            <li className={styles.input}>
+            <li className={styles.form_li}>
               <div className={styles.imgContainer}>
                 <img
                   src="https://image.flaticon.com/icons/svg/25/25236.svg"
                   alt="email"
+                  className={styles.reg_icon_img}
                 />
               </div>
               <input
@@ -72,13 +73,15 @@ class RegisterComponent extends Component {
                 value={this.state.email}
                 onChange={this.handleInput}
                 placeholder="Your email"
+                className={styles.form_input}
               />
             </li>
-            <li className={styles.input}>
+            <li className={styles.form_li}>
               <div className={styles.imgContainer}>
                 <img
                   src="https://image.flaticon.com/icons/svg/25/25239.svg"
                   alt="password"
+                  className={styles.reg_icon_img}
                 />
               </div>
               <input
@@ -87,9 +90,10 @@ class RegisterComponent extends Component {
                 value={this.state.password}
                 onChange={this.handleInput}
                 placeholder="Your password"
+                className={styles.form_input}
               />
             </li>
-            <li className={styles.input}>
+            <li className={styles.form_li}>
               <div className={styles.imgContainer}></div>
               <input
                 type="password"
@@ -97,25 +101,36 @@ class RegisterComponent extends Component {
                 value={this.state.confirmPassword}
                 onChange={this.handleInput}
                 placeholder="Retype password"
+                className={styles.form_input}
               />
             </li>
-            <li className={styles.input}>
+            <li className={styles.form_li}>
               {this.state.error ? (
                 <p className={styles.error}>{this.state.error}</p>
               ) : null}
             </li>
           </ul>
-          <button onClick={this.handleRegisterSubmit}>Register</button>
+          <button
+            onClick={this.handleRegisterSubmit}
+            className={styles.reg_button}
+          >
+            Register
+          </button>
         </form>
         <div className={styles.options}>
           <div className={styles.AlreadyAMember}>
             <p>
               Already a member?{" "}
-              <span onClick={this.handleLoginClick}>Login</span>
+              <span
+                className={styles.options_span}
+                onClick={this.handleLoginClick}
+              >
+                Login
+              </span>
             </p>
           </div>
           <div>
-            <button className={styles.close} onClick={this.handleClose}>
+            <button className={styles.close_button} onClick={this.handleClose}>
               Close
             </button>
           </div>

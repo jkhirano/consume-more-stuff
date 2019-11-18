@@ -3,8 +3,8 @@
   display: block;
   width: 500px;
   position: absolute;
-  right: 35vw;
-  top: 35vh;
+  left: 35vw;
+  top: 20vh;
   box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -20,16 +20,21 @@
   letter-spacing: 1px;
 }
 
-.toggleOption {
+.toggle_deselected {
   width: stretch;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60%;
   margin: 0 10px 0 10px;
+  opacity: 0.5;
 }
 
-.toggleOption2 {
+.toggle_deselected:hover {
+  cursor: pointer;
+}
+
+.toggle_selected {
   width: stretch;
   display: flex;
   justify-content: center;
@@ -39,13 +44,21 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.toggleOption:hover {
+.toggle_selected:hover {
   background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-img {
+.icon {
   opacity: 1;
   margin-right: 5px;
   height: 18px;
+  width: auto;
+}
+
+.icon_deselected {
+  opacity: 0.5;
+  margin-right: 5px;
+  height: 18px;
+  width: auto;
 }

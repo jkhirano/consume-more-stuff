@@ -45,8 +45,8 @@ class AuthBox extends Component {
           <div
             className={
               this.props.login_register !== "login"
-                ? styles.toggleOption
-                : styles.toggleOption2
+                ? styles.toggle_deselected
+                : styles.toggle_selected
             }
             onClick={this.toggle}
             id="login"
@@ -54,14 +54,15 @@ class AuthBox extends Component {
             <img
               src="https://i.postimg.cc/050ygKWP/man-user.png"
               alt="login icon"
+              className={styles.icon}
             />
             Login
           </div>
           <div
             className={
               this.props.login_register !== "register"
-                ? styles.toggleOption
-                : styles.toggleOption2
+                ? styles.toggle_deselected
+                : styles.toggle_selected
             }
             onClick={this.toggle}
             id="register"
@@ -69,6 +70,11 @@ class AuthBox extends Component {
             <img
               src="https://i.postimg.cc/q7q3qXFs/new-user-1.png"
               alt="register icon"
+              className={
+                this.props.login_register !== "register"
+                  ? styles.icon_deselected
+                  : styles.icon
+              }
             />
             Register
           </div>
