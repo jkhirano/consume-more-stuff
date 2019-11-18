@@ -29,6 +29,7 @@ class Header extends Component {
             <img
               src="https://contenthub-static.grammarly.com/blog/wp-content/uploads/2019/01/bad-habits-760x400.jpg"
               alt="https://via.placeholder.com/300x50"
+              className={styles.bannerImg}
             />
           </a>
         </div>

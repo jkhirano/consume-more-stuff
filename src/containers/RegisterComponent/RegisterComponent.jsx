@@ -59,11 +59,12 @@ class RegisterComponent extends Component {
       <div className={styles.registerComponent}>
         <form>
           <ul>
-            <li className={styles.input}>
+            <li className={styles.liInput}>
               <div className={styles.imgContainer}>
                 <img
                   src="https://image.flaticon.com/icons/svg/25/25236.svg"
                   alt="email"
+                  className={styles.img}
                 />
               </div>
               <input
@@ -74,11 +75,12 @@ class RegisterComponent extends Component {
                 placeholder="Your email"
               />
             </li>
-            <li className={styles.input}>
+            <li className={styles.liInput}>
               <div className={styles.imgContainer}>
                 <img
                   src="https://image.flaticon.com/icons/svg/25/25239.svg"
                   alt="password"
+                  className={styles.img}
                 />
               </div>
               <input
@@ -89,7 +91,7 @@ class RegisterComponent extends Component {
                 placeholder="Your password"
               />
             </li>
-            <li className={styles.input}>
+            <li className={styles.liInput}>
               <div className={styles.imgContainer}></div>
               <input
                 type="password"
@@ -99,19 +101,23 @@ class RegisterComponent extends Component {
                 placeholder="Retype password"
               />
             </li>
-            <li className={styles.input}>
+            <li className={styles.liInput}>
               {this.state.error ? (
                 <p className={styles.error}>{this.state.error}</p>
               ) : null}
             </li>
           </ul>
-          <button onClick={this.handleRegisterSubmit}>Register</button>
+          <button className={styles.button} onClick={this.handleRegisterSubmit}>
+            Register
+          </button>
         </form>
         <div className={styles.options}>
           <div className={styles.AlreadyAMember}>
             <p>
               Already a member?{" "}
-              <span onClick={this.handleLoginClick}>Login</span>
+              <span className={styles.span} onClick={this.handleLoginClick}>
+                Login
+              </span>
             </p>
           </div>
           <div>

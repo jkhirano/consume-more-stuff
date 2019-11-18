@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
-.app-container {
+.appContainer {
   display: flex;
   flex-direction: column;
 }
@@ -11,10 +11,11 @@
   height: 75px;
 }
 
-.content-container {
+.contentContainer {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 
 .Navigation {
@@ -26,7 +27,10 @@
 }
 
 .Footer {
-  width: 100%;
-  height: auto;
-  border: purple 1px dotted;
+  position: absolute;
+  bottom: 0;
+}
+
+li {
+  list-style: none;
 }

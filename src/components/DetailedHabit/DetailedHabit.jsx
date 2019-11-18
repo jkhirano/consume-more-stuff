@@ -1,12 +1,9 @@
 import React from "react";
-// import styles from './DetailedHabit.module.css';
 import "./DetailedHabit.css";
 
 let DetailedHabit = function(props) {
   return (
     <div className="detailedHabit">
-      DetailedHabit Component
-      <img src="" alt="" />
       <div className="detailedName">{props.name}</div>
       <div className="detailedPrice">$ {props.price}</div>
       <span className="title">Description:</span> {props.description}
@@ -30,8 +27,7 @@ let DetailedHabit = function(props) {
         Posted on: {props.created_at}
       </div>
       <button className="button">Add to cart</button>
-      <button className="button">X</button>
-      End of Detailed Habit Component
+      <button className="exitButton">X</button>
     </div>
   );
 };
