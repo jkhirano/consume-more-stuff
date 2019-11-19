@@ -1,0 +1,64 @@
+.authBox {
+  background: #de2322;
+  display: block;
+  width: 500px;
+  position: absolute;
+  left: 35vw;
+  top: 20vh;
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+}
+
+.toggler {
+  display: flex;
+  height: 75px;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.toggle_deselected {
+  width: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  margin: 0 10px 0 10px;
+  opacity: 0.5;
+}
+
+.toggle_deselected:hover {
+  cursor: pointer;
+}
+
+.toggle_selected {
+  width: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  margin: 0 10px 0 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.toggle_selected:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.icon {
+  opacity: 1;
+  margin-right: 5px;
+  height: 18px;
+  width: auto;
+}
+
+.icon_deselected {
+  opacity: 0.5;
+  margin-right: 5px;
+  height: 18px;
+  width: auto;
+}

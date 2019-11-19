@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./App.css";
+import styles from "./App.module.css";
 
 import Header from "../components/Header";
 import HabitList from "../containers/HabitList";
 import NavigationComponent from "../containers/NavigationComponent";
 import AddProduct from "../containers/AddProduct";
+import AuthBox from "../containers/AuthBox/AuthBox";
 import Footer from "../components/Footer";
 
 class App extends Component {
@@ -16,15 +17,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-container">
-        <div className="Header">
+      <div className={styles.appContainer}>
+        <div className={styles.Header}>
           <Header />
         </div>
-        <div className="content-container">
-          <div className="Navigation">
+        <div className={styles.contentContainer}>
+          <div className={styles.Navigation}>
             <NavigationComponent />
           </div>
-          <div className="HabitList">
+          <div className={styles.HabitList}>
             {this.props.display !== "add" ? (
               <HabitList habits={this.props.habits} />
             ) : (
@@ -33,13 +34,19 @@ class App extends Component {
           </div>
         </div>
         <Footer />
+        {this.props.login_register === "register" ||
+        this.props.login_register === "login" ? (
+          <AuthBox login_register={this.props.login_register} />
+        ) : null}
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     habits: state.habits,
+    login_register: state.login_register,
     display: state.display
   };
 };
@@ -48,9 +55,6 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;

@@ -25,13 +25,6 @@ router.use(
 router.use(passport.initialize());
 router.use(passport.session());
 
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    return res.send({ message: "You have not been authenticated" });
-  }
-}
 passport.use(
   new LocalStrategy(
     {
@@ -82,13 +75,9 @@ passport.deserializeUser(function(user, done) {
   return done(null, user);
 });
 
-router.use(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/secret",
-    failureRedirect: "/login.html"
-  })
-);
+router.use("/login", passport.authenticate("local"), (req, res) => {
+  return res.json({ session: req.user });
+});
 
 router.get("/smoke", (req, res) => {
   return res.json({ message: "I see smoke in auth." });
@@ -111,7 +100,7 @@ router.post("/register", (req, res) => {
         .save()
         .then(user => {
           console.log(user);
-          return res.send({ message: "User created" });
+          return res.status(200);
         })
         .catch(err => {
           console.log(err);
@@ -121,13 +110,11 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.get("/secret", isAuthenticated, (req, res) => {
-  return res.send("You found the secret!");
-});
-
 router.get("/logout", (req, res) => {
+  console.log("router GET /logout");
   req.logout();
-  res.send("logged out");
+  console.log("logout complete, sending response to front");
+  return res.json({ session: {} });
 });
 
 module.exports = router;

@@ -2,6 +2,12 @@ export const TOGGLE = "TOGGLE";
 export const LOAD_DETAIL = "LOAD_DETAIL";
 export const GET_THUMBNAIL = "GET_THUMBNAIL";
 export const ADD_PRODUCT = "ADD_PRODUCT";
+export const LOGIN_USER = "LOGIN_USER";
+export const REGISTER_USER = "REGISTER_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
+export const GO_BACK = "GO_BACK";
+export const GO_REGISTER = "GO_REGISTER";
+export const GO_LOGIN = "GO_LOGIN";
 
 export const actionsToggle = link => dispatch => {
   return dispatch({
@@ -57,4 +63,86 @@ export const actionsGetThumbnail = category => async dispatch => {
         payload: results
       });
     });
+};
+
+export const actionsLoginSubmit = loginInfo => async dispatch => {
+  let config = {
+    method: "POST",
+    body: JSON.stringify(loginInfo),
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  await fetch("/api/auth/login", config)
+    .then(response => {
+      return response.json();
+    })
+    .then(results => {
+      return dispatch({
+        type: LOGIN_USER,
+        payload: results
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const actionsRegisterSubmit = registerInfo => async dispatch => {
+  let config = {
+    method: "POST",
+    body: JSON.stringify(registerInfo),
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  await fetch("api/auth/register", config)
+    .then(response => {
+      return response.json();
+    })
+    .then(results => {
+      return dispatch({ type: REGISTER_USER, payload: results });
+    })
+    .catch(err => {
+      console.log(err);
+      return err;
+    });
+};
+
+export const actionsHandleLogout = () => async dispatch => {
+  console.log("actionsHandleLogout");
+  await fetch("/api/auth/logout")
+    .then(response => {
+      console.log("actionsHandleLogout got response from server.");
+      response.json();
+    })
+    .then(results => {
+      return dispatch({ type: LOGOUT_USER, payload: null });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const actionsGoBack = () => dispatch => {
+  return dispatch({
+    type: GO_BACK,
+    payload: ""
+  });
+};
+
+export const actionsOpenRegister = () => dispatch => {
+  return dispatch({
+    type: GO_REGISTER,
+    payload: "register"
+  });
+};
+
+export const actionsOpenLogin = () => dispatch => {
+  return dispatch({
+    type: GO_LOGIN,
+    payload: "login"
+  });
 };

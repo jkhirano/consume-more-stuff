@@ -1,0 +1,111 @@
+.registerComponent {
+  padding: 40px 20px 20px 20px;
+  background: white;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+.form_li {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+}
+
+.form_input {
+  height: 30px;
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  width: 85%;
+  margin-bottom: 25px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form_input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.reg_button {
+  height: 50px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: bolder;
+  color: white;
+  background: #de2322;
+  border: none;
+  border-radius: 3px;
+  border: 2px #de2322 solid;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+}
+
+.reg_button:hover {
+  border: #137a53;
+  background-color: #137a53;
+}
+
+.close_button {
+  height: 50px;
+  width: 150px;
+  font-size: 18px;
+  font-weight: bolder;
+  color: white;
+  background: #de2322;
+  border: none;
+  border-radius: 3px;
+  border: 2px #de2322 solid;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  background: white;
+  color: #de2322;
+}
+
+.close_button:hover {
+  background-color: #de2322;
+  color: white;
+}
+
+.reg_icon_img {
+  opacity: 0.3;
+  height: 20px;
+  width: auto;
+}
+
+.imgContainer {
+  width: 20px;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+.options {
+  border-top: 2px rgba(0, 0, 0, 0.2) solid;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.AlreadyAMember {
+  color: rgba(0, 0, 0, 0.8);
+  padding-left: 10px;
+}
+
+.options_span {
+  color: #0066ff;
+}
+
+.options_span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  text-align: left;
+  margin-left: 30px;
+  margin-top: -10px;
+  font-size: 14px;
+}

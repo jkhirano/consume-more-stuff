@@ -1,5 +1,5 @@
 import React from "react";
-import "./ThumbnailHabit.css";
+import styles from "./ThumbnailHabit.module.css";
 
 const ThumbnailHabit = function(props) {
   return (
@@ -10,7 +10,11 @@ const ThumbnailHabit = function(props) {
       }}
     >
       {props.habit.images && (
-        <img className="image" alt="habit" src={props.habit.images[0].url} />
+        <img
+          className={styles.image}
+          alt="habit"
+          src={props.habit.images[0].url}
+        />
       )}
       <li className="name">{props.habit.name}</li>
       <span className="price">${props.habit.price}</span> |
