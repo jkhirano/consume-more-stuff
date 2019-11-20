@@ -99,9 +99,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-HabitList = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HabitList);
+HabitList = connect(mapStateToProps, mapDispatchToProps)(HabitList);
 
 export default HabitList;

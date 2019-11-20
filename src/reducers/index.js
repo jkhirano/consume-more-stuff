@@ -1,9 +1,16 @@
-import { TOGGLE, ADD_PRODUCT, GET_THUMBNAIL, LOAD_DETAIL } from "../actions";
+import {
+  TOGGLE,
+  ADD_PRODUCT,
+  EDIT_ITEM,
+  GET_THUMBNAIL,
+  LOAD_DETAIL
+} from "../actions";
 
 const defaultState = {
   habits: [],
   display: "all",
   addedProduct: false,
+  editedItem: false,
   name: "",
   description: "",
   price: "",
@@ -27,6 +34,9 @@ let reducer = (state = defaultState, action) => {
     case ADD_PRODUCT:
       return Object.assign({}, state, { addedProduct: true });
 
+    case EDIT_ITEM:
+      return Object.assign({}, state, { editedItem: true });
+
     case LOAD_DETAIL:
       return Object.assign({}, state, action.payload);
 
@@ -40,3 +50,18 @@ let reducer = (state = defaultState, action) => {
 };
 
 export default reducer;
+
+// RIAN'S CURRENTLY DEPRECATED CODE - MAY STILL NEED
+
+// const reducer = (state = defaultState, action) => {
+//   switch (action.type) {
+//     case EDIT_HABIT:
+//       const filteredHabits = state.habits.filter(function(element) {
+//         if (element.id !== action.payload.id) return element;
+//       });
+//       const mergedHabits = [...filteredHabits, action.payload];
+//       return { habits: mergedHabits };
+//     default:
+//       return state;
+//   }
+// };
