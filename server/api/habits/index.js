@@ -89,7 +89,7 @@ router.get("/:id", (req, res) => {
 });
 
 // item edit route
-router.post("/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   let pid = req.params.id;
   if (isNaN(parseFloat(pid)) || !isFinite(pid) || pid.includes(".")) {
     return res.status(500).json({ message: "ID is not an integer" });
