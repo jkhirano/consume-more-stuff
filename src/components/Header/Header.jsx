@@ -1,7 +1,26 @@
 import React, { Component } from "react";
 import styles from "./Header.module.css";
+import { connect } from "react-redux";
+import {
+  actionsHandleLogout,
+  actionsOpenRegister,
+  actionsOpenLogin
+} from "../../actions";
 
 class Header extends Component {
+  handleLogout = () => {
+    console.log("handleLogout");
+    return this.props.dispatchHandleLogout();
+  };
+
+  handleRegisterClick = () => {
+    return this.props.dispatchRegister();
+  };
+
+  handleLoginClick = () => {
+    return this.props.dispatchLogin();
+  };
+
   render() {
     return (
       <div className={styles.header}>
@@ -10,6 +29,7 @@ class Header extends Component {
             <img
               src="https://contenthub-static.grammarly.com/blog/wp-content/uploads/2019/01/bad-habits-760x400.jpg"
               alt="https://via.placeholder.com/300x50"
+              className={styles.bannerImg}
             />
           </a>
         </div>
@@ -24,23 +44,56 @@ class Header extends Component {
           />
           <button className={styles.searchImg} type="submit"></button>
         </div>
-
         <div className={styles.auth}>
-          <a className={styles.register} href="/register.html">
-            Register
-          </a>
-          <a className={styles.login} href="/login.html">
-            Login
-            <img
-              className={styles.loginImg}
-              src="https://image.flaticon.com/icons/svg/149/149408.svg"
-              alt="login icon"
-            />
-          </a>
+          {this.props.session ? (
+            <div className={styles.logout} onClick={this.handleLogout}>
+              Logout
+            </div>
+          ) : (
+            <>
+              <div
+                className={styles.register}
+                onClick={this.handleRegisterClick}
+              >
+                Register
+              </div>
+              <div className={styles.login} onClick={this.handleLoginClick}>
+                Login
+                <img
+                  className={styles.loginImg}
+                  src="https://image.flaticon.com/icons/svg/149/149408.svg"
+                  alt="login icon"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = () => {
+  return {
+    session: localStorage.getItem("session")
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchHandleLogout: () => {
+      console.log("dispatchHandleLogout");
+      return dispatch(actionsHandleLogout());
+    },
+    dispatchRegister: () => {
+      return dispatch(actionsOpenRegister());
+    },
+    dispatchLogin: () => {
+      return dispatch(actionsOpenLogin());
+    }
+  };
+};
+
+Header = connect(mapStateToProps, mapDispatchToProps)(Header);
 
 export default Header;

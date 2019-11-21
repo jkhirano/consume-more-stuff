@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionsAddProduct } from "../../actions";
+import styles from "./AddProduct.module.css";
 
 class AddProduct extends Component {
   constructor(props) {
@@ -61,14 +62,14 @@ class AddProduct extends Component {
 
   render() {
     return (
-      <div>
-        Add Product Component
+      <div className={styles.newItem}>
+        <h3>Add New Item</h3>
         {this.props.addedProduct ? <div>Item successfully added.</div> : null}
         <form>
           <ul>
             {Object.keys(this.state.mappedFields).map(key => {
               return (
-                <li key={key}>
+                <li key={key} className={styles.list}>
                   <label htmlFor={key}>
                     {key[0].toUpperCase() + key.slice(1) + ": "}
                   </label>
@@ -81,7 +82,7 @@ class AddProduct extends Component {
                 </li>
               );
             })}
-            <li>
+            <li className={styles.list}>
               <label htmlFor="condition">Condition: </label>
               <select name="condition_id" onChange={this.handleSelect}>
                 <option value={1}>Chronic</option>
@@ -89,7 +90,7 @@ class AddProduct extends Component {
                 <option value={3}>Obsessive</option>
               </select>
             </li>
-            <li>
+            <li className={styles.list}>
               <label htmlFor="category">Category: </label>
               <select name="category_id" onChange={this.handleSelect}>
                 <option value={1}>Work</option>
@@ -98,7 +99,7 @@ class AddProduct extends Component {
                 <option value={4}>Home</option>
               </select>
             </li>
-            <li>
+            <li className={styles.list}>
               <label htmlFor="url">Image URL: </label>
               <input type="file " name="url" />
             </li>
