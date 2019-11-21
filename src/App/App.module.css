@@ -1,3 +1,36 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  width: 100%;
+  height: 75px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  min-height: 100vh;
+}
+
+.Navigation {
+  width: 50px;
+}
+
+.HabitList {
+  flex-grow: 2;
+}
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+}
+
+li {
+  list-style: none;
 }
