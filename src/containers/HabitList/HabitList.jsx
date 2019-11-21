@@ -129,6 +129,7 @@ class HabitList extends Component {
 
         <div>
           <DetailedHabit
+            id={this.props.id}
             name={this.props.name}
             description={this.props.description}
             price={this.props.price}
@@ -152,6 +153,7 @@ class HabitList extends Component {
 const mapStateToProps = state => {
   return {
     localHabits: state.habits,
+    id: state.id,
     name: state.name,
     description: state.description,
     price: state.price,

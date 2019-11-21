@@ -29,7 +29,7 @@ let DetailedHabit = function(props) {
       </div>
       <button className="button">Add to cart</button>
       <div>
-        <EditItem />
+        <EditItem item={props} onUpdate={this} />
       </div>
       <button className="exitButton">X</button>
     </div>
