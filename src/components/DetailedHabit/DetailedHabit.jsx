@@ -1,5 +1,6 @@
 import React from "react";
 import "./DetailedHabit.css";
+import EditItem from "../../containers/EditItem";
 
 let DetailedHabit = function(props) {
   return (
@@ -27,6 +28,9 @@ let DetailedHabit = function(props) {
         Posted on: {props.created_at}
       </div>
       <button className="button">Add to cart</button>
+      <div>
+        <EditItem item={props} onUpdate={this} />
+      </div>
       <button className="exitButton">X</button>
     </div>
   );

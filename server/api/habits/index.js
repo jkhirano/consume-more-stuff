@@ -68,6 +68,22 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// item edit route
+router.put("/:id", (req, res) => {
+  let pid = req.params.id;
+  if (isNaN(parseFloat(pid)) || !isFinite(pid) || pid.includes(".")) {
+    return res.status(500).json({ message: "ID is not an integer" });
+  }
+  req.database.Item.where({ id: req.params.id })
+    .save(req.body, { patch: true })
+    .then(results => {
+      res.json(results);
+    })
+    .catch(err => {
+      res.status(500).json({ message: err.message });
+    });
+});
+
 router.post("/", isAuthenticated, (req, res) => {
   return req.database.Item.forge(req.body)
     .save()
